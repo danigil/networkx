@@ -579,8 +579,29 @@ def minimum_weight_full_matching(G, top_nodes=None, weight="weight"):
     return d
 
 def envy_free_matching(G):
+    """
+
+    Parameters
+    ----------
+    G - NetworkX undirected bipartite graph
+
+    Returns envy free matching
+    -------
+
+    """
 
     def EFM_partition(G, matching):
+        """
+
+        Parameters
+        ----------
+        G - NetworkX undirected bipartite graph
+        matching
+
+        Returns - special partition of the graph to sets X_L,X_S and Y_S,Y_L
+        -------
+
+        """
         X , Y = nx.bipartite.sets(G)
         X_0 = set(X) - set(matching)
         pass

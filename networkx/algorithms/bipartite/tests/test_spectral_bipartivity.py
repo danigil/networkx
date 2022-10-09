@@ -1,5 +1,4 @@
 import pytest
-
 pytest.importorskip("scipy")
 
 import networkx as nx
