@@ -20,24 +20,24 @@ logger.handlers = [console]
 console.setFormatter(formatter)
 
 
-def __neighbours_of_set__(G, node_set):
+def neighbours_of_set(G, node_set):
     """
     returns a set of the neighbours of a given set of nodes
     >>> G = nx.complete_bipartite_graph(3,3)
-    >>> __neighbours_of_set__(G, {})
+    >>> neighbours_of_set(G, {})
     set()
-    >>> __neighbours_of_set__(G, {1, 2})
+    >>> neighbours_of_set(G, {1, 2})
     {3, 4, 5}
 
     >>> G = nx.Graph([(0, 4), (1, 5), (2, 6)])
-    >>> __neighbours_of_set__(G, {0, 1})
+    >>> neighbours_of_set(G, {0, 1})
     {4, 5}
 
     >>> G=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])
-    >>> __neighbours_of_set__(G, {0, 1})
+    >>> neighbours_of_set(G, {0, 1})
     {3, 4}
 
-    >>> __neighbours_of_set__(G, {4})
+    >>> neighbours_of_set(G, {4})
     {0, 1, 2}
     """
     ret_set = {}
@@ -115,8 +115,8 @@ def __M_alternating_sequence__(G, M, top_nodes=None):
         GMinusM = nx.subgraph_view(G, filter_edge=lambda u, v: (u, v) not in M.items() and (v, u) not in M.items())
         m_alternating_sequence_logger.debug(f"G - M: nodes: {GMinusM.nodes}\tedges: {GMinusM.edges}")
 
-        m_alternating_sequence_logger.debug(f"N_G - M(X_{index - 1}): {__neighbours_of_set__(GMinusM, X_subsets[-1])}")
-        Y_current = (__neighbours_of_set__(GMinusM, X_subsets[-1])) - Y_subgroups_accumulate
+        m_alternating_sequence_logger.debug(f"N_G - M(X_{index - 1}): {neighbours_of_set(GMinusM, X_subsets[-1])}")
+        Y_current = (neighbours_of_set(GMinusM, X_subsets[-1])) - Y_subgroups_accumulate
 
         if Y_current == set():
             m_alternating_sequence_logger.debug(f"Y_{index} is empty, terminating.")
@@ -127,7 +127,7 @@ def __M_alternating_sequence__(G, M, top_nodes=None):
         G_M = nx.subgraph_view(G, filter_edge=lambda u, v: (u, v) in M.items() and (v, u) in M.items())
         m_alternating_sequence_logger.debug(f"G_M: nodes: {G_M.nodes}\tedges: {G_M.edges}")
 
-        X_current = __neighbours_of_set__(G_M, Y_current)
+        X_current = neighbours_of_set(G_M, Y_current)
         m_alternating_sequence_logger.debug(f"X_current = {X_current}")
         if X_current == set():
             m_alternating_sequence_logger.debug(f"X_{index} is empty, terminating.")
