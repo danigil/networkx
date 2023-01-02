@@ -1,4 +1,5 @@
 import doctest
+import time
 
 import networkx as nx
 import cppyy
@@ -80,4 +81,7 @@ def neighbours_of_set(G, node_set):
     return set(ret_set)
 
 if __name__ == '__main__':
-    doctest.testmod(verbose=True)
+    t0 = time.clock()
+    doctest.testmod()
+    t1 = time.clock() - t0
+    print("Time elapsed: ", t1 - t0)
