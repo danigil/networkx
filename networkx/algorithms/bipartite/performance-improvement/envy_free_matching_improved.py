@@ -51,5 +51,10 @@ cpp_set = cppyy.gbl.std.set
 #
 # cppyy.gbl.example()
 def neighbours_of_set(G, node_set):
-    ret_set = cpp_set[int](node_set)
-    pass
+    cpp_node_set = cpp_set[int](node_set)
+
+    ret_set = cpp_set[int]()
+    for node in cpp_node_set:
+        ret_set.insert(G[node])
+
+    return set(ret_set)
