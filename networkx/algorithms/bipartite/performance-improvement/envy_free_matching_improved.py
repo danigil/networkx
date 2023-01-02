@@ -42,9 +42,9 @@ void example()
   a.insert('G');
   for(auto& str: a)
   {
-    std::cout << str << ' ';
+    std::cout << str << \' \';
   }
-  std::cout << '\n';
+  std::cout << \'\n\';
 }
 """)
 
