@@ -6,7 +6,6 @@ import time
 
 
 def improved_EFM(G, M=None, top_nodes=None):
-    # M=cython.cfunc(net.algorithms.bipartite.maximum_matching(G))
     cython.cfunc(nx._EFM_partition(G, M, top_nodes))
 
 
