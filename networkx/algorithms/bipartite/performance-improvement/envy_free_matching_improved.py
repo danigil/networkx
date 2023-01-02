@@ -1,6 +1,7 @@
 
 import networkx as nx
 import cppyy
+cpp_set = cppyy.gbl.std.set
 # cppyy.include('<iostream>')
 # cppyy.include('<set>')
 
@@ -30,24 +31,25 @@ import cppyy
 #
 #     return set(ret_set)
 
-cppyy.cppdef("""
-#include <iostream>
-#include <set>
-
-void example()
-{
-  std::set<char> a;
-  a.insert('G');
-  a.insert('F');
-  a.insert('G');
-  for(auto& str: a)
-  {
-    std::cout << str << \' \';
-  }
-  std::cout << \'\n\';
-}
-""")
-
-cppyy.gbl.example()
+# cppyy.cppdef("""
+# #include <iostream>
+# #include <set>
+#
+# void example()
+# {
+#   std::set<char> a;
+#   a.insert('G');
+#   a.insert('F');
+#   a.insert('G');
+#   for(auto& str: a)
+#   {
+#     std::cout << str << " ";
+#   }
+#   std::cout << "\n";
+# }
+# """)
+#
+# cppyy.gbl.example()
 def neighbours_of_set(G, node_set):
+    ret_set = cpp_set[int](node_set)
     pass
