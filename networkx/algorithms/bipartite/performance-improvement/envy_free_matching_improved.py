@@ -75,7 +75,7 @@ def neighbours_of_set(G, node_set):
 
     ret_set = cpp_set[int]()
     for node in cpp_node_set:
-        ret_set.insert(G[node])
+        ret_set.insert(list(G[node]))
 
     return set(ret_set)
 
