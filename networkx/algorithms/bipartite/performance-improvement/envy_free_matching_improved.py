@@ -83,5 +83,5 @@ def neighbours_of_set(G, node_set):
 if __name__ == '__main__':
     t0 = time.time()
     doctest.testmod()
-    t1 = time.time() - t0
+    t1 = time.time()
     print("Time elapsed: ", t1 - t0)
