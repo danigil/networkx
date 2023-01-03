@@ -56,8 +56,8 @@ if __name__ == '__main__':
         G = generate_marriable_bipartite_graph(size)
         print('--------------------------')
         print(f'running envy_free_matching with G={G}')
-        cython_time = time_func(run_cython, envy_free_matching_name, G)
-        standard_time = time_func(run_standard, envy_free_matching_name, G)
+        cython_time = time_func(run_cython, envy_free_matching_name, G, range(size))
+        standard_time = time_func(run_standard, envy_free_matching_name, G, range(size))
         print(f'cython: {cython_time}, standard: {standard_time}, ratio: {standard_time/cython_time}')
         print('--------------------------')
 
