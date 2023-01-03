@@ -81,7 +81,7 @@ def neighbours_of_set(G, node_set):
 
 
         try:
-            ret_value = find_neigbours_in_adjacency_matrix(adjacency_matrix, node_set_as_nparray)
+            cdef np.ndarray ret_value = find_neigbours_in_adjacency_matrix(adjacency_matrix, node_set_as_nparray)
             # print(f'ret: {ret}')
 
             # return set(ret)
