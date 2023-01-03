@@ -15,7 +15,7 @@ __all__ = [
 
 INFINITY = float("inf")
 
-cpdef neighbours_of_set(G, node_set):
+def neighbours_of_set(G, node_set):
     """
     returns a set of the neighbours of a given set of nodes
     >>> G = nx.complete_bipartite_graph(3,3)
@@ -41,7 +41,7 @@ cpdef neighbours_of_set(G, node_set):
 
     return set(ret_set)
 
-cpdef __M_alternating_sequence__(G, M, top_nodes=None):
+def __M_alternating_sequence__(G, M, top_nodes=None):
     """
     Generates M-alternating-sequence for a graph G with regard to a matching M
     We generate two sets with the following recursive definition:
@@ -121,7 +121,7 @@ cpdef __M_alternating_sequence__(G, M, top_nodes=None):
     return tuple(X_subsets), tuple(Y_subsets)
 
 
-cpdef _EFM_partition(G, M=None, top_nodes=None):
+def _EFM_partition(G, M=None, top_nodes=None):
     """Returns the unique EFM partition of bipartite graph.
 
     A matching in a bipartite graph with parts X and Y is called envy-free, if no unmatched
@@ -210,7 +210,7 @@ cpdef _EFM_partition(G, M=None, top_nodes=None):
     return set(X) - X_S, X_S, set(Y) - Y_S, Y_S
 
 
-cpdef envy_free_matching(G, top_nodes=None):
+def envy_free_matching(G, top_nodes=None):
     r"""Return an envy-free matching of maximum cardinality
     Parameters
     ----------
@@ -269,7 +269,7 @@ cpdef envy_free_matching(G, top_nodes=None):
     return M
 
 
-cpdef minimum_weight_envy_free_matching(G, top_nodes=None):
+def minimum_weight_envy_free_matching(G, top_nodes=None):
     r"""Returns minimum-cost maximum-cardinality envy-free matching
     Parameters
     ----------
