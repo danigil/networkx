@@ -1,5 +1,12 @@
 import Cython
 
+import numpy as np
+cimport numpy as np
+np.import_array()
+
+DTYPE = np.int
+ctypedef np.int_t DTYPE_t
+
 import networkx as nx
 
 __all__ = [
@@ -8,6 +15,18 @@ __all__ = [
 ]
 
 INFINITY = float("inf")
+
+cdef np.ndarray[DTYPE_t, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[DTYPE_t, ndim=2] adjacency_matrix, np.ndarray[DTYPE_t, ndim=1] node_set):
+    cdef DTYPE counter = 0
+
+    cdef np.ndarray[DTYPE_t, ndim=1] x
+
+    for node in node_set:
+        x = adjacency_matrix[node]:
+        counter += np.count_nonzero(x == 1)
+
+    cdef np.ndarray = np.zeros((1,counter), dtype=DTYPE)
+
 
 def neighbours_of_set(G, node_set):
     """
@@ -29,11 +48,13 @@ def neighbours_of_set(G, node_set):
     >>> neighbours_of_set(G, {4})
     {0, 1, 2}
     """
-    ret_set = {}
-    for node in node_set:
-        ret_set.update(G[node])
+    # ret_set = {}
+    # for node in node_set:
+    #     ret_set.update(G[node])
 
-    return set(ret_set)
+    # return set(ret_set)
+
+    return set(find_neigbours_in_adjacency_matrix(nx.to_numpy_array(G), numpy.fromiter(node_set, int, len(node_set))))
 
 def __M_alternating_sequence__(G, M, top_nodes=None):
     """

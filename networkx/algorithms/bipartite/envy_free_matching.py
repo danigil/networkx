@@ -352,6 +352,9 @@ def minimum_weight_envy_free_matching(G, top_nodes=None):
     logger.debug(f"returning minimum cost maximum cardinality envy free matching in G[X_L,Y_L]: {M}")
     return M
 
-
+import numpy as np
 if __name__ == '__main__':
-    doctest.testmod()
+    # doctest.testmod()
+    G = nx.complete_bipartite_graph(3,2)
+
+    print(nx.to_numpy_array(G))
