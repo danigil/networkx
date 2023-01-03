@@ -46,7 +46,6 @@ def neighbours_of_set(G, node_set):
 
     return set(ret_set)
 
-
 def __M_alternating_sequence__(G, M, top_nodes=None):
     """
     Generates M-alternating-sequence for a graph G with regard to a matching M
@@ -355,4 +354,3 @@ def minimum_weight_envy_free_matching(G, top_nodes=None):
 
 if __name__ == '__main__':
     doctest.testmod(verbose=True)
-
