@@ -80,7 +80,7 @@ def time_func(func, *args, **kwargs):
 if __name__ == '__main__':
     sizes = [10, 100, 10000]
     for size in sizes:
-        G = nx.bipartite.random_graph(size, size,0.5)
+        G = nx.bipartite.random_graph(size, size,0.1)
         print('--------------------------')
         print(f'running envy_free_matching with G={G}')
         cython_time = time_func(run_cython, envy_free_matching_name, G)
