@@ -78,13 +78,13 @@ def time_func(func, *args, **kwargs):
     return time.time() - t0
 
 if __name__ == '__main__':
-    sizes = [10, 100, 10000]
+    sizes = [10, 100, 10000, 100000, 1000000000]
     for size in sizes:
-        G = generate_odd_path(size+1)
+        G = nx.bipartite.random_graph(size, size,0.5)
         print('--------------------------')
         print(f'running envy_free_matching with G={G}')
         cython_time = time_func(run_cython, envy_free_matching_name, G)
         standard_time = time_func(run_standard, envy_free_matching_name, G)
-        print(f'cython: {cython_time}, standard: {standard_time}, ratio: {standard_time/cython_time}')
+        print(f'cython: {cython_time}, standard: {standard_time}, ratio(standard_time/cython_time): {standard_time/cython_time}')
         print('--------------------------')
 
