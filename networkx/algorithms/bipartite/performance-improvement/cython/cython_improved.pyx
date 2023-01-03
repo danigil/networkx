@@ -25,7 +25,7 @@ cdef np.ndarray[DTYPE_t, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[D
         x = adjacency_matrix[node]
         counter += np.count_nonzero(x == 1)
 
-    cdef np.ndarray ret = np.zeros((1,counter), dtype=long)
+    cdef np.ndarray ret = np.zeros((1,counter), dtype=DTYPE)
     cdef DTYPE_t i = 0
     for node in node_set:
         for neighbour, edge_weight in enumerate(adjacency_matrix[node]):
@@ -61,7 +61,7 @@ def neighbours_of_set(G, node_set):
 
     # return set(ret_set)
 
-    return set(find_neigbours_in_adjacency_matrix(nx.to_numpy_array(G, dtype=DTYPE_t), np.fromiter(node_set, int, len(node_set))))
+    return set(find_neigbours_in_adjacency_matrix(nx.to_numpy_array(G, dtype=long), np.fromiter(node_set, long, len(node_set))))
 
 def __M_alternating_sequence__(G, M, top_nodes=None):
     """
