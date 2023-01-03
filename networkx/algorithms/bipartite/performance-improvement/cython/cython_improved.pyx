@@ -66,6 +66,14 @@ def neighbours_of_set(G, node_set):
         return set()
     else:
         adjacency_matrix = nx.to_numpy_array(G, dtype=long)
+        if adjacency_matrix is None:
+            print('bruh matrix')
+            return set()
+
+        if node_set_as_nparray is None:
+            print('bruh node_set')
+            return set()
+
         node_set_as_nparray = np.array(list(node_set), dtype=long)
 
         print(f'adjacency_matrix: ', {adjacency_matrix})
