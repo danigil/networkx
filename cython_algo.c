@@ -4223,7 +4223,6 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
  *     #logger.debug(f"returning minimum cost maximum cardinality envy free matching in G[X_L,Y_L]: {M}")
  *     return M             # <<<<<<<<<<<<<<
  * 
- * 
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_M);
