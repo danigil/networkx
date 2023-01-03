@@ -1,7 +1,5 @@
-import doctest
 import time
 
-import networkx as nx
 import cppyy
 cpp_set = cppyy.gbl.std.set
 cpp_for_each = cppyy.gbl.std.for_each
