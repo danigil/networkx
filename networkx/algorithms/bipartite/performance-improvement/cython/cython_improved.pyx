@@ -16,8 +16,8 @@ __all__ = [
 
 INFINITY = float("inf")
 
-cdef np.ndarray[DTYPE_t, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[DTYPE_t, ndim=2] adjacency_matrix, np.ndarray[DTYPE_t, ndim=1] node_set):
-    cdef DTYPE counter = 0
+cdef np.ndarray[DTYPE, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[DTYPE, ndim=2] adjacency_matrix, np.ndarray[DTYPE, ndim=1] node_set):
+    cdef DTYPE_t counter = 0
 
     cdef np.ndarray[DTYPE_t, ndim=1] x
 
@@ -26,7 +26,7 @@ cdef np.ndarray[DTYPE_t, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[D
         counter += np.count_nonzero(x == 1)
 
     cdef np.ndarray ret = np.zeros((1,counter), dtype=DTYPE)
-    cdef DTYPE i = 0
+    cdef DTYPE_t i = 0
     for node in node_set:
         for neighbour, edge_weight in enumerate(adjacency_matrix[node]):
             if edge_weight == 1:
