@@ -25,7 +25,7 @@ cdef np.ndarray[DTYPE_t, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[D
         x = adjacency_matrix[node]
         counter += np.count_nonzero(x == 1)
 
-    cdef np.ndarray ret = np.zeros((1,counter), dtype=DTYPE)
+    cdef np.ndarray ret = np.zeros((1,counter), dtype=long)
     cdef DTYPE_t i = 0
     for node in node_set:
         for neighbour, edge_weight in enumerate(adjacency_matrix[node]):
