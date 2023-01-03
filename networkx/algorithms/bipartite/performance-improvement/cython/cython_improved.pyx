@@ -4,8 +4,8 @@ import numpy as np
 cimport numpy as np
 np.import_array()
 
-DTYPE = np.int
-ctypedef np.int_t DTYPE_t
+DTYPE = int
+ctypedef int DTYPE_t
 
 import networkx as nx
 
@@ -61,7 +61,7 @@ def neighbours_of_set(G, node_set):
 
     # return set(ret_set)
 
-    return set(find_neigbours_in_adjacency_matrix(nx.to_numpy_array(G), np.fromiter(node_set, int, len(node_set))))
+    return set(find_neigbours_in_adjacency_matrix(nx.to_numpy_array(G, dtype=int), np.fromiter(node_set, int, len(node_set))))
 
 def __M_alternating_sequence__(G, M, top_nodes=None):
     """
