@@ -24,6 +24,33 @@ def generate_marriable_bipartite_graph(size: int):
     return nx.Graph([(i, i + size) for i in range(size)])
 
 
+def generate_odd_path(size: int):
+    """
+    generate_odd_path
+
+    input: positive odd(!!) number
+    output: bipartite graph with one set of cardinality = size and one set of cardinality = size - 1
+    with the shape of an odd path.
+
+    >>> generate_odd_path(3).edges
+    [(0, 3), (1, 3), (1, 4), (2, 4), (3, 0), (3, 1), (4, 1), (4, 2)]
+
+    """
+    if size % 2 == 0: raise Exception
+
+    edges = [(0, size)]
+
+    actions = {
+        0: lambda: edges.append((edges[-1][0], edges[-1][1] + 1)),
+
+        1: lambda: edges.append((edges[-1][0] + 1, edges[-1][1]))
+    }
+
+    for i in range(1, size + 1):
+        actions[i % 2]()
+    return nx.Graph(edges)
+
+
 def run_cython(func_name, *args, **kwargs):
     if func_name == envy_free_matching_name:
         func = cython_envy_free_matching
@@ -53,7 +80,7 @@ def time_func(func, *args, **kwargs):
 if __name__ == '__main__':
     sizes = [10, 100, 10000]
     for size in sizes:
-        G = generate_marriable_bipartite_graph(size)
+        G = generate_odd_path(size)
         print('--------------------------')
         print(f'running envy_free_matching with G={G}')
         cython_time = time_func(run_cython, envy_free_matching_name, G, range(size))
