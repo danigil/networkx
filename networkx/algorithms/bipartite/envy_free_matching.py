@@ -1,6 +1,8 @@
 import doctest
 import time
 
+from numpy import long
+
 import networkx as nx
 import networkx
 import logging
@@ -355,6 +357,6 @@ def minimum_weight_envy_free_matching(G, top_nodes=None):
 import numpy as np
 if __name__ == '__main__':
     # doctest.testmod()
-    G = nx.complete_bipartite_graph(3,2)
+    # G = nx.complete_bipartite_graph(3,2)
 
-    print(nx.to_numpy_array(G))
+    print(np.arange(5, dtype=long))
