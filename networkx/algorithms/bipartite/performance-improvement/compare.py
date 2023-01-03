@@ -84,10 +84,11 @@ if __name__ == '__main__':
     standard_times = []
     times = 100
     for size in sizes:
+        G = nx.bipartite.random_graph(size, size, 0.1)
+
         print('--------------------------')
         print(f'running envy_free_matching with G={G}, {times} times')
 
-        G = nx.bipartite.random_graph(size, size, 0.1)
         cython_time_avg = 0
         for i in range(times):
             t0 = time.time()
