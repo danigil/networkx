@@ -22,7 +22,7 @@ cdef np.ndarray[DTYPE_t, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[D
     cdef np.ndarray[DTYPE_t, ndim=1] x
 
     for node in node_set:
-        x = adjacency_matrix[node]:
+        x = adjacency_matrix[node]
         counter += np.count_nonzero(x == 1)
 
     cdef np.ndarray = np.zeros((1,counter), dtype=DTYPE)
