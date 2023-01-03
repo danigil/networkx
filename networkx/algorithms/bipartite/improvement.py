@@ -18,7 +18,9 @@ import cython_algo as cy
 # def improved_Envy_free_weighted_graph(G, top_nodes=None):
 #     cython.cfunc(nx.minimum_weight_envy_free_matching(G, top_nodes))
 
-
+# got help from here: https://matplotlib.org/stable/gallery/subplots_axes_and_figures/figure_title.html
+# Used the tutorial of Jet-Brains and Erel's: https://www.jetbrains.com/help/pycharm/cython.html#get-started-cython
+# https://github.com/erelsgl-at-ariel/research-5783/blob/main/10-python-performance/6-run-time.pdf
 def compare_envy_free_matching():
     sizes1 = []
     times1 = []
