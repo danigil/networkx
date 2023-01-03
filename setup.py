@@ -172,6 +172,12 @@ with open("README.rst") as fh:
     long_description = fh.read()
 
 if __name__ == "__main__":
+    from setuptools import setup
+    from Cython.Build import cythonize
+
+    setup(
+        ext_modules=cythonize("cython_algo.pyx")
+    )
 
     setup(
         name=name,

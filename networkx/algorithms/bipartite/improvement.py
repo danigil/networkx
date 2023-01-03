@@ -2,19 +2,21 @@ import networkx.algorithms.bipartite.envy_free_matching as nx
 import networkx as net
 import matplotlib.pyplot as plt
 import cython
+import Cython
 import time
 
+import cython_algo as cy
 
-def improved_EFM(G, M=None, top_nodes=None):
-    cython.cfunc(nx._EFM_partition(G, M, top_nodes))
-
-
-def improved_Envy_free_matching(G, top_nodes=None):
-    cython.cfunc(nx.envy_free_matching(G, top_nodes))
-
-
-def improved_Envy_free_weighted_graph(G, top_nodes=None):
-    cython.cfunc(nx.minimum_weight_envy_free_matching(G, top_nodes))
+# def improved_EFM(G, M=None, top_nodes=None):
+#     cython.cfunc(nx._EFM_partition(G, M, top_nodes))
+#
+#
+# def improved_Envy_free_matching(G, top_nodes=None):
+#     cython.cfunc(nx.envy_free_matching(G, top_nodes))
+#
+#
+# def improved_Envy_free_weighted_graph(G, top_nodes=None):
+#     cython.cfunc(nx.minimum_weight_envy_free_matching(G, top_nodes))
 
 
 def compare_envy_free_matching():
@@ -30,7 +32,7 @@ def compare_envy_free_matching():
         times1.append(t2 - t1)
         sizes1.append(i)
         t1 = time.time()
-        improved_Envy_free_matching(Graph)
+        cy.envy_free_matching(Graph)
         t2 = time.time()
         times2.append(t2 - t1)
         sizes2.append(i)
@@ -63,7 +65,7 @@ def compare_EFM_PARTITION():
         times1.append(t2 - t1)
         sizes1.append(i)
         t1 = time.time()
-        improved_EFM(Graph)
+        cy._EFM_partition(Graph)
         t2 = time.time()
         times2.append(t2 - t1)
         sizes2.append(i)
@@ -96,7 +98,7 @@ def compare_minimum_weight_EFM():
         times1.append(t2 - t1)
         sizes1.append(i)
         t1 = time.time()
-        improved_Envy_free_weighted_graph(Graph)
+        cy.minimum_weight_envy_free_matching(Graph)
         t2 = time.time()
         times2.append(t2 - t1)
         sizes2.append(i)
@@ -116,8 +118,6 @@ def compare_minimum_weight_EFM():
     plt.show()
 
 
-
-
 if __name__ == '__main__':
     print(f"Comparing the envy free matching improvement")
     compare_envy_free_matching()
@@ -127,4 +127,3 @@ if __name__ == '__main__':
     time.sleep(5)
     print(f"Comparing minimum weight maximum cardinality envy free matching")
     compare_minimum_weight_EFM()
-
