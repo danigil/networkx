@@ -27,13 +27,13 @@ cdef np.ndarray find_neigbours_in_adjacency_matrix(np.ndarray[DTYPE_t, ndim=2] a
 
     cdef np.ndarray ret = np.arange(counter, dtype=long)
     cdef DTYPE_t i = 0
-    """
+    
     for node in node_set:
         for neighbour, edge_weight in enumerate(adjacency_matrix[node]):
             if edge_weight == 1:
                 ret[i] = neighbour
                 i+=1
-    """
+    
     return ret
 
 
