@@ -78,7 +78,7 @@ def time_func(func, *args, **kwargs):
     return time.time() - t0
 
 if __name__ == '__main__':
-    sizes = [10, 100, 10000, 100000, 1000000000]
+    sizes = [10, 100, 10000]
     for size in sizes:
         G = nx.bipartite.random_graph(size, size,0.5)
         print('--------------------------')
