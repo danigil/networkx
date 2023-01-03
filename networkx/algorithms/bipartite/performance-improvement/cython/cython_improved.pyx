@@ -70,7 +70,7 @@ def neighbours_of_set(G, node_set):
         print(f'node_set_as_nparray: ', {node_set_as_nparray})
         try:
             return set(find_neigbours_in_adjacency_matrix(adjacency_matrix, node_set_as_nparray))
-        except Exception:
+        except TypeError:
             print(f'exception')
 
 def __M_alternating_sequence__(G, M, top_nodes=None):
