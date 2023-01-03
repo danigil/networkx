@@ -33,6 +33,8 @@ cdef np.ndarray[DTYPE_t, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[D
                 ret[i] = neighbour
                 i+=1
 
+    return ret
+
 
 
 def neighbours_of_set(G, node_set):
