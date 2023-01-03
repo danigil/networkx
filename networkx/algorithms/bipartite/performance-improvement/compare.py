@@ -79,7 +79,7 @@ def time_func(func, *args, **kwargs):
     return time.time() - t0
 
 if __name__ == '__main__':
-    sizes = [10, 100, 200, 300]
+    sizes = [10, 100, 200, 300] # add values here to run more sizes
     cython_times = []
     standard_times = []
     times = 100
