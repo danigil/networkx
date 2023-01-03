@@ -16,7 +16,7 @@ __all__ = [
 
 INFINITY = float("inf")
 
-cdef np.ndarray[DTYPE_t, ndim=1] find_neigbours_in_adjacency_matrix(np.ndarray[DTYPE_t, ndim=2] adjacency_matrix, np.ndarray[DTYPE_t, ndim=1] node_set):
+cdef np.ndarray find_neigbours_in_adjacency_matrix(np.ndarray[DTYPE_t, ndim=2] adjacency_matrix, np.ndarray[DTYPE_t, ndim=1] node_set):
     cdef DTYPE_t counter = 0
 
     cdef np.ndarray[DTYPE_t, ndim=1] x
