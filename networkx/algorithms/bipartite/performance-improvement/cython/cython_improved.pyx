@@ -79,7 +79,6 @@ def neighbours_of_set(G, node_set):
         # print(f'adjacency_matrix: {adjacency_matrix}')
         # print(f'node_set_as_nparray: {node_set_as_nparray}')
 
-        cdef np.ndarray ret_value
         try:
 
             ret_value = find_neigbours_in_adjacency_matrix(adjacency_matrix, node_set_as_nparray)
