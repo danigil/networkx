@@ -4,8 +4,8 @@ import numpy as np
 cimport numpy as np
 np.import_array()
 
-DTYPE = int
-ctypedef int DTYPE_t
+DTYPE = long
+ctypedef long DTYPE_t
 
 import networkx as nx
 
