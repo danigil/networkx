@@ -61,7 +61,7 @@ def neighbours_of_set(G, node_set):
 
     # return set(ret_set)
 
-    return set(find_neigbours_in_adjacency_matrix(nx.to_numpy_array(G, dtype=long), np.fromiter(node_set, long, len(node_set))))
+    return set(find_neigbours_in_adjacency_matrix(nx.to_numpy_array(G, dtype=long), numpy.array(list(node_set), dtype=long))))
 
 def __M_alternating_sequence__(G, M, top_nodes=None):
     """
