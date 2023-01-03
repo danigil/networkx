@@ -74,7 +74,7 @@ def neighbours_of_set(G, node_set):
             ret = find_neigbours_in_adjacency_matrix(adjacency_matrix, node_set_as_nparray)
             print(f'ret: {ret}')
 
-            return ret
+            return set(ret)
         except TypeError:
             print(f'exception')
 
