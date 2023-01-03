@@ -1,12 +1,6 @@
-import time
-from setuptools import setup
-from Cython.Build import cythonize
-import doctest
-
 import Cython
 
 import networkx as nx
-import networkx
 
 __all__ = [
     "envy_free_matching",
@@ -15,7 +9,7 @@ __all__ = [
 
 INFINITY = float("inf")
 
-def neighbours_of_set(G, node_set):
+cpdef neighbours_of_set(G, node_set):
     """
     returns a set of the neighbours of a given set of nodes
     >>> G = nx.complete_bipartite_graph(3,3)
@@ -41,7 +35,7 @@ def neighbours_of_set(G, node_set):
 
     return set(ret_set)
 
-def __M_alternating_sequence__(G, M, top_nodes=None):
+cpdef __M_alternating_sequence__(G, M, top_nodes=None):
     """
     Generates M-alternating-sequence for a graph G with regard to a matching M
     We generate two sets with the following recursive definition:
@@ -121,7 +115,7 @@ def __M_alternating_sequence__(G, M, top_nodes=None):
     return tuple(X_subsets), tuple(Y_subsets)
 
 
-def _EFM_partition(G, M=None, top_nodes=None):
+cpdef _EFM_partition(G, M=None, top_nodes=None):
     """Returns the unique EFM partition of bipartite graph.
 
     A matching in a bipartite graph with parts X and Y is called envy-free, if no unmatched
@@ -210,7 +204,7 @@ def _EFM_partition(G, M=None, top_nodes=None):
     return set(X) - X_S, X_S, set(Y) - Y_S, Y_S
 
 
-def envy_free_matching(G, top_nodes=None):
+cpdef envy_free_matching(G, top_nodes=None):
     r"""Return an envy-free matching of maximum cardinality
     Parameters
     ----------
@@ -269,7 +263,7 @@ def envy_free_matching(G, top_nodes=None):
     return M
 
 
-def minimum_weight_envy_free_matching(G, top_nodes=None):
+cpdef minimum_weight_envy_free_matching(G, top_nodes=None):
     r"""Returns minimum-cost maximum-cardinality envy-free matching
     Parameters
     ----------
@@ -313,10 +307,3 @@ def minimum_weight_envy_free_matching(G, top_nodes=None):
     Union = EFM_PARTITION[0].union(EFM_PARTITION[2])
     M = nx.bipartite.minimum_weight_full_matching(G.subgraph(Union))
     return M
-
-
-if __name__ == '__main__':
-    t0 = time.time()
-    doctest.testmod()
-    t1 = time.time()
-    print("Time elapsed: ", t1 - t0)
