@@ -1,11 +1,13 @@
-import networkx.algorithms.bipartite.envy_free_matching as nx
+from networkx.algorithms.bipartite.envy_free_matching import *
 import networkx as net
 import matplotlib.pyplot as plt
 import cython
 import Cython
 import time
 
-import cython_algo as cy
+from cython_algo import *
+from networkx.algorithms.bipartite.envy_free_matching import _EFM_partition
+
 
 # def improved_EFM(G, M=None, top_nodes=None):
 #     cython.cfunc(nx._EFM_partition(G, M, top_nodes))
@@ -29,12 +31,12 @@ def compare_envy_free_matching():
     for i in range(100, 150):
         Graph = net.complete_bipartite_graph(i, i)
         t1 = time.time()
-        nx.envy_free_matching(Graph)
+        envy_free_matching(Graph)
         t2 = time.time()
         times1.append(t2 - t1)
         sizes1.append(i)
         t1 = time.time()
-        cy.envy_free_matching(Graph)
+        envy_free_matching2(Graph)
         t2 = time.time()
         times2.append(t2 - t1)
         sizes2.append(i)
@@ -62,12 +64,12 @@ def compare_EFM_PARTITION():
     for i in range(150, 170):
         Graph = net.complete_bipartite_graph(i, i)
         t1 = time.time()
-        nx._EFM_partition(Graph)
+        _EFM_partition(Graph)
         t2 = time.time()
         times1.append(t2 - t1)
         sizes1.append(i)
         t1 = time.time()
-        cy._EFM_partition(Graph)
+        EFM_partition2(Graph)
         t2 = time.time()
         times2.append(t2 - t1)
         sizes2.append(i)
@@ -95,12 +97,12 @@ def compare_minimum_weight_EFM():
     for i in range(150, 170):
         Graph = net.complete_bipartite_graph(i, i)
         t1 = time.time()
-        nx.minimum_weight_envy_free_matching(Graph)
+        minimum_weight_envy_free_matching(Graph)
         t2 = time.time()
         times1.append(t2 - t1)
         sizes1.append(i)
         t1 = time.time()
-        cy.minimum_weight_envy_free_matching(Graph)
+        minimum_weight_envy_free_matching2(Graph)
         t2 = time.time()
         times2.append(t2 - t1)
         sizes2.append(i)
@@ -121,6 +123,7 @@ def compare_minimum_weight_EFM():
 
 
 if __name__ == '__main__':
+
     print(f"Comparing the envy free matching improvement")
     compare_envy_free_matching()
     time.sleep(5)

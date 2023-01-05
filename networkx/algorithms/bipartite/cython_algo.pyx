@@ -7,10 +7,7 @@ import logging
 
 logging.basicConfig(filename="envy_free_matching.log", level=logging.DEBUG)
 
-__all__ = [
-    "envy_free_matching",
-    "minimum_weight_envy_free_matching",
-]
+
 
 INFINITY = float("inf")
 
@@ -21,7 +18,7 @@ logger.handlers = [console]
 console.setFormatter(formatter)
 
 
-def __neighbours_of_set__(G, node_set):
+cdef __neighbours_of_set__(G, node_set):
     """
     returns a set of the neighbours of a given set of nodes
     >>> G = nx.complete_bipartite_graph(3,3)
@@ -48,7 +45,7 @@ def __neighbours_of_set__(G, node_set):
     return set(ret_set)
 
 
-def __M_alternating_sequence__(G, M, top_nodes=None):
+cdef __M_alternating_sequence__(G, M, top_nodes=None):
     """
     Generates M-alternating-sequence for a graph G with regard to a matching M
     We generate two sets with the following recursive definition:
@@ -104,11 +101,11 @@ def __M_alternating_sequence__(G, M, top_nodes=None):
     if X_0 == set():
         return (), ()
 
-    X_subsets = [X_0]
-    Y_subsets = []
+    cdef list X_subsets = [X_0]
+    cdef list Y_subsets = []
 
-    Y_subgroups_accumulate = set()
-    index = 1
+    cdef set Y_subgroups_accumulate = set()
+    cdef int index = 1
 
     while len(X_subsets) == 1 or X_subsets[-1] != set() and Y_subsets[-1] != set():
  #       m_alternating_sequence_logger.debug(f"Y_groups accumulation so far: {Y_subgroups_accumulate}\n")
@@ -143,7 +140,7 @@ def __M_alternating_sequence__(G, M, top_nodes=None):
     return tuple(X_subsets), tuple(Y_subsets)
 
 
-def _EFM_partition(G, M=None, top_nodes=None):
+def EFM_partition2(G, M=None, top_nodes=None):
     """Returns the unique EFM partition of bipartite graph.
 
     A matching in a bipartite graph with parts X and Y is called envy-free, if no unmatched
@@ -237,7 +234,7 @@ def _EFM_partition(G, M=None, top_nodes=None):
     return set(X) - X_S, X_S, set(Y) - Y_S, Y_S
 
 
-def envy_free_matching(G, top_nodes=None):
+def envy_free_matching2(G, top_nodes=None):
     r"""Return an envy-free matching of maximum cardinality
     Parameters
     ----------
@@ -291,7 +288,7 @@ def envy_free_matching(G, top_nodes=None):
     M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)
     #logger.debug(f"Got matching: {M}")
     #logger.debug(f"Finding the EFM partition with maximum matching: {M}")
-    EFM_PARTITION = _EFM_partition(G, M, top_nodes)
+    EFM_PARTITION = EFM_partition2(G, M, top_nodes)
     #logger.debug(f"The partition is: {EFM_PARTITION}")
     un = EFM_PARTITION[1].union(EFM_PARTITION[3])
     #logger.debug(f"Finding the sub-matching M[X_L,Y_L]")
@@ -302,7 +299,7 @@ def envy_free_matching(G, top_nodes=None):
     return M
 
 
-def minimum_weight_envy_free_matching(G, top_nodes=None):
+def minimum_weight_envy_free_matching2(G, top_nodes=None):
     r"""Returns minimum-cost maximum-cardinality envy-free matching
     Parameters
     ----------
@@ -346,7 +343,7 @@ def minimum_weight_envy_free_matching(G, top_nodes=None):
     M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)
     # logger.debug(f"Got matching: {M}")
     # logger.debug(f"Finding the EFM partition with maximum matching: {M}")
-    EFM_PARTITION = _EFM_partition(G, M, top_nodes)
+    EFM_PARTITION = EFM_partition2(G, M, top_nodes)
     #logger.debug(f"The partition is: {EFM_PARTITION}")
     Union = EFM_PARTITION[0].union(EFM_PARTITION[2])
     M = nx.bipartite.minimum_weight_full_matching(G.subgraph(Union))

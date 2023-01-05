@@ -966,16 +966,21 @@ static const char *__pyx_f[] = {
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__;
+struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__;
+struct __pyx_opt_args_11cython_algo___M_alternating_sequence__;
 
-/* "cython_algo.pyx":51
+/* "cython_algo.pyx":48
  * 
  * 
- * def __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
+ * cdef __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
  *     """
  *     Generates M-alternating-sequence for a graph G with regard to a matching M
  */
-struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ {
+struct __pyx_opt_args_11cython_algo___M_alternating_sequence__ {
+  int __pyx_n;
+  PyObject *top_nodes;
+};
+struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ {
   PyObject_HEAD
   PyObject *__pyx_v_M;
 };
@@ -1045,18 +1050,6 @@ struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ {
 #define __Pyx_CLEAR(r)    do { PyObject* tmp = ((PyObject*)(r)); r = NULL; __Pyx_DECREF(tmp);} while(0)
 #define __Pyx_XCLEAR(r)   do { if((r) != NULL) {PyObject* tmp = ((PyObject*)(r)); r = NULL; __Pyx_DECREF(tmp);}} while(0)
 
-/* RaiseArgTupleInvalid.proto */
-static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
-    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
-
-/* RaiseDoubleKeywords.proto */
-static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
-
-/* ParseKeywords.proto */
-static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
-    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
-    const char* function_name);
-
 /* GetItemInt.proto */
 #define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
     (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
@@ -1116,6 +1109,18 @@ static CYTHON_INLINE PyObject* __Pyx_CallUnboundCMethod1(__Pyx_CachedCFunction* 
 #else
 #define __Pyx_CallUnboundCMethod1(cfunc, self, arg)  __Pyx__CallUnboundCMethod1(cfunc, self, arg)
 #endif
+
+/* RaiseArgTupleInvalid.proto */
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
+/* RaiseDoubleKeywords.proto */
+static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
+
+/* ParseKeywords.proto */
+static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
+    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
+    const char* function_name);
 
 /* None.proto */
 static CYTHON_INLINE void __Pyx_RaiseClosureNameError(const char *varname);
@@ -1321,14 +1326,6 @@ static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
 #define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
 #endif
 
-/* PyIntBinop.proto */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
-#else
-#define __Pyx_PyInt_AddObjC(op1, op2, intval, inplace, zerodivision_check)\
-    (inplace ? PyNumber_InPlaceAdd(op1, op2) : PyNumber_Add(op1, op2))
-#endif
-
 /* PyObjectCall2Args.proto */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
 
@@ -1451,7 +1448,9 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
 /* Module declarations from 'cython_algo' */
-static PyTypeObject *__pyx_ptype_11cython_algo___pyx_scope_struct____M_alternating_sequence__ = 0;
+static PyTypeObject *__pyx_ptype_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ = 0;
+static PyObject *__pyx_f_11cython_algo___neighbours_of_set__(PyObject *, PyObject *); /*proto*/
+static PyObject *__pyx_f_11cython_algo___M_alternating_sequence__(PyObject *, PyObject *, struct __pyx_opt_args_11cython_algo___M_alternating_sequence__ *__pyx_optional_args); /*proto*/
 #define __Pyx_MODULE_NAME "cython_algo"
 extern int __pyx_module_is_main_cython_algo;
 int __pyx_module_is_main_cython_algo = 0;
@@ -1466,11 +1465,8 @@ static const char __pyx_k_v[] = "v";
 static const char __pyx_k_nx[] = "nx";
 static const char __pyx_k_un[] = "un";
 static const char __pyx_k_EFM[] = "EFM";
-static const char __pyx_k_G_M[] = "G_M";
-static const char __pyx_k_X_0[] = "X_0";
 static const char __pyx_k_X_S[] = "X_S";
 static const char __pyx_k_Y_S[] = "Y_S";
-static const char __pyx_k_all[] = "__all__";
 static const char __pyx_k_inf[] = "inf";
 static const char __pyx_k_info[] = "info";
 static const char __pyx_k_keys[] = "keys";
@@ -1481,7 +1477,6 @@ static const char __pyx_k_sets[] = "sets";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_DEBUG[] = "DEBUG";
 static const char __pyx_k_Union[] = "Union";
-static const char __pyx_k_index[] = "index";
 static const char __pyx_k_items[] = "items";
 static const char __pyx_k_level[] = "level";
 static const char __pyx_k_union[] = "union";
@@ -1490,21 +1485,16 @@ static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_logger[] = "logger";
 static const char __pyx_k_subset[] = "subset";
 static const char __pyx_k_update[] = "update";
-static const char __pyx_k_GMinusM[] = "GMinusM";
 static const char __pyx_k_console[] = "console";
 static const char __pyx_k_doctest[] = "doctest";
 static const char __pyx_k_logging[] = "logging";
-static const char __pyx_k_ret_set[] = "ret_set";
 static const char __pyx_k_INFINITY[] = "INFINITY";
 static const char __pyx_k_filename[] = "filename";
 static const char __pyx_k_handlers[] = "handlers";
 static const char __pyx_k_networkx[] = "networkx";
-static const char __pyx_k_node_set[] = "node_set";
 static const char __pyx_k_subgraph[] = "subgraph";
 static const char __pyx_k_Formatter[] = "Formatter";
-static const char __pyx_k_X_current[] = "X_current";
 static const char __pyx_k_X_subsets[] = "X_subsets";
-static const char __pyx_k_Y_current[] = "Y_current";
 static const char __pyx_k_Y_subsets[] = "Y_subsets";
 static const char __pyx_k_bipartite[] = "bipartite";
 static const char __pyx_k_formatter[] = "formatter";
@@ -1516,50 +1506,38 @@ static const char __pyx_k_cython_algo[] = "cython_algo";
 static const char __pyx_k_filter_edge[] = "filter_edge";
 static const char __pyx_k_setFormatter[] = "setFormatter";
 static const char __pyx_k_EFM_PARTITION[] = "EFM_PARTITION";
-static const char __pyx_k_EFM_partition[] = "_EFM_partition";
 static const char __pyx_k_StreamHandler[] = "StreamHandler";
 static const char __pyx_k_subgraph_view[] = "subgraph_view";
+static const char __pyx_k_EFM_partition2[] = "EFM_partition2";
 static const char __pyx_k_cython_algo_pyx[] = "cython_algo.pyx";
 static const char __pyx_k_maximum_matching[] = "maximum_matching";
-static const char __pyx_k_neighbours_of_set[] = "__neighbours_of_set__";
 static const char __pyx_k_Envy_free_matching[] = "Envy-free matching";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_envy_free_matching[] = "envy_free_matching";
-static const char __pyx_k_EFM_partition_line_146[] = "_EFM_partition (line 146)";
-static const char __pyx_k_M_alternating_sequence[] = "__M_alternating_sequence__";
-static const char __pyx_k_Y_subgroups_accumulate[] = "Y_subgroups_accumulate";
+static const char __pyx_k_envy_free_matching2[] = "envy_free_matching2";
 static const char __pyx_k_envy_free_matching_log[] = "envy_free_matching.log";
-static const char __pyx_k_envy_free_matching_line_240[] = "envy_free_matching (line 240)";
-static const char __pyx_k_neighbours_of_set___line_24[] = "__neighbours_of_set__ (line 24)";
+static const char __pyx_k_EFM_partition2_line_143[] = "EFM_partition2 (line 143)";
+static const char __pyx_k_envy_free_matching2_line_237[] = "envy_free_matching2 (line 237)";
 static const char __pyx_k_minimum_weight_full_matching[] = "minimum_weight_full_matching";
-static const char __pyx_k_M_alternating_sequence___line[] = "__M_alternating_sequence__ (line 51)";
 static const char __pyx_k_M_alternating_sequence___local[] = "__M_alternating_sequence__.<locals>.<lambda>";
-static const char __pyx_k_Generates_M_alternating_sequenc[] = "\n    Generates M-alternating-sequence for a graph G with regard to a matching M\n    We generate two sets with the following recursive definition:\n    X_0 = nodes in G unmatched by M.\n    for i>=1:\n        Latex:\n            Y_i = N_{G\\M}(X_{i-1})\n            X_i = N_M(Y_i)\n        English:\n            Y_i -> neighbours of X_{i-1} that were not matched by M group-subtracting all the previous Y_k's we've seen\n            X_i -> neighbours of Y_i that were matched by M\n\n    The iterative pattern stops when either Y_k or X_k are an empty set for a certain k, forever staying an empty set from k onward\n    the alternating sequece is proven to always stop in the article.\n\n    >>> G = nx.complete_bipartite_graph(3,3)\n    >>> M = nx.bipartite.hopcroft_karp_matching(G)\n    >>> __M_alternating_sequence__(G, M)\n    ((), ())\n\n    >>> G = nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n    >>> M = {0:3, 3:0, 1:4, 4:1}\n    >>> __M_alternating_sequence__(G, M)\n    (({2}, {1}), ({4},))\n\n    >>> G = nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n    >>> M = {0:3,3:0,4:1,1:4}\n    >>> __M_alternating_sequence__(G, M)\n    (({2}, {1}, {0}), ({4}, {3}))\n\n    >>> G = nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n    >>> M = {0:3,3:0,4:1,1:4}\n    >>> __M_alternating_sequence__(G, M)\n    (({2}, {1}, {0}), ({4}, {3}))\n\n    >>> G = nx.Graph([(0,6),(6,0),(1,6),(6,1),(1,7),(7,1),(2,6),(6,2),(2,8),(8,2),(3,9),(9,3),(3,6),(6,3),(4,8),(8,4),(4,7),(7,4),(5,9),(9,5)])\n    >>> M = {0:6,6:0,1:7,7:1,2:8,8:2,3:9,9:3}\n    >>> __M_alternating_sequence__(G, M)\n    (({4, 5}, {1, 2, 3}, {0}), ({8, 9, 7}, {6}))\n\n    ";
 static const char __pyx_k_Return_an_envy_free_matching_of[] = "Return an envy-free matching of maximum cardinality\n    Parameters\n    ----------\n    G:\n        NetworkX graph\n        Undirected bipartite graph\n    top_nodes:\n                list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n    Returns\n    -------\n    Matching: dictionary\n        The Maximum cardinallity envy-free matching is returned as a dictionary.\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 2: Finding an envy-free matching of maximum cardinality.\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: Perfect matching\n        >>> Graph=nx.complete_bipartite_graph(3,3)\n        >>> envy_free_matching(Graph)\n        {0: 3, 1: 4, 2: 5, 3: 0, 4: 1, 5: 2}\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching.\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n        >>> envy_free_matching(Graph)\n        {0: 3, 3: 0}\n\n        Example 3: Odd path\n        >>> Graph=nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n        >>> envy_free_matching(Graph)\n        {}\n\n        Like presented in the article, odd path contains an empty envy-free matching so the returned matching is empty.\n        Example 4: Y-path-saturated graph\n        >>> Graph=nx.Graph([(0,6),(6,0),(1,6),(6,1),(1,7),(7,1),(2,6),(6,2),(2,8),(8,2),(3,9),(9,3),(3,6),(6,3),(4,8),(8,4),(4,7),(7,4),(5,9),(9,5)])\n        >>> envy_free_matching(Graph)\n        {}\n\n        Like presented in the article, Y-path-saturated graph contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n    ";
 static const char __pyx_k_asctime_s_levelname_s_name_s_Li[] = "%(asctime)s: %(levelname)s: %(name)s: Line %(lineno)d: %(message)s";
-static const char __pyx_k_returns_a_set_of_the_neighbours[] = "\n    returns a set of the neighbours of a given set of nodes\n    >>> G = nx.complete_bipartite_graph(3,3)\n    >>> __neighbours_of_set__(G, {})\n    set()\n    >>> __neighbours_of_set__(G, {1, 2})\n    {3, 4, 5}\n\n    >>> G = nx.Graph([(0, 4), (1, 5), (2, 6)])\n    >>> __neighbours_of_set__(G, {0, 1})\n    {4, 5}\n\n    >>> G=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n    >>> __neighbours_of_set__(G, {0, 1})\n    {3, 4}\n\n    >>> __neighbours_of_set__(G, {4})\n    {0, 1, 2}\n    ";
 static const char __pyx_k_Input_matching_is_None_calculati[] = "Input matching is None - calculating matching!";
 static const char __pyx_k_Returns_minimum_cost_maximum_car[] = "Returns minimum-cost maximum-cardinality envy-free matching\n    Parameters\n    ----------\n    G\n        NetworkX graph\n        Undirected bipartite graph\n    top_nodes:\n                list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n    Returns\n    -------\n    Matching: dictionary\n        The minimum cost maximum cardinallity matching is returned as a dictionary.\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 3: Finding a minimum-cost maximum-cardinality envy-free matching.\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: K 3,3 with weights\n        >>> G = nx.Graph()\n        >>> weights = [(0,3,250), (0,4,148), (0,5,122), (1,3,175), (1,4,135), (1,5,150), (2,3,150), (2,4,125)]\n        >>> G.add_weighted_edges_from(weights)\n        >>> minimum_weight_envy_free_matching(G)\n        {0: 5, 1: 4, 2: 3, 5: 0, 4: 1, 3: 2}\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching this is the least cost perfect matching.\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph()\n        >>> Graph.add_weighted_edges_from([(0, 4, 5), (1, 4, 1), (2, 5, 3), (2, 7, 9), (3, 6, 3), (3, 7, 7)])\n        >>> minimum_weight_envy_free_matching(Graph,top_nodes=[0,1,2,3])\n        {2: 5, 3: 6, 5: 2, 6: 3}\n    ";
 static const char __pyx_k_Returns_the_unique_EFM_partition[] = "Returns the unique EFM partition of bipartite graph.\n\n    A matching in a bipartite graph with parts X and Y is called envy-free, if no unmatched\n    vertex in X is adjacent to a matched vertex in Y.\n    Every bipartite graph has a unique partition such that all envy-free matchings are\n    contained in one of the partition set.\n\n    Parameters\n    ----------\n    G:  NetworkX graph\n\n      Undirected bipartite graph\n    M: dict\n       dictionary that represents a maximum matching in G.\n       If M is none, the function will calculate a maximum matching.\n    top_nodes: list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n\n    Returns\n    -------\n    EFM: tuple of sets\n        The partition returns as a tuple of 4 sets of vertices:\n        X_L,X_S,Y_L,Y_S where X_L,Y_L are the \"good vertices\" of G and\n        X_S,Y_S are the \"bad vertices\" of G where no envy-free matching exists according to THM 1.3 in the article.\n\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 1: Finding the EFM partition of a bipartite graph.\n\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: Perfect matching\n        >>> Graph=nx.complete_bipartite_graph(3,3)\n        >>> Matching=nx.bipartite.hopcroft_karp_matching(Graph)\n        >>> _EFM_partition(Graph,Matching)\n        ({0, 1, 2}, set(), {3, 4, 5}, set())\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching.\n\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n        >>> Matching={0:3,3:0,1:4,4:1}\n        >>> _EFM_partition(Graph,Matching)\n        ({0}, {1, 2}, ""{3}, {4})\n\n        Here the graph contains non-empty envy-free matching so X_L,Y_L are not empty.\n\n        Example 3: Odd path\n        >>> Graph=nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n        >>> Matching={0:3,3:0,4:1,1:4}\n        >>> _EFM_partition(Graph,Matching)\n        (set(), {0, 1, 2}, set(), {3, 4})\n\n        Like presented in the article, odd path contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n\n        Example 4: Y-path-saturated graph\n        >>> Graph=nx.Graph([(0,6),(6,0),(1,6),(6,1),(1,7),(7,1),(2,6),(6,2),(2,8),(8,2),(3,9),(9,3),(3,6),(6,3),(4,8),(8,4),(4,7),(7,4),(5,9),(9,5)])\n        >>> Matching={0:6,6:0,1:7,7:1,2:8,8:2,3:9,9:3}\n        >>> _EFM_partition(Graph,Matching)\n        (set(), {0, 1, 2, 3, 4, 5}, set(), {8, 9, 6, 7})\n\n        Like presented in the article, Y-path-saturated graph contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n\n    ";
-static const char __pyx_k_minimum_weight_envy_free_matchin[] = "minimum_weight_envy_free_matching";
-static const char __pyx_k_minimum_weight_envy_free_matchin_2[] = "minimum_weight_envy_free_matching (line 305)";
+static const char __pyx_k_minimum_weight_envy_free_matchin[] = "minimum_weight_envy_free_matching2";
+static const char __pyx_k_minimum_weight_envy_free_matchin_2[] = "minimum_weight_envy_free_matching2 (line 302)";
 static PyObject *__pyx_n_s_Cython;
 static PyObject *__pyx_n_s_DEBUG;
 static PyObject *__pyx_n_s_EFM;
 static PyObject *__pyx_n_s_EFM_PARTITION;
-static PyObject *__pyx_n_s_EFM_partition;
-static PyObject *__pyx_kp_u_EFM_partition_line_146;
+static PyObject *__pyx_n_s_EFM_partition2;
+static PyObject *__pyx_kp_u_EFM_partition2_line_143;
 static PyObject *__pyx_kp_s_Envy_free_matching;
 static PyObject *__pyx_n_s_Formatter;
 static PyObject *__pyx_n_s_G;
-static PyObject *__pyx_n_s_GMinusM;
-static PyObject *__pyx_n_s_G_M;
-static PyObject *__pyx_kp_u_Generates_M_alternating_sequenc;
 static PyObject *__pyx_n_s_INFINITY;
 static PyObject *__pyx_kp_s_Input_matching_is_None_calculati;
 static PyObject *__pyx_n_s_M;
-static PyObject *__pyx_n_s_M_alternating_sequence;
-static PyObject *__pyx_kp_u_M_alternating_sequence___line;
 static PyObject *__pyx_n_s_M_alternating_sequence___local;
 static PyObject *__pyx_kp_u_Return_an_envy_free_matching_of;
 static PyObject *__pyx_kp_u_Returns_minimum_cost_maximum_car;
@@ -1567,16 +1545,11 @@ static PyObject *__pyx_kp_u_Returns_the_unique_EFM_partition;
 static PyObject *__pyx_n_s_StreamHandler;
 static PyObject *__pyx_n_s_Union;
 static PyObject *__pyx_n_s_X;
-static PyObject *__pyx_n_s_X_0;
 static PyObject *__pyx_n_s_X_S;
-static PyObject *__pyx_n_s_X_current;
 static PyObject *__pyx_n_s_X_subsets;
 static PyObject *__pyx_n_s_Y;
 static PyObject *__pyx_n_s_Y_S;
-static PyObject *__pyx_n_s_Y_current;
-static PyObject *__pyx_n_s_Y_subgroups_accumulate;
 static PyObject *__pyx_n_s_Y_subsets;
-static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_kp_s_asctime_s_levelname_s_name_s_Li;
 static PyObject *__pyx_n_s_basicConfig;
 static PyObject *__pyx_n_s_bipartite;
@@ -1586,8 +1559,8 @@ static PyObject *__pyx_n_s_cython_algo;
 static PyObject *__pyx_kp_s_cython_algo_pyx;
 static PyObject *__pyx_n_s_doctest;
 static PyObject *__pyx_n_s_efm_logger;
-static PyObject *__pyx_n_s_envy_free_matching;
-static PyObject *__pyx_kp_u_envy_free_matching_line_240;
+static PyObject *__pyx_n_s_envy_free_matching2;
+static PyObject *__pyx_kp_u_envy_free_matching2_line_237;
 static PyObject *__pyx_kp_s_envy_free_matching_log;
 static PyObject *__pyx_n_s_filename;
 static PyObject *__pyx_n_s_filter_edge;
@@ -1595,7 +1568,6 @@ static PyObject *__pyx_n_s_formatter;
 static PyObject *__pyx_n_s_getLogger;
 static PyObject *__pyx_n_s_handlers;
 static PyObject *__pyx_n_s_import;
-static PyObject *__pyx_n_s_index;
 static PyObject *__pyx_n_s_inf;
 static PyObject *__pyx_n_s_info;
 static PyObject *__pyx_n_s_items;
@@ -1609,14 +1581,9 @@ static PyObject *__pyx_n_s_minimum_weight_envy_free_matchin;
 static PyObject *__pyx_kp_u_minimum_weight_envy_free_matchin_2;
 static PyObject *__pyx_n_s_minimum_weight_full_matching;
 static PyObject *__pyx_n_s_name;
-static PyObject *__pyx_n_s_neighbours_of_set;
-static PyObject *__pyx_kp_u_neighbours_of_set___line_24;
 static PyObject *__pyx_n_s_networkx;
 static PyObject *__pyx_n_s_node;
-static PyObject *__pyx_n_s_node_set;
 static PyObject *__pyx_n_s_nx;
-static PyObject *__pyx_n_s_ret_set;
-static PyObject *__pyx_kp_u_returns_a_set_of_the_neighbours;
 static PyObject *__pyx_n_s_setFormatter;
 static PyObject *__pyx_n_s_sets;
 static PyObject *__pyx_n_s_subgraph;
@@ -1629,107 +1596,34 @@ static PyObject *__pyx_n_s_un;
 static PyObject *__pyx_n_s_union;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_v;
-static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_node_set); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__pyx_v_u, PyObject *__pyx_v_v); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_u, PyObject *__pyx_v_v); /* proto */
-static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_M, PyObject *__pyx_v_top_nodes); /* proto */
-static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_M, PyObject *__pyx_v_top_nodes); /* proto */
-static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_top_nodes); /* proto */
-static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_top_nodes); /* proto */
-static PyObject *__pyx_tp_new_11cython_algo___pyx_scope_struct____M_alternating_sequence__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_11cython_algo_EFM_partition2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_M, PyObject *__pyx_v_top_nodes); /* proto */
+static PyObject *__pyx_pf_11cython_algo_2envy_free_matching2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_top_nodes); /* proto */
+static PyObject *__pyx_pf_11cython_algo_4minimum_weight_envy_free_matching2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_top_nodes); /* proto */
+static PyObject *__pyx_tp_new_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_update = {0, &__pyx_n_s_update, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PySet_Type_update = {0, &__pyx_n_s_update, 0, 0, 0};
-static PyObject *__pyx_int_1;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__6;
 static PyObject *__pyx_tuple__8;
-static PyObject *__pyx_tuple__10;
-static PyObject *__pyx_tuple__12;
 static PyObject *__pyx_codeobj__5;
 static PyObject *__pyx_codeobj__7;
 static PyObject *__pyx_codeobj__9;
-static PyObject *__pyx_codeobj__11;
-static PyObject *__pyx_codeobj__13;
 /* Late includes */
 
-/* "cython_algo.pyx":24
+/* "cython_algo.pyx":21
  * 
  * 
- * def __neighbours_of_set__(G, node_set):             # <<<<<<<<<<<<<<
+ * cdef __neighbours_of_set__(G, node_set):             # <<<<<<<<<<<<<<
  *     """
  *     returns a set of the neighbours of a given set of nodes
  */
 
-/* Python wrapper */
-static PyObject *__pyx_pw_11cython_algo_1__neighbours_of_set__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11cython_algo___neighbours_of_set__[] = "\n    returns a set of the neighbours of a given set of nodes\n    >>> G = nx.complete_bipartite_graph(3,3)\n    >>> __neighbours_of_set__(G, {})\n    set()\n    >>> __neighbours_of_set__(G, {1, 2})\n    {3, 4, 5}\n\n    >>> G = nx.Graph([(0, 4), (1, 5), (2, 6)])\n    >>> __neighbours_of_set__(G, {0, 1})\n    {4, 5}\n\n    >>> G=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n    >>> __neighbours_of_set__(G, {0, 1})\n    {3, 4}\n\n    >>> __neighbours_of_set__(G, {4})\n    {0, 1, 2}\n    ";
-static PyMethodDef __pyx_mdef_11cython_algo_1__neighbours_of_set__ = {"__neighbours_of_set__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11cython_algo_1__neighbours_of_set__, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11cython_algo___neighbours_of_set__};
-static PyObject *__pyx_pw_11cython_algo_1__neighbours_of_set__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_G = 0;
-  PyObject *__pyx_v_node_set = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__neighbours_of_set__ (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_G,&__pyx_n_s_node_set,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_G)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_node_set)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__neighbours_of_set__", 1, 2, 2, 1); __PYX_ERR(0, 24, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__neighbours_of_set__") < 0)) __PYX_ERR(0, 24, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_G = values[0];
-    __pyx_v_node_set = values[1];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__neighbours_of_set__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 24, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("cython_algo.__neighbours_of_set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11cython_algo___neighbours_of_set__(__pyx_self, __pyx_v_G, __pyx_v_node_set);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_node_set) {
+static PyObject *__pyx_f_11cython_algo___neighbours_of_set__(PyObject *__pyx_v_G, PyObject *__pyx_v_node_set) {
   PyObject *__pyx_v_ret_set = NULL;
   PyObject *__pyx_v_node = NULL;
   PyObject *__pyx_r = NULL;
@@ -1744,19 +1638,19 @@ static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__neighbours_of_set__", 0);
 
-  /* "cython_algo.pyx":44
+  /* "cython_algo.pyx":41
  *     {0, 1, 2}
  *     """
  *     ret_set = {}             # <<<<<<<<<<<<<<
  *     for node in node_set:
  *         ret_set.update(G[node])
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_ret_set = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cython_algo.pyx":45
+  /* "cython_algo.pyx":42
  *     """
  *     ret_set = {}
  *     for node in node_set:             # <<<<<<<<<<<<<<
@@ -1767,26 +1661,26 @@ static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyOb
     __pyx_t_1 = __pyx_v_node_set; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_node_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_node_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -1796,7 +1690,7 @@ static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyOb
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 45, __pyx_L1_error)
+          else __PYX_ERR(0, 42, __pyx_L1_error)
         }
         break;
       }
@@ -1805,21 +1699,21 @@ static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyOb
     __Pyx_XDECREF_SET(__pyx_v_node, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "cython_algo.pyx":46
+    /* "cython_algo.pyx":43
  *     ret_set = {}
  *     for node in node_set:
  *         ret_set.update(G[node])             # <<<<<<<<<<<<<<
  * 
  *     return set(ret_set)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_G, __pyx_v_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_G, __pyx_v_node); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyDict_Type_update, __pyx_v_ret_set, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyDict_Type_update, __pyx_v_ret_set, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "cython_algo.pyx":45
+    /* "cython_algo.pyx":42
  *     """
  *     ret_set = {}
  *     for node in node_set:             # <<<<<<<<<<<<<<
@@ -1829,7 +1723,7 @@ static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyOb
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cython_algo.pyx":48
+  /* "cython_algo.pyx":45
  *         ret_set.update(G[node])
  * 
  *     return set(ret_set)             # <<<<<<<<<<<<<<
@@ -1837,16 +1731,16 @@ static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyOb
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PySet_New(__pyx_v_ret_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(__pyx_v_ret_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cython_algo.pyx":24
+  /* "cython_algo.pyx":21
  * 
  * 
- * def __neighbours_of_set__(G, node_set):             # <<<<<<<<<<<<<<
+ * cdef __neighbours_of_set__(G, node_set):             # <<<<<<<<<<<<<<
  *     """
  *     returns a set of the neighbours of a given set of nodes
  */
@@ -1857,7 +1751,7 @@ static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("cython_algo.__neighbours_of_set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
+  __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_ret_set);
   __Pyx_XDECREF(__pyx_v_node);
@@ -1866,96 +1760,7 @@ static PyObject *__pyx_pf_11cython_algo___neighbours_of_set__(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "cython_algo.pyx":51
- * 
- * 
- * def __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
- *     """
- *     Generates M-alternating-sequence for a graph G with regard to a matching M
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_11cython_algo_3__M_alternating_sequence__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11cython_algo_2__M_alternating_sequence__[] = "\n    Generates M-alternating-sequence for a graph G with regard to a matching M\n    We generate two sets with the following recursive definition:\n    X_0 = nodes in G unmatched by M.\n    for i>=1:\n        Latex:\n            Y_i = N_{G\\M}(X_{i-1})\n            X_i = N_M(Y_i)\n        English:\n            Y_i -> neighbours of X_{i-1} that were not matched by M group-subtracting all the previous Y_k's we've seen\n            X_i -> neighbours of Y_i that were matched by M\n\n    The iterative pattern stops when either Y_k or X_k are an empty set for a certain k, forever staying an empty set from k onward\n    the alternating sequece is proven to always stop in the article.\n\n    >>> G = nx.complete_bipartite_graph(3,3)\n    >>> M = nx.bipartite.hopcroft_karp_matching(G)\n    >>> __M_alternating_sequence__(G, M)\n    ((), ())\n\n    >>> G = nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n    >>> M = {0:3, 3:0, 1:4, 4:1}\n    >>> __M_alternating_sequence__(G, M)\n    (({2}, {1}), ({4},))\n\n    >>> G = nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n    >>> M = {0:3,3:0,4:1,1:4}\n    >>> __M_alternating_sequence__(G, M)\n    (({2}, {1}, {0}), ({4}, {3}))\n\n    >>> G = nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n    >>> M = {0:3,3:0,4:1,1:4}\n    >>> __M_alternating_sequence__(G, M)\n    (({2}, {1}, {0}), ({4}, {3}))\n\n    >>> G = nx.Graph([(0,6),(6,0),(1,6),(6,1),(1,7),(7,1),(2,6),(6,2),(2,8),(8,2),(3,9),(9,3),(3,6),(6,3),(4,8),(8,4),(4,7),(7,4),(5,9),(9,5)])\n    >>> M = {0:6,6:0,1:7,7:1,2:8,8:2,3:9,9:3}\n    >>> __M_alternating_sequence__(G, M)\n    (({4, 5}, {1, 2, 3}, {0}), ({8, 9, 7}, {6}))\n\n    ";
-static PyMethodDef __pyx_mdef_11cython_algo_3__M_alternating_sequence__ = {"__M_alternating_sequence__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11cython_algo_3__M_alternating_sequence__, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11cython_algo_2__M_alternating_sequence__};
-static PyObject *__pyx_pw_11cython_algo_3__M_alternating_sequence__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_G = 0;
-  PyObject *__pyx_v_M = 0;
-  PyObject *__pyx_v_top_nodes = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__M_alternating_sequence__ (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_G,&__pyx_n_s_M,&__pyx_n_s_top_nodes,0};
-    PyObject* values[3] = {0,0,0};
-    values[2] = ((PyObject *)Py_None);
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_G)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_M)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__M_alternating_sequence__", 0, 2, 3, 1); __PYX_ERR(0, 51, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_top_nodes);
-          if (value) { values[2] = value; kw_args--; }
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__M_alternating_sequence__") < 0)) __PYX_ERR(0, 51, __pyx_L3_error)
-      }
-    } else {
-      switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_G = values[0];
-    __pyx_v_M = values[1];
-    __pyx_v_top_nodes = values[2];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__M_alternating_sequence__", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 51, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("cython_algo.__M_alternating_sequence__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11cython_algo_2__M_alternating_sequence__(__pyx_self, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "cython_algo.pyx":116
+/* "cython_algo.pyx":113
  *  #       m_alternating_sequence_logger.debug(f"Y_groups accumulation so far: {Y_subgroups_accumulate}\n")
  * 
  *         GMinusM = nx.subgraph_view(G, filter_edge=lambda u, v: (u, v) not in M.items() and (v, u) not in M.items())             # <<<<<<<<<<<<<<
@@ -1998,11 +1803,11 @@ static PyObject *__pyx_pw_11cython_algo_26__M_alternating_sequence___lambda(PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lambda", 1, 2, 2, 1); __PYX_ERR(0, 116, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lambda", 1, 2, 2, 1); __PYX_ERR(0, 113, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lambda") < 0)) __PYX_ERR(0, 116, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lambda") < 0)) __PYX_ERR(0, 113, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2015,7 +1820,7 @@ static PyObject *__pyx_pw_11cython_algo_26__M_alternating_sequence___lambda(PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 116, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 113, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cython_algo.__M_alternating_sequence__.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2029,8 +1834,8 @@ static PyObject *__pyx_pw_11cython_algo_26__M_alternating_sequence___lambda(PyOb
 }
 
 static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__pyx_v_u, PyObject *__pyx_v_v) {
-  struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *__pyx_cur_scope;
-  struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *__pyx_outer_scope;
+  struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *__pyx_cur_scope;
+  struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2043,10 +1848,10 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda", 0);
-  __pyx_outer_scope = (struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_u);
   __Pyx_GIVEREF(__pyx_v_u);
@@ -2054,8 +1859,8 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   __Pyx_INCREF(__pyx_v_v);
   __Pyx_GIVEREF(__pyx_v_v);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_v);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_M)) { __Pyx_RaiseClosureNameError("M"); __PYX_ERR(0, 116, __pyx_L1_error) }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_M)) { __Pyx_RaiseClosureNameError("M"); __PYX_ERR(0, 113, __pyx_L1_error) }
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2069,21 +1874,21 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_2, __pyx_t_3, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_2, __pyx_t_3, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_6) {
   } else {
-    __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_v);
   __Pyx_GIVEREF(__pyx_v_v);
@@ -2091,8 +1896,8 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   __Pyx_INCREF(__pyx_v_u);
   __Pyx_GIVEREF(__pyx_v_u);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_u);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_M)) { __Pyx_RaiseClosureNameError("M"); __PYX_ERR(0, 116, __pyx_L1_error) }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_M)) { __Pyx_RaiseClosureNameError("M"); __PYX_ERR(0, 113, __pyx_L1_error) }
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2106,13 +1911,13 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   }
   __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_3, __pyx_t_2, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_3, __pyx_t_2, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -2136,7 +1941,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   return __pyx_r;
 }
 
-/* "cython_algo.pyx":128
+/* "cython_algo.pyx":125
  *      #   m_alternating_sequence_logger.debug(f"Y_current = {Y_current}")
  * 
  *         G_M = nx.subgraph_view(G, filter_edge=lambda u, v: (u, v) in M.items() and (v, u) in M.items())             # <<<<<<<<<<<<<<
@@ -2179,11 +1984,11 @@ static PyObject *__pyx_pw_11cython_algo_26__M_alternating_sequence___1lambda1(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lambda1", 1, 2, 2, 1); __PYX_ERR(0, 128, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lambda1", 1, 2, 2, 1); __PYX_ERR(0, 125, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lambda1") < 0)) __PYX_ERR(0, 128, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lambda1") < 0)) __PYX_ERR(0, 125, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2196,7 +2001,7 @@ static PyObject *__pyx_pw_11cython_algo_26__M_alternating_sequence___1lambda1(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda1", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 128, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda1", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 125, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cython_algo.__M_alternating_sequence__.lambda1", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2210,8 +2015,8 @@ static PyObject *__pyx_pw_11cython_algo_26__M_alternating_sequence___1lambda1(Py
 }
 
 static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_u, PyObject *__pyx_v_v) {
-  struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *__pyx_cur_scope;
-  struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *__pyx_outer_scope;
+  struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *__pyx_cur_scope;
+  struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2224,10 +2029,10 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda1", 0);
-  __pyx_outer_scope = (struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_u);
   __Pyx_GIVEREF(__pyx_v_u);
@@ -2235,8 +2040,8 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   __Pyx_INCREF(__pyx_v_v);
   __Pyx_GIVEREF(__pyx_v_v);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_v);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_M)) { __Pyx_RaiseClosureNameError("M"); __PYX_ERR(0, 128, __pyx_L1_error) }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_M)) { __Pyx_RaiseClosureNameError("M"); __PYX_ERR(0, 125, __pyx_L1_error) }
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2250,21 +2055,21 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_2, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_2, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_6) {
   } else {
-    __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_v);
   __Pyx_GIVEREF(__pyx_v_v);
@@ -2272,8 +2077,8 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   __Pyx_INCREF(__pyx_v_u);
   __Pyx_GIVEREF(__pyx_v_u);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_u);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_M)) { __Pyx_RaiseClosureNameError("M"); __PYX_ERR(0, 128, __pyx_L1_error) }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_M)) { __Pyx_RaiseClosureNameError("M"); __PYX_ERR(0, 125, __pyx_L1_error) }
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2287,13 +2092,13 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   }
   __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_3, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_3, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -2317,23 +2122,24 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   return __pyx_r;
 }
 
-/* "cython_algo.pyx":51
+/* "cython_algo.pyx":48
  * 
  * 
- * def __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
+ * cdef __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
  *     """
  *     Generates M-alternating-sequence for a graph G with regard to a matching M
  */
 
-static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_M, PyObject *__pyx_v_top_nodes) {
-  struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *__pyx_cur_scope;
+static PyObject *__pyx_f_11cython_algo___M_alternating_sequence__(PyObject *__pyx_v_G, PyObject *__pyx_v_M, struct __pyx_opt_args_11cython_algo___M_alternating_sequence__ *__pyx_optional_args) {
+  struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *__pyx_cur_scope;
+  PyObject *__pyx_v_top_nodes = ((PyObject *)Py_None);
   PyObject *__pyx_v_X = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_Y = NULL;
   PyObject *__pyx_v_X_0 = NULL;
-  PyObject *__pyx_v_X_subsets = NULL;
-  PyObject *__pyx_v_Y_subsets = NULL;
-  PyObject *__pyx_v_Y_subgroups_accumulate = NULL;
-  PyObject *__pyx_v_index = NULL;
+  PyObject *__pyx_v_X_subsets = 0;
+  PyObject *__pyx_v_Y_subsets = 0;
+  PyObject *__pyx_v_Y_subgroups_accumulate = 0;
+  int __pyx_v_index;
   PyObject *__pyx_v_GMinusM = NULL;
   PyObject *__pyx_v_Y_current = NULL;
   PyObject *__pyx_v_G_M = NULL;
@@ -2349,48 +2155,51 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
   Py_ssize_t __pyx_t_7;
   int __pyx_t_8;
   int __pyx_t_9;
-  PyObject *__pyx_t_10 = NULL;
-  int __pyx_t_11;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__M_alternating_sequence__", 0);
-  __pyx_cur_scope = (struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *)__pyx_tp_new_11cython_algo___pyx_scope_struct____M_alternating_sequence__(__pyx_ptype_11cython_algo___pyx_scope_struct____M_alternating_sequence__, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *)__pyx_tp_new_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__(__pyx_ptype_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 51, __pyx_L1_error)
+    __PYX_ERR(0, 48, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
+  }
+  if (__pyx_optional_args) {
+    if (__pyx_optional_args->__pyx_n > 0) {
+      __pyx_v_top_nodes = __pyx_optional_args->top_nodes;
+    }
   }
   __pyx_cur_scope->__pyx_v_M = __pyx_v_M;
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_M);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_M);
 
-  /* "cython_algo.pyx":93
+  /* "cython_algo.pyx":90
  * 
  *     """
  *     X, Y = nx.bipartite.sets(G, top_nodes=top_nodes)             # <<<<<<<<<<<<<<
  * 
  *     #m_alternating_sequence_logger = logging.getLogger("M_alternating_sequence")
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_G);
   __Pyx_GIVEREF(__pyx_v_G);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_G);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2401,7 +2210,7 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 93, __pyx_L1_error)
+      __PYX_ERR(0, 90, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -2414,15 +2223,15 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_2);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext;
@@ -2430,7 +2239,7 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
     __Pyx_GOTREF(__pyx_t_3);
     index = 1; __pyx_t_2 = __pyx_t_5(__pyx_t_1); if (unlikely(!__pyx_t_2)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_1), 2) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_1), 2) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
     __pyx_t_5 = NULL;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     goto __pyx_L4_unpacking_done;
@@ -2438,7 +2247,7 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_5 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 93, __pyx_L1_error)
+    __PYX_ERR(0, 90, __pyx_L1_error)
     __pyx_L4_unpacking_done:;
   }
   __pyx_v_X = __pyx_t_3;
@@ -2446,16 +2255,16 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
   __pyx_v_Y = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "cython_algo.pyx":101
+  /* "cython_algo.pyx":98
  *     #m_alternating_sequence_logger.debug(f"M: {str(M)}\n")
  * 
  *     X_0 = set(X) - set(M.keys())             # <<<<<<<<<<<<<<
  * #    m_alternating_sequence_logger.debug(f"Setting X_0 = {X_0} - the vertices of X unmatched by M.")
  * 
  */
-  __pyx_t_4 = PySet_New(__pyx_v_X); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_4 = PySet_New(__pyx_v_X); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_M, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -2469,47 +2278,47 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
   }
   __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PySet_New(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_3 = PySet_New(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Subtract(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_X_0 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "cython_algo.pyx":104
+  /* "cython_algo.pyx":101
  * #    m_alternating_sequence_logger.debug(f"Setting X_0 = {X_0} - the vertices of X unmatched by M.")
  * 
  *     if X_0 == set():             # <<<<<<<<<<<<<<
  *         return (), ()
  * 
  */
-  __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_v_X_0, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_v_X_0, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_6) {
 
-    /* "cython_algo.pyx":105
+    /* "cython_algo.pyx":102
  * 
  *     if X_0 == set():
  *         return (), ()             # <<<<<<<<<<<<<<
  * 
- *     X_subsets = [X_0]
+ *     cdef list X_subsets = [X_0]
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_tuple_);
     __pyx_r = __pyx_tuple_;
     goto __pyx_L0;
 
-    /* "cython_algo.pyx":104
+    /* "cython_algo.pyx":101
  * #    m_alternating_sequence_logger.debug(f"Setting X_0 = {X_0} - the vertices of X unmatched by M.")
  * 
  *     if X_0 == set():             # <<<<<<<<<<<<<<
@@ -2518,14 +2327,14 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
  */
   }
 
-  /* "cython_algo.pyx":107
+  /* "cython_algo.pyx":104
  *         return (), ()
  * 
- *     X_subsets = [X_0]             # <<<<<<<<<<<<<<
- *     Y_subsets = []
+ *     cdef list X_subsets = [X_0]             # <<<<<<<<<<<<<<
+ *     cdef list Y_subsets = []
  * 
  */
-  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_X_0);
   __Pyx_GIVEREF(__pyx_v_X_0);
@@ -2533,106 +2342,105 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
   __pyx_v_X_subsets = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "cython_algo.pyx":108
+  /* "cython_algo.pyx":105
  * 
- *     X_subsets = [X_0]
- *     Y_subsets = []             # <<<<<<<<<<<<<<
+ *     cdef list X_subsets = [X_0]
+ *     cdef list Y_subsets = []             # <<<<<<<<<<<<<<
  * 
- *     Y_subgroups_accumulate = set()
+ *     cdef set Y_subgroups_accumulate = set()
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_Y_subsets = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "cython_algo.pyx":110
- *     Y_subsets = []
+  /* "cython_algo.pyx":107
+ *     cdef list Y_subsets = []
  * 
- *     Y_subgroups_accumulate = set()             # <<<<<<<<<<<<<<
- *     index = 1
+ *     cdef set Y_subgroups_accumulate = set()             # <<<<<<<<<<<<<<
+ *     cdef int index = 1
  * 
  */
-  __pyx_t_3 = PySet_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_3 = PySet_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_Y_subgroups_accumulate = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "cython_algo.pyx":111
+  /* "cython_algo.pyx":108
  * 
- *     Y_subgroups_accumulate = set()
- *     index = 1             # <<<<<<<<<<<<<<
+ *     cdef set Y_subgroups_accumulate = set()
+ *     cdef int index = 1             # <<<<<<<<<<<<<<
  * 
  *     while len(X_subsets) == 1 or X_subsets[-1] != set() and Y_subsets[-1] != set():
  */
-  __Pyx_INCREF(__pyx_int_1);
-  __pyx_v_index = __pyx_int_1;
+  __pyx_v_index = 1;
 
-  /* "cython_algo.pyx":113
- *     index = 1
+  /* "cython_algo.pyx":110
+ *     cdef int index = 1
  * 
  *     while len(X_subsets) == 1 or X_subsets[-1] != set() and Y_subsets[-1] != set():             # <<<<<<<<<<<<<<
  *  #       m_alternating_sequence_logger.debug(f"Y_groups accumulation so far: {Y_subgroups_accumulate}\n")
  * 
  */
   while (1) {
-    __pyx_t_7 = PyList_GET_SIZE(__pyx_v_X_subsets); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_7 = PyList_GET_SIZE(__pyx_v_X_subsets); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 110, __pyx_L1_error)
     __pyx_t_8 = ((__pyx_t_7 == 1) != 0);
     if (!__pyx_t_8) {
     } else {
       __pyx_t_6 = __pyx_t_8;
       goto __pyx_L8_bool_binop_done;
     }
-    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_X_subsets, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_X_subsets, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_8) {
     } else {
       __pyx_t_6 = __pyx_t_8;
       goto __pyx_L8_bool_binop_done;
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_Y_subsets, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_Y_subsets, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_4, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_4, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_6 = __pyx_t_8;
     __pyx_L8_bool_binop_done:;
     if (!__pyx_t_6) break;
 
-    /* "cython_algo.pyx":116
+    /* "cython_algo.pyx":113
  *  #       m_alternating_sequence_logger.debug(f"Y_groups accumulation so far: {Y_subgroups_accumulate}\n")
  * 
  *         GMinusM = nx.subgraph_view(G, filter_edge=lambda u, v: (u, v) not in M.items() and (v, u) not in M.items())             # <<<<<<<<<<<<<<
  *   #      m_alternating_sequence_logger.debug(f"G - M: nodes: {GMinusM.nodes}\tedges: {GMinusM.edges}")
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_nx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_nx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_subgraph_view); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_subgraph_view); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_G);
     __Pyx_GIVEREF(__pyx_v_G);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_G);
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_11cython_algo_26__M_alternating_sequence___lambda, 0, __pyx_n_s_M_alternating_sequence___local, ((PyObject*)__pyx_cur_scope), __pyx_n_s_cython_algo, __pyx_d, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_11cython_algo_26__M_alternating_sequence___lambda, 0, __pyx_n_s_M_alternating_sequence___local, ((PyObject*)__pyx_cur_scope), __pyx_n_s_cython_algo, __pyx_d, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_filter_edge, __pyx_t_1) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_filter_edge, __pyx_t_1) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2640,86 +2448,40 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
     __Pyx_XDECREF_SET(__pyx_v_GMinusM, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "cython_algo.pyx":120
+    /* "cython_algo.pyx":117
  * 
  *    #     m_alternating_sequence_logger.debug(f"N_G - M(X_{index - 1}): {__neighbours_of_set__(GMinusM, X_subsets[-1])}")
  *         Y_current = (__neighbours_of_set__(GMinusM, X_subsets[-1])) - Y_subgroups_accumulate             # <<<<<<<<<<<<<<
  * 
  *         if Y_current == set():
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_neighbours_of_set); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_X_subsets, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = NULL;
-    __pyx_t_9 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_2)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_2);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
-        __pyx_t_9 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_GMinusM, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_GMinusM, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    {
-      __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 120, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      if (__pyx_t_2) {
-        __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2); __pyx_t_2 = NULL;
-      }
-      __Pyx_INCREF(__pyx_v_GMinusM);
-      __Pyx_GIVEREF(__pyx_v_GMinusM);
-      PyTuple_SET_ITEM(__pyx_t_10, 0+__pyx_t_9, __pyx_v_GMinusM);
-      __Pyx_GIVEREF(__pyx_t_3);
-      PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_t_3);
-      __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Subtract(__pyx_t_1, __pyx_v_Y_subgroups_accumulate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_X_subsets, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __pyx_f_11cython_algo___neighbours_of_set__(__pyx_v_GMinusM, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_XDECREF_SET(__pyx_v_Y_current, __pyx_t_4);
-    __pyx_t_4 = 0;
+    __pyx_t_1 = PyNumber_Subtract(__pyx_t_4, __pyx_v_Y_subgroups_accumulate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_Y_current, __pyx_t_1);
+    __pyx_t_1 = 0;
 
-    /* "cython_algo.pyx":122
+    /* "cython_algo.pyx":119
  *         Y_current = (__neighbours_of_set__(GMinusM, X_subsets[-1])) - Y_subgroups_accumulate
  * 
  *         if Y_current == set():             # <<<<<<<<<<<<<<
  *     #        m_alternating_sequence_logger.debug(f"Y_{index} is empty, terminating.")
  *             break
  */
-    __pyx_t_4 = PySet_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_Y_current, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = PyObject_RichCompare(__pyx_v_Y_current, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_6) {
 
-      /* "cython_algo.pyx":124
+      /* "cython_algo.pyx":121
  *         if Y_current == set():
  *     #        m_alternating_sequence_logger.debug(f"Y_{index} is empty, terminating.")
  *             break             # <<<<<<<<<<<<<<
@@ -2728,7 +2490,7 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
  */
       goto __pyx_L7_break;
 
-      /* "cython_algo.pyx":122
+      /* "cython_algo.pyx":119
  *         Y_current = (__neighbours_of_set__(GMinusM, X_subsets[-1])) - Y_subgroups_accumulate
  * 
  *         if Y_current == set():             # <<<<<<<<<<<<<<
@@ -2737,110 +2499,65 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
  */
     }
 
-    /* "cython_algo.pyx":128
+    /* "cython_algo.pyx":125
  *      #   m_alternating_sequence_logger.debug(f"Y_current = {Y_current}")
  * 
  *         G_M = nx.subgraph_view(G, filter_edge=lambda u, v: (u, v) in M.items() and (v, u) in M.items())             # <<<<<<<<<<<<<<
  *       #  m_alternating_sequence_logger.debug(f"G_M: nodes: {G_M.nodes}\tedges: {G_M.edges}")
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_subgraph_view); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_nx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_subgraph_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_G);
     __Pyx_GIVEREF(__pyx_v_G);
-    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_G);
-    __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 128, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11cython_algo_26__M_alternating_sequence___1lambda1, 0, __pyx_n_s_M_alternating_sequence___local, ((PyObject*)__pyx_cur_scope), __pyx_n_s_cython_algo, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
+    PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_G);
+    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_filter_edge, __pyx_t_3) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11cython_algo_26__M_alternating_sequence___1lambda1, 0, __pyx_n_s_M_alternating_sequence___local, ((PyObject*)__pyx_cur_scope), __pyx_n_s_cython_algo, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_filter_edge, __pyx_t_2) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_XDECREF_SET(__pyx_v_G_M, __pyx_t_3);
-    __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_G_M, __pyx_t_2);
+    __pyx_t_2 = 0;
 
-    /* "cython_algo.pyx":131
+    /* "cython_algo.pyx":128
  *       #  m_alternating_sequence_logger.debug(f"G_M: nodes: {G_M.nodes}\tedges: {G_M.edges}")
  * 
  *         X_current = __neighbours_of_set__(G_M, Y_current)             # <<<<<<<<<<<<<<
  *        # m_alternating_sequence_logger.debug(f"X_current = {X_current}")
  *         if X_current == set():
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_neighbours_of_set); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 131, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_1 = NULL;
-    __pyx_t_9 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
-      __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_10);
-      if (likely(__pyx_t_1)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-        __Pyx_INCREF(__pyx_t_1);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_10, function);
-        __pyx_t_9 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_10)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_G_M, __pyx_v_Y_current};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_G_M, __pyx_v_Y_current};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
-    } else
-    #endif
-    {
-      __pyx_t_4 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      if (__pyx_t_1) {
-        __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1); __pyx_t_1 = NULL;
-      }
-      __Pyx_INCREF(__pyx_v_G_M);
-      __Pyx_GIVEREF(__pyx_v_G_M);
-      PyTuple_SET_ITEM(__pyx_t_4, 0+__pyx_t_9, __pyx_v_G_M);
-      __Pyx_INCREF(__pyx_v_Y_current);
-      __Pyx_GIVEREF(__pyx_v_Y_current);
-      PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_9, __pyx_v_Y_current);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_XDECREF_SET(__pyx_v_X_current, __pyx_t_3);
-    __pyx_t_3 = 0;
+    __pyx_t_2 = __pyx_f_11cython_algo___neighbours_of_set__(__pyx_v_G_M, __pyx_v_Y_current); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_XDECREF_SET(__pyx_v_X_current, __pyx_t_2);
+    __pyx_t_2 = 0;
 
-    /* "cython_algo.pyx":133
+    /* "cython_algo.pyx":130
  *         X_current = __neighbours_of_set__(G_M, Y_current)
  *        # m_alternating_sequence_logger.debug(f"X_current = {X_current}")
  *         if X_current == set():             # <<<<<<<<<<<<<<
  *         #    m_alternating_sequence_logger.debug(f"X_{index} is empty, terminating.")
  *             break
  */
-    __pyx_t_3 = PySet_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_10 = PyObject_RichCompare(__pyx_v_X_current, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PyObject_RichCompare(__pyx_v_X_current, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     if (__pyx_t_6) {
 
-      /* "cython_algo.pyx":135
+      /* "cython_algo.pyx":132
  *         if X_current == set():
  *         #    m_alternating_sequence_logger.debug(f"X_{index} is empty, terminating.")
  *             break             # <<<<<<<<<<<<<<
@@ -2849,7 +2566,7 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
  */
       goto __pyx_L7_break;
 
-      /* "cython_algo.pyx":133
+      /* "cython_algo.pyx":130
  *         X_current = __neighbours_of_set__(G_M, Y_current)
  *        # m_alternating_sequence_logger.debug(f"X_current = {X_current}")
  *         if X_current == set():             # <<<<<<<<<<<<<<
@@ -2858,50 +2575,47 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
  */
     }
 
-    /* "cython_algo.pyx":137
+    /* "cython_algo.pyx":134
  *             break
  * 
  *         Y_subsets.append(Y_current)             # <<<<<<<<<<<<<<
  *         X_subsets.append(X_current)
  * 
  */
-    __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_Y_subsets, __pyx_v_Y_current); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 137, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_Y_subsets, __pyx_v_Y_current); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 134, __pyx_L1_error)
 
-    /* "cython_algo.pyx":138
+    /* "cython_algo.pyx":135
  * 
  *         Y_subsets.append(Y_current)
  *         X_subsets.append(X_current)             # <<<<<<<<<<<<<<
  * 
  *         Y_subgroups_accumulate.update(Y_current)
  */
-    __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_X_subsets, __pyx_v_X_current); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_X_subsets, __pyx_v_X_current); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 135, __pyx_L1_error)
 
-    /* "cython_algo.pyx":140
+    /* "cython_algo.pyx":137
  *         X_subsets.append(X_current)
  * 
  *         Y_subgroups_accumulate.update(Y_current)             # <<<<<<<<<<<<<<
  *         index += 1
  * 
  */
-    __pyx_t_10 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_update, __pyx_v_Y_subgroups_accumulate, __pyx_v_Y_current); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 140, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __pyx_t_3 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_update, __pyx_v_Y_subgroups_accumulate, __pyx_v_Y_current); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "cython_algo.pyx":141
+    /* "cython_algo.pyx":138
  * 
  *         Y_subgroups_accumulate.update(Y_current)
  *         index += 1             # <<<<<<<<<<<<<<
  * 
  *     return tuple(X_subsets), tuple(Y_subsets)
  */
-    __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_index, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 141, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    __Pyx_DECREF_SET(__pyx_v_index, __pyx_t_10);
-    __pyx_t_10 = 0;
+    __pyx_v_index = (__pyx_v_index + 1);
   }
   __pyx_L7_break:;
 
-  /* "cython_algo.pyx":143
+  /* "cython_algo.pyx":140
  *         index += 1
  * 
  *     return tuple(X_subsets), tuple(Y_subsets)             # <<<<<<<<<<<<<<
@@ -2909,26 +2623,26 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_10 = PyList_AsTuple(__pyx_v_X_subsets); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 143, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_3 = PyList_AsTuple(__pyx_v_Y_subsets); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_3 = PyList_AsTuple(__pyx_v_X_subsets); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_2 = PyList_AsTuple(__pyx_v_Y_subsets); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GIVEREF(__pyx_t_10);
-  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
-  __pyx_t_10 = 0;
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_2);
   __pyx_t_3 = 0;
+  __pyx_t_2 = 0;
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "cython_algo.pyx":51
+  /* "cython_algo.pyx":48
  * 
  * 
- * def __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
+ * cdef __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
  *     """
  *     Generates M-alternating-sequence for a graph G with regard to a matching M
  */
@@ -2939,9 +2653,8 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_10);
   __Pyx_AddTraceback("cython_algo.__M_alternating_sequence__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
+  __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_X);
   __Pyx_XDECREF(__pyx_v_Y);
@@ -2949,7 +2662,6 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
   __Pyx_XDECREF(__pyx_v_X_subsets);
   __Pyx_XDECREF(__pyx_v_Y_subsets);
   __Pyx_XDECREF(__pyx_v_Y_subgroups_accumulate);
-  __Pyx_XDECREF(__pyx_v_index);
   __Pyx_XDECREF(__pyx_v_GMinusM);
   __Pyx_XDECREF(__pyx_v_Y_current);
   __Pyx_XDECREF(__pyx_v_G_M);
@@ -2960,19 +2672,19 @@ static PyObject *__pyx_pf_11cython_algo_2__M_alternating_sequence__(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "cython_algo.pyx":146
+/* "cython_algo.pyx":143
  * 
  * 
- * def _EFM_partition(G, M=None, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def EFM_partition2(G, M=None, top_nodes=None):             # <<<<<<<<<<<<<<
  *     """Returns the unique EFM partition of bipartite graph.
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11cython_algo_5_EFM_partition(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11cython_algo_4_EFM_partition[] = "Returns the unique EFM partition of bipartite graph.\n\n    A matching in a bipartite graph with parts X and Y is called envy-free, if no unmatched\n    vertex in X is adjacent to a matched vertex in Y.\n    Every bipartite graph has a unique partition such that all envy-free matchings are\n    contained in one of the partition set.\n\n    Parameters\n    ----------\n    G:  NetworkX graph\n\n      Undirected bipartite graph\n    M: dict\n       dictionary that represents a maximum matching in G.\n       If M is none, the function will calculate a maximum matching.\n    top_nodes: list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n\n    Returns\n    -------\n    EFM: tuple of sets\n        The partition returns as a tuple of 4 sets of vertices:\n        X_L,X_S,Y_L,Y_S where X_L,Y_L are the \"good vertices\" of G and\n        X_S,Y_S are the \"bad vertices\" of G where no envy-free matching exists according to THM 1.3 in the article.\n\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 1: Finding the EFM partition of a bipartite graph.\n\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: Perfect matching\n        >>> Graph=nx.complete_bipartite_graph(3,3)\n        >>> Matching=nx.bipartite.hopcroft_karp_matching(Graph)\n        >>> _EFM_partition(Graph,Matching)\n        ({0, 1, 2}, set(), {3, 4, 5}, set())\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching.\n\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n        >>> Matching={0:3,3:0,1:4,4:1}\n        >>> _EFM_partition(Graph,Matching)\n        ({0}, {1, 2}, ""{3}, {4})\n\n        Here the graph contains non-empty envy-free matching so X_L,Y_L are not empty.\n\n        Example 3: Odd path\n        >>> Graph=nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n        >>> Matching={0:3,3:0,4:1,1:4}\n        >>> _EFM_partition(Graph,Matching)\n        (set(), {0, 1, 2}, set(), {3, 4})\n\n        Like presented in the article, odd path contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n\n        Example 4: Y-path-saturated graph\n        >>> Graph=nx.Graph([(0,6),(6,0),(1,6),(6,1),(1,7),(7,1),(2,6),(6,2),(2,8),(8,2),(3,9),(9,3),(3,6),(6,3),(4,8),(8,4),(4,7),(7,4),(5,9),(9,5)])\n        >>> Matching={0:6,6:0,1:7,7:1,2:8,8:2,3:9,9:3}\n        >>> _EFM_partition(Graph,Matching)\n        (set(), {0, 1, 2, 3, 4, 5}, set(), {8, 9, 6, 7})\n\n        Like presented in the article, Y-path-saturated graph contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n\n    ";
-static PyMethodDef __pyx_mdef_11cython_algo_5_EFM_partition = {"_EFM_partition", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11cython_algo_5_EFM_partition, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11cython_algo_4_EFM_partition};
-static PyObject *__pyx_pw_11cython_algo_5_EFM_partition(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11cython_algo_1EFM_partition2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_11cython_algo_EFM_partition2[] = "Returns the unique EFM partition of bipartite graph.\n\n    A matching in a bipartite graph with parts X and Y is called envy-free, if no unmatched\n    vertex in X is adjacent to a matched vertex in Y.\n    Every bipartite graph has a unique partition such that all envy-free matchings are\n    contained in one of the partition set.\n\n    Parameters\n    ----------\n    G:  NetworkX graph\n\n      Undirected bipartite graph\n    M: dict\n       dictionary that represents a maximum matching in G.\n       If M is none, the function will calculate a maximum matching.\n    top_nodes: list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n\n    Returns\n    -------\n    EFM: tuple of sets\n        The partition returns as a tuple of 4 sets of vertices:\n        X_L,X_S,Y_L,Y_S where X_L,Y_L are the \"good vertices\" of G and\n        X_S,Y_S are the \"bad vertices\" of G where no envy-free matching exists according to THM 1.3 in the article.\n\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 1: Finding the EFM partition of a bipartite graph.\n\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: Perfect matching\n        >>> Graph=nx.complete_bipartite_graph(3,3)\n        >>> Matching=nx.bipartite.hopcroft_karp_matching(Graph)\n        >>> _EFM_partition(Graph,Matching)\n        ({0, 1, 2}, set(), {3, 4, 5}, set())\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching.\n\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n        >>> Matching={0:3,3:0,1:4,4:1}\n        >>> _EFM_partition(Graph,Matching)\n        ({0}, {1, 2}, ""{3}, {4})\n\n        Here the graph contains non-empty envy-free matching so X_L,Y_L are not empty.\n\n        Example 3: Odd path\n        >>> Graph=nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n        >>> Matching={0:3,3:0,4:1,1:4}\n        >>> _EFM_partition(Graph,Matching)\n        (set(), {0, 1, 2}, set(), {3, 4})\n\n        Like presented in the article, odd path contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n\n        Example 4: Y-path-saturated graph\n        >>> Graph=nx.Graph([(0,6),(6,0),(1,6),(6,1),(1,7),(7,1),(2,6),(6,2),(2,8),(8,2),(3,9),(9,3),(3,6),(6,3),(4,8),(8,4),(4,7),(7,4),(5,9),(9,5)])\n        >>> Matching={0:6,6:0,1:7,7:1,2:8,8:2,3:9,9:3}\n        >>> _EFM_partition(Graph,Matching)\n        (set(), {0, 1, 2, 3, 4, 5}, set(), {8, 9, 6, 7})\n\n        Like presented in the article, Y-path-saturated graph contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n\n    ";
+static PyMethodDef __pyx_mdef_11cython_algo_1EFM_partition2 = {"EFM_partition2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11cython_algo_1EFM_partition2, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11cython_algo_EFM_partition2};
+static PyObject *__pyx_pw_11cython_algo_1EFM_partition2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_G = 0;
   PyObject *__pyx_v_M = 0;
   PyObject *__pyx_v_top_nodes = 0;
@@ -2981,7 +2693,7 @@ static PyObject *__pyx_pw_11cython_algo_5_EFM_partition(PyObject *__pyx_self, Py
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("_EFM_partition (wrapper)", 0);
+  __Pyx_RefNannySetupContext("EFM_partition2 (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_G,&__pyx_n_s_M,&__pyx_n_s_top_nodes,0};
     PyObject* values[3] = {0,0,0};
@@ -3019,7 +2731,7 @@ static PyObject *__pyx_pw_11cython_algo_5_EFM_partition(PyObject *__pyx_self, Py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_EFM_partition") < 0)) __PYX_ERR(0, 146, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "EFM_partition2") < 0)) __PYX_ERR(0, 143, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3038,20 +2750,20 @@ static PyObject *__pyx_pw_11cython_algo_5_EFM_partition(PyObject *__pyx_self, Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_EFM_partition", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 146, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("EFM_partition2", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 143, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cython_algo._EFM_partition", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_algo.EFM_partition2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11cython_algo_4_EFM_partition(__pyx_self, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes);
+  __pyx_r = __pyx_pf_11cython_algo_EFM_partition2(__pyx_self, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_M, PyObject *__pyx_v_top_nodes) {
+static PyObject *__pyx_pf_11cython_algo_EFM_partition2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_M, PyObject *__pyx_v_top_nodes) {
   PyObject *__pyx_v_efm_logger = NULL;
   PyObject *__pyx_v_X = NULL;
   PyObject *__pyx_v_Y = NULL;
@@ -3069,25 +2781,25 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
   int __pyx_t_5;
   PyObject *__pyx_t_6 = NULL;
   PyObject *(*__pyx_t_7)(PyObject *);
-  int __pyx_t_8;
+  struct __pyx_opt_args_11cython_algo___M_alternating_sequence__ __pyx_t_8;
   Py_ssize_t __pyx_t_9;
   PyObject *(*__pyx_t_10)(PyObject *);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("_EFM_partition", 0);
+  __Pyx_RefNannySetupContext("EFM_partition2", 0);
   __Pyx_INCREF(__pyx_v_M);
 
-  /* "cython_algo.pyx":218
+  /* "cython_algo.pyx":215
  *     """
  * 
  *     efm_logger = logging.getLogger("EFM")             # <<<<<<<<<<<<<<
  * 
  *     if M is None:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_logging); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_logging); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_getLogger); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_getLogger); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -3102,13 +2814,13 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_n_s_EFM) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_s_EFM);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_efm_logger = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cython_algo.pyx":220
+  /* "cython_algo.pyx":217
  *     efm_logger = logging.getLogger("EFM")
  * 
  *     if M is None:             # <<<<<<<<<<<<<<
@@ -3119,14 +2831,14 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
   __pyx_t_5 = (__pyx_t_4 != 0);
   if (__pyx_t_5) {
 
-    /* "cython_algo.pyx":221
+    /* "cython_algo.pyx":218
  * 
  *     if M is None:
  *         efm_logger.info("Input matching is None - calculating matching!")             # <<<<<<<<<<<<<<
  *         M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_efm_logger, __pyx_n_s_info); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_efm_logger, __pyx_n_s_info); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_2 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3140,35 +2852,35 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
     }
     __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_kp_s_Input_matching_is_None_calculati) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_kp_s_Input_matching_is_None_calculati);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "cython_algo.pyx":222
+    /* "cython_algo.pyx":219
  *     if M is None:
  *         efm_logger.info("Input matching is None - calculating matching!")
  *         M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)             # <<<<<<<<<<<<<<
  * 
  *     X, Y = nx.bipartite.sets(G, top_nodes=top_nodes)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_maximum_matching); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_maximum_matching); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_G);
     __Pyx_GIVEREF(__pyx_v_G);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_G);
-    __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3176,7 +2888,7 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "cython_algo.pyx":220
+    /* "cython_algo.pyx":217
  *     efm_logger = logging.getLogger("EFM")
  * 
  *     if M is None:             # <<<<<<<<<<<<<<
@@ -3185,30 +2897,30 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
  */
   }
 
-  /* "cython_algo.pyx":224
+  /* "cython_algo.pyx":221
  *         M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)
  * 
  *     X, Y = nx.bipartite.sets(G, top_nodes=top_nodes)             # <<<<<<<<<<<<<<
  * 
  *     #efm_logger.debug(f"Starting EFM_Partition calculation: G={G},\nedges={G.edges}\nX={X}, Y={Y},\nM={M}\n")
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_nx); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_nx); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sets); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sets); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_G);
   __Pyx_GIVEREF(__pyx_v_G);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_G);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3219,7 +2931,7 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 224, __pyx_L1_error)
+      __PYX_ERR(0, 221, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -3232,10 +2944,72 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_2);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
+    #endif
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  } else {
+    Py_ssize_t index = -1;
+    __pyx_t_6 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_7 = Py_TYPE(__pyx_t_6)->tp_iternext;
+    index = 0; __pyx_t_3 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_3)) goto __pyx_L4_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_3);
+    index = 1; __pyx_t_2 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_2)) goto __pyx_L4_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_2);
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_6), 2) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
+    __pyx_t_7 = NULL;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    goto __pyx_L5_unpacking_done;
+    __pyx_L4_unpacking_failed:;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_7 = NULL;
+    if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+    __PYX_ERR(0, 221, __pyx_L1_error)
+    __pyx_L5_unpacking_done:;
+  }
+  __pyx_v_X = __pyx_t_3;
+  __pyx_t_3 = 0;
+  __pyx_v_Y = __pyx_t_2;
+  __pyx_t_2 = 0;
+
+  /* "cython_algo.pyx":224
+ * 
+ *     #efm_logger.debug(f"Starting EFM_Partition calculation: G={G},\nedges={G.edges}\nX={X}, Y={Y},\nM={M}\n")
+ *     X_subsets, Y_subsets = __M_alternating_sequence__(G, M, top_nodes)             # <<<<<<<<<<<<<<
+ *     #efm_logger.debug(f"X subsets = {X_subsets}\nY subsets = {Y_subsets}")
+ *     X_S = set()
+ */
+  __pyx_t_8.__pyx_n = 1;
+  __pyx_t_8.top_nodes = __pyx_v_top_nodes;
+  __pyx_t_1 = __pyx_f_11cython_algo___M_alternating_sequence__(__pyx_v_G, __pyx_v_M, &__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
+    PyObject* sequence = __pyx_t_1;
+    Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+    if (unlikely(size != 2)) {
+      if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+      else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+      __PYX_ERR(0, 224, __pyx_L1_error)
+    }
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    if (likely(PyTuple_CheckExact(sequence))) {
+      __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
+      __pyx_t_3 = PyTuple_GET_ITEM(sequence, 1); 
+    } else {
+      __pyx_t_2 = PyList_GET_ITEM(sequence, 0); 
+      __pyx_t_3 = PyList_GET_ITEM(sequence, 1); 
+    }
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_t_3);
+    #else
+    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
@@ -3244,147 +3018,39 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_7 = Py_TYPE(__pyx_t_6)->tp_iternext;
-    index = 0; __pyx_t_3 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_3)) goto __pyx_L4_unpacking_failed;
-    __Pyx_GOTREF(__pyx_t_3);
-    index = 1; __pyx_t_2 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_2)) goto __pyx_L4_unpacking_failed;
+    index = 0; __pyx_t_2 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_2)) goto __pyx_L6_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_2);
+    index = 1; __pyx_t_3 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_3)) goto __pyx_L6_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_3);
     if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_6), 2) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
     __pyx_t_7 = NULL;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    goto __pyx_L5_unpacking_done;
-    __pyx_L4_unpacking_failed:;
+    goto __pyx_L7_unpacking_done;
+    __pyx_L6_unpacking_failed:;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
     __PYX_ERR(0, 224, __pyx_L1_error)
-    __pyx_L5_unpacking_done:;
-  }
-  __pyx_v_X = __pyx_t_3;
-  __pyx_t_3 = 0;
-  __pyx_v_Y = __pyx_t_2;
-  __pyx_t_2 = 0;
-
-  /* "cython_algo.pyx":227
- * 
- *     #efm_logger.debug(f"Starting EFM_Partition calculation: G={G},\nedges={G.edges}\nX={X}, Y={Y},\nM={M}\n")
- *     X_subsets, Y_subsets = __M_alternating_sequence__(G, M, top_nodes)             # <<<<<<<<<<<<<<
- *     #efm_logger.debug(f"X subsets = {X_subsets}\nY subsets = {Y_subsets}")
- *     X_S = set()
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_M_alternating_sequence); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  __pyx_t_8 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_8 = 1;
-    }
-  }
-  #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-  } else
-  #endif
-  #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-  } else
-  #endif
-  {
-    __pyx_t_6 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 227, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    if (__pyx_t_3) {
-      __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __pyx_t_3 = NULL;
-    }
-    __Pyx_INCREF(__pyx_v_G);
-    __Pyx_GIVEREF(__pyx_v_G);
-    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_8, __pyx_v_G);
-    __Pyx_INCREF(__pyx_v_M);
-    __Pyx_GIVEREF(__pyx_v_M);
-    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_8, __pyx_v_M);
-    __Pyx_INCREF(__pyx_v_top_nodes);
-    __Pyx_GIVEREF(__pyx_v_top_nodes);
-    PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_8, __pyx_v_top_nodes);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
-    PyObject* sequence = __pyx_t_1;
-    Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
-    if (unlikely(size != 2)) {
-      if (size > 2) __Pyx_RaiseTooManyValuesError(2);
-      else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 227, __pyx_L1_error)
-    }
-    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    if (likely(PyTuple_CheckExact(sequence))) {
-      __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
-      __pyx_t_6 = PyTuple_GET_ITEM(sequence, 1); 
-    } else {
-      __pyx_t_2 = PyList_GET_ITEM(sequence, 0); 
-      __pyx_t_6 = PyList_GET_ITEM(sequence, 1); 
-    }
-    __Pyx_INCREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx_t_6);
-    #else
-    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 227, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    #endif
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  } else {
-    Py_ssize_t index = -1;
-    __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_7 = Py_TYPE(__pyx_t_3)->tp_iternext;
-    index = 0; __pyx_t_2 = __pyx_t_7(__pyx_t_3); if (unlikely(!__pyx_t_2)) goto __pyx_L6_unpacking_failed;
-    __Pyx_GOTREF(__pyx_t_2);
-    index = 1; __pyx_t_6 = __pyx_t_7(__pyx_t_3); if (unlikely(!__pyx_t_6)) goto __pyx_L6_unpacking_failed;
-    __Pyx_GOTREF(__pyx_t_6);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_3), 2) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
-    __pyx_t_7 = NULL;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    goto __pyx_L7_unpacking_done;
-    __pyx_L6_unpacking_failed:;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_7 = NULL;
-    if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 227, __pyx_L1_error)
     __pyx_L7_unpacking_done:;
   }
   __pyx_v_X_subsets = __pyx_t_2;
   __pyx_t_2 = 0;
-  __pyx_v_Y_subsets = __pyx_t_6;
-  __pyx_t_6 = 0;
+  __pyx_v_Y_subsets = __pyx_t_3;
+  __pyx_t_3 = 0;
 
-  /* "cython_algo.pyx":229
+  /* "cython_algo.pyx":226
  *     X_subsets, Y_subsets = __M_alternating_sequence__(G, M, top_nodes)
  *     #efm_logger.debug(f"X subsets = {X_subsets}\nY subsets = {Y_subsets}")
  *     X_S = set()             # <<<<<<<<<<<<<<
  *     for subset in X_subsets:
  *         X_S.update(subset)
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_X_S = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cython_algo.pyx":230
+  /* "cython_algo.pyx":227
  *     #efm_logger.debug(f"X subsets = {X_subsets}\nY subsets = {Y_subsets}")
  *     X_S = set()
  *     for subset in X_subsets:             # <<<<<<<<<<<<<<
@@ -3395,56 +3061,56 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
     __pyx_t_1 = __pyx_v_X_subsets; __Pyx_INCREF(__pyx_t_1); __pyx_t_9 = 0;
     __pyx_t_10 = NULL;
   } else {
-    __pyx_t_9 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_X_subsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_9 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_X_subsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_10 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 227, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_10)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_9); __Pyx_INCREF(__pyx_t_6); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 230, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 227, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_1, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_9); __Pyx_INCREF(__pyx_t_6); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 230, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 227, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_1, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
     } else {
-      __pyx_t_6 = __pyx_t_10(__pyx_t_1);
-      if (unlikely(!__pyx_t_6)) {
+      __pyx_t_3 = __pyx_t_10(__pyx_t_1);
+      if (unlikely(!__pyx_t_3)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 230, __pyx_L1_error)
+          else __PYX_ERR(0, 227, __pyx_L1_error)
         }
         break;
       }
-      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_GOTREF(__pyx_t_3);
     }
-    __Pyx_XDECREF_SET(__pyx_v_subset, __pyx_t_6);
-    __pyx_t_6 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_subset, __pyx_t_3);
+    __pyx_t_3 = 0;
 
-    /* "cython_algo.pyx":231
+    /* "cython_algo.pyx":228
  *     X_S = set()
  *     for subset in X_subsets:
  *         X_S.update(subset)             # <<<<<<<<<<<<<<
  * 
  *     Y_S = set()
  */
-    __pyx_t_6 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_update, __pyx_v_X_S, __pyx_v_subset); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 231, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_3 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_update, __pyx_v_X_S, __pyx_v_subset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "cython_algo.pyx":230
+    /* "cython_algo.pyx":227
  *     #efm_logger.debug(f"X subsets = {X_subsets}\nY subsets = {Y_subsets}")
  *     X_S = set()
  *     for subset in X_subsets:             # <<<<<<<<<<<<<<
@@ -3454,19 +3120,19 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cython_algo.pyx":233
+  /* "cython_algo.pyx":230
  *         X_S.update(subset)
  * 
  *     Y_S = set()             # <<<<<<<<<<<<<<
  *     for subset in Y_subsets:
  *         Y_S.update(subset)
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Y_S = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cython_algo.pyx":234
+  /* "cython_algo.pyx":231
  * 
  *     Y_S = set()
  *     for subset in Y_subsets:             # <<<<<<<<<<<<<<
@@ -3477,56 +3143,56 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
     __pyx_t_1 = __pyx_v_Y_subsets; __Pyx_INCREF(__pyx_t_1); __pyx_t_9 = 0;
     __pyx_t_10 = NULL;
   } else {
-    __pyx_t_9 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_Y_subsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_9 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_Y_subsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_10 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 231, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_10)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_9); __Pyx_INCREF(__pyx_t_6); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 234, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 231, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_1, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 234, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 231, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_9); __Pyx_INCREF(__pyx_t_6); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 234, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 231, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_1, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 234, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 231, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
     } else {
-      __pyx_t_6 = __pyx_t_10(__pyx_t_1);
-      if (unlikely(!__pyx_t_6)) {
+      __pyx_t_3 = __pyx_t_10(__pyx_t_1);
+      if (unlikely(!__pyx_t_3)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 234, __pyx_L1_error)
+          else __PYX_ERR(0, 231, __pyx_L1_error)
         }
         break;
       }
-      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_GOTREF(__pyx_t_3);
     }
-    __Pyx_XDECREF_SET(__pyx_v_subset, __pyx_t_6);
-    __pyx_t_6 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_subset, __pyx_t_3);
+    __pyx_t_3 = 0;
 
-    /* "cython_algo.pyx":235
+    /* "cython_algo.pyx":232
  *     Y_S = set()
  *     for subset in Y_subsets:
  *         Y_S.update(subset)             # <<<<<<<<<<<<<<
  * 
  *     return set(X) - X_S, X_S, set(Y) - Y_S, Y_S
  */
-    __pyx_t_6 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_update, __pyx_v_Y_S, __pyx_v_subset); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 235, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_3 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_update, __pyx_v_Y_S, __pyx_v_subset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "cython_algo.pyx":234
+    /* "cython_algo.pyx":231
  * 
  *     Y_S = set()
  *     for subset in Y_subsets:             # <<<<<<<<<<<<<<
@@ -3536,7 +3202,7 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cython_algo.pyx":237
+  /* "cython_algo.pyx":234
  *         Y_S.update(subset)
  * 
  *     return set(X) - X_S, X_S, set(Y) - Y_S, Y_S             # <<<<<<<<<<<<<<
@@ -3544,20 +3210,20 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PySet_New(__pyx_v_X); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(__pyx_v_X); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = PyNumber_Subtract(__pyx_t_1, __pyx_v_X_S); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_v_X_S); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PySet_New(__pyx_v_Y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(__pyx_v_Y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_v_Y_S); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_v_Y_S); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
   __Pyx_INCREF(__pyx_v_X_S);
   __Pyx_GIVEREF(__pyx_v_X_S);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X_S);
@@ -3566,16 +3232,16 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
   __Pyx_INCREF(__pyx_v_Y_S);
   __Pyx_GIVEREF(__pyx_v_Y_S);
   PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_v_Y_S);
-  __pyx_t_6 = 0;
+  __pyx_t_3 = 0;
   __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cython_algo.pyx":146
+  /* "cython_algo.pyx":143
  * 
  * 
- * def _EFM_partition(G, M=None, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def EFM_partition2(G, M=None, top_nodes=None):             # <<<<<<<<<<<<<<
  *     """Returns the unique EFM partition of bipartite graph.
  * 
  */
@@ -3586,7 +3252,7 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("cython_algo._EFM_partition", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_algo.EFM_partition2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_efm_logger);
@@ -3603,19 +3269,19 @@ static PyObject *__pyx_pf_11cython_algo_4_EFM_partition(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "cython_algo.pyx":240
+/* "cython_algo.pyx":237
  * 
  * 
- * def envy_free_matching(G, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def envy_free_matching2(G, top_nodes=None):             # <<<<<<<<<<<<<<
  *     r"""Return an envy-free matching of maximum cardinality
  *     Parameters
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11cython_algo_7envy_free_matching(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11cython_algo_6envy_free_matching[] = "Return an envy-free matching of maximum cardinality\n    Parameters\n    ----------\n    G:\n        NetworkX graph\n        Undirected bipartite graph\n    top_nodes:\n                list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n    Returns\n    -------\n    Matching: dictionary\n        The Maximum cardinallity envy-free matching is returned as a dictionary.\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 2: Finding an envy-free matching of maximum cardinality.\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: Perfect matching\n        >>> Graph=nx.complete_bipartite_graph(3,3)\n        >>> envy_free_matching(Graph)\n        {0: 3, 1: 4, 2: 5, 3: 0, 4: 1, 5: 2}\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching.\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n        >>> envy_free_matching(Graph)\n        {0: 3, 3: 0}\n\n        Example 3: Odd path\n        >>> Graph=nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n        >>> envy_free_matching(Graph)\n        {}\n\n        Like presented in the article, odd path contains an empty envy-free matching so the returned matching is empty.\n        Example 4: Y-path-saturated graph\n        >>> Graph=nx.Graph([(0,6),(6,0),(1,6),(6,1),(1,7),(7,1),(2,6),(6,2),(2,8),(8,2),(3,9),(9,3),(3,6),(6,3),(4,8),(8,4),(4,7),(7,4),(5,9),(9,5)])\n        >>> envy_free_matching(Graph)\n        {}\n\n        Like presented in the article, Y-path-saturated graph contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n    ";
-static PyMethodDef __pyx_mdef_11cython_algo_7envy_free_matching = {"envy_free_matching", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11cython_algo_7envy_free_matching, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11cython_algo_6envy_free_matching};
-static PyObject *__pyx_pw_11cython_algo_7envy_free_matching(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11cython_algo_3envy_free_matching2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_11cython_algo_2envy_free_matching2[] = "Return an envy-free matching of maximum cardinality\n    Parameters\n    ----------\n    G:\n        NetworkX graph\n        Undirected bipartite graph\n    top_nodes:\n                list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n    Returns\n    -------\n    Matching: dictionary\n        The Maximum cardinallity envy-free matching is returned as a dictionary.\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 2: Finding an envy-free matching of maximum cardinality.\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: Perfect matching\n        >>> Graph=nx.complete_bipartite_graph(3,3)\n        >>> envy_free_matching(Graph)\n        {0: 3, 1: 4, 2: 5, 3: 0, 4: 1, 5: 2}\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching.\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph([(0,3),(3,0),(0,4),(4,0),(1,4),(4,1),(2,4),(4,2)])\n        >>> envy_free_matching(Graph)\n        {0: 3, 3: 0}\n\n        Example 3: Odd path\n        >>> Graph=nx.Graph([(0,3),(3,0),(1,3),(3,1),(1,4),(4,1),(2,4),(4,2)])\n        >>> envy_free_matching(Graph)\n        {}\n\n        Like presented in the article, odd path contains an empty envy-free matching so the returned matching is empty.\n        Example 4: Y-path-saturated graph\n        >>> Graph=nx.Graph([(0,6),(6,0),(1,6),(6,1),(1,7),(7,1),(2,6),(6,2),(2,8),(8,2),(3,9),(9,3),(3,6),(6,3),(4,8),(8,4),(4,7),(7,4),(5,9),(9,5)])\n        >>> envy_free_matching(Graph)\n        {}\n\n        Like presented in the article, Y-path-saturated graph contains an empty envy-free matching so X_L and Y_L are empty in the partition.\n    ";
+static PyMethodDef __pyx_mdef_11cython_algo_3envy_free_matching2 = {"envy_free_matching2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11cython_algo_3envy_free_matching2, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11cython_algo_2envy_free_matching2};
+static PyObject *__pyx_pw_11cython_algo_3envy_free_matching2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_G = 0;
   PyObject *__pyx_v_top_nodes = 0;
   int __pyx_lineno = 0;
@@ -3623,7 +3289,7 @@ static PyObject *__pyx_pw_11cython_algo_7envy_free_matching(PyObject *__pyx_self
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("envy_free_matching (wrapper)", 0);
+  __Pyx_RefNannySetupContext("envy_free_matching2 (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_G,&__pyx_n_s_top_nodes,0};
     PyObject* values[2] = {0,0};
@@ -3652,7 +3318,7 @@ static PyObject *__pyx_pw_11cython_algo_7envy_free_matching(PyObject *__pyx_self
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "envy_free_matching") < 0)) __PYX_ERR(0, 240, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "envy_free_matching2") < 0)) __PYX_ERR(0, 237, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3668,20 +3334,20 @@ static PyObject *__pyx_pw_11cython_algo_7envy_free_matching(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("envy_free_matching", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 240, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("envy_free_matching2", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 237, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cython_algo.envy_free_matching", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_algo.envy_free_matching2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11cython_algo_6envy_free_matching(__pyx_self, __pyx_v_G, __pyx_v_top_nodes);
+  __pyx_r = __pyx_pf_11cython_algo_2envy_free_matching2(__pyx_self, __pyx_v_G, __pyx_v_top_nodes);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_top_nodes) {
+static PyObject *__pyx_pf_11cython_algo_2envy_free_matching2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_top_nodes) {
   PyObject *__pyx_v_M = NULL;
   PyObject *__pyx_v_EFM_PARTITION = NULL;
   PyObject *__pyx_v_un = NULL;
@@ -3701,32 +3367,32 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("envy_free_matching", 0);
+  __Pyx_RefNannySetupContext("envy_free_matching2", 0);
 
-  /* "cython_algo.pyx":291
+  /* "cython_algo.pyx":288
  *     #logger.info(f"Finding the maximum cardinality envy free matching of {G}")
  *     #logger.debug(f"Finding the maximum matching of {G}")
  *     M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)             # <<<<<<<<<<<<<<
  *     #logger.debug(f"Got matching: {M}")
  *     #logger.debug(f"Finding the EFM partition with maximum matching: {M}")
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_maximum_matching); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_maximum_matching); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_G);
   __Pyx_GIVEREF(__pyx_v_G);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_G);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 291, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3734,14 +3400,14 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   __pyx_v_M = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":294
+  /* "cython_algo.pyx":291
  *     #logger.debug(f"Got matching: {M}")
  *     #logger.debug(f"Finding the EFM partition with maximum matching: {M}")
- *     EFM_PARTITION = _EFM_partition(G, M, top_nodes)             # <<<<<<<<<<<<<<
+ *     EFM_PARTITION = EFM_partition2(G, M, top_nodes)             # <<<<<<<<<<<<<<
  *     #logger.debug(f"The partition is: {EFM_PARTITION}")
  *     un = EFM_PARTITION[1].union(EFM_PARTITION[3])
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_EFM_partition); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 294, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_EFM_partition2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   __pyx_t_5 = 0;
@@ -3758,7 +3424,7 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
@@ -3766,13 +3432,13 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
   #endif
   {
-    __pyx_t_1 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -3786,7 +3452,7 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
     __Pyx_INCREF(__pyx_v_top_nodes);
     __Pyx_GIVEREF(__pyx_v_top_nodes);
     PyTuple_SET_ITEM(__pyx_t_1, 2+__pyx_t_5, __pyx_v_top_nodes);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
@@ -3794,19 +3460,19 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   __pyx_v_EFM_PARTITION = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":296
- *     EFM_PARTITION = _EFM_partition(G, M, top_nodes)
+  /* "cython_algo.pyx":293
+ *     EFM_PARTITION = EFM_partition2(G, M, top_nodes)
  *     #logger.debug(f"The partition is: {EFM_PARTITION}")
  *     un = EFM_PARTITION[1].union(EFM_PARTITION[3])             # <<<<<<<<<<<<<<
  *     #logger.debug(f"Finding the sub-matching M[X_L,Y_L]")
  *     M = {node: M[node] for node in M if node not in un and M[node] not in un}
  */
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_EFM_PARTITION, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_EFM_PARTITION, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_union); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_union); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_EFM_PARTITION, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_EFM_PARTITION, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -3821,13 +3487,13 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   __pyx_t_4 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 296, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_un = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":298
+  /* "cython_algo.pyx":295
  *     un = EFM_PARTITION[1].union(EFM_PARTITION[3])
  *     #logger.debug(f"Finding the sub-matching M[X_L,Y_L]")
  *     M = {node: M[node] for node in M if node not in un and M[node] not in un}             # <<<<<<<<<<<<<<
@@ -3835,32 +3501,32 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
  *      #   logger.warning(f"The sub-matching is empty!")
  */
   { /* enter inner scope */
-    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L5_error)
+    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (likely(PyList_CheckExact(__pyx_v_M)) || PyTuple_CheckExact(__pyx_v_M)) {
       __pyx_t_1 = __pyx_v_M; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_M); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L5_error)
+      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_M); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 295, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 298, __pyx_L5_error)
+      __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 295, __pyx_L5_error)
     }
     for (;;) {
       if (likely(!__pyx_t_7)) {
         if (likely(PyList_CheckExact(__pyx_t_1))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 298, __pyx_L5_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 295, __pyx_L5_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L5_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 298, __pyx_L5_error)
+          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 295, __pyx_L5_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L5_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         }
@@ -3870,7 +3536,7 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 298, __pyx_L5_error)
+            else __PYX_ERR(0, 295, __pyx_L5_error)
           }
           break;
         }
@@ -3878,24 +3544,24 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
       }
       __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_node, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_9 = (__Pyx_PySequence_ContainsTF(__pyx_7genexpr__pyx_v_node, __pyx_v_un, Py_NE)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 298, __pyx_L5_error)
+      __pyx_t_9 = (__Pyx_PySequence_ContainsTF(__pyx_7genexpr__pyx_v_node, __pyx_v_un, Py_NE)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 295, __pyx_L5_error)
       __pyx_t_10 = (__pyx_t_9 != 0);
       if (__pyx_t_10) {
       } else {
         __pyx_t_8 = __pyx_t_10;
         goto __pyx_L9_bool_binop_done;
       }
-      __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_M, __pyx_7genexpr__pyx_v_node); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L5_error)
+      __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_M, __pyx_7genexpr__pyx_v_node); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_10 = (__Pyx_PySequence_ContainsTF(__pyx_t_3, __pyx_v_un, Py_NE)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 298, __pyx_L5_error)
+      __pyx_t_10 = (__Pyx_PySequence_ContainsTF(__pyx_t_3, __pyx_v_un, Py_NE)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 295, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_9 = (__pyx_t_10 != 0);
       __pyx_t_8 = __pyx_t_9;
       __pyx_L9_bool_binop_done:;
       if (__pyx_t_8) {
-        __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_M, __pyx_7genexpr__pyx_v_node); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L5_error)
+        __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_M, __pyx_7genexpr__pyx_v_node); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_7genexpr__pyx_v_node, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 298, __pyx_L5_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_7genexpr__pyx_v_node, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 295, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
     }
@@ -3910,7 +3576,7 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":302
+  /* "cython_algo.pyx":299
  *      #   logger.warning(f"The sub-matching is empty!")
  *     #logger.debug(f"returning the sub-matching M[X_L,Y_L]: {M}")
  *     return M             # <<<<<<<<<<<<<<
@@ -3922,10 +3588,10 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   __pyx_r = __pyx_v_M;
   goto __pyx_L0;
 
-  /* "cython_algo.pyx":240
+  /* "cython_algo.pyx":237
  * 
  * 
- * def envy_free_matching(G, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def envy_free_matching2(G, top_nodes=None):             # <<<<<<<<<<<<<<
  *     r"""Return an envy-free matching of maximum cardinality
  *     Parameters
  */
@@ -3936,7 +3602,7 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("cython_algo.envy_free_matching", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_algo.envy_free_matching2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_M);
@@ -3948,19 +3614,19 @@ static PyObject *__pyx_pf_11cython_algo_6envy_free_matching(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "cython_algo.pyx":305
+/* "cython_algo.pyx":302
  * 
  * 
- * def minimum_weight_envy_free_matching(G, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def minimum_weight_envy_free_matching2(G, top_nodes=None):             # <<<<<<<<<<<<<<
  *     r"""Returns minimum-cost maximum-cardinality envy-free matching
  *     Parameters
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11cython_algo_9minimum_weight_envy_free_matching(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11cython_algo_8minimum_weight_envy_free_matching[] = "Returns minimum-cost maximum-cardinality envy-free matching\n    Parameters\n    ----------\n    G\n        NetworkX graph\n        Undirected bipartite graph\n    top_nodes:\n                list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n    Returns\n    -------\n    Matching: dictionary\n        The minimum cost maximum cardinallity matching is returned as a dictionary.\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 3: Finding a minimum-cost maximum-cardinality envy-free matching.\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: K 3,3 with weights\n        >>> G = nx.Graph()\n        >>> weights = [(0,3,250), (0,4,148), (0,5,122), (1,3,175), (1,4,135), (1,5,150), (2,3,150), (2,4,125)]\n        >>> G.add_weighted_edges_from(weights)\n        >>> minimum_weight_envy_free_matching(G)\n        {0: 5, 1: 4, 2: 3, 5: 0, 4: 1, 3: 2}\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching this is the least cost perfect matching.\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph()\n        >>> Graph.add_weighted_edges_from([(0, 4, 5), (1, 4, 1), (2, 5, 3), (2, 7, 9), (3, 6, 3), (3, 7, 7)])\n        >>> minimum_weight_envy_free_matching(Graph,top_nodes=[0,1,2,3])\n        {2: 5, 3: 6, 5: 2, 6: 3}\n    ";
-static PyMethodDef __pyx_mdef_11cython_algo_9minimum_weight_envy_free_matching = {"minimum_weight_envy_free_matching", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11cython_algo_9minimum_weight_envy_free_matching, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11cython_algo_8minimum_weight_envy_free_matching};
-static PyObject *__pyx_pw_11cython_algo_9minimum_weight_envy_free_matching(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11cython_algo_5minimum_weight_envy_free_matching2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_11cython_algo_4minimum_weight_envy_free_matching2[] = "Returns minimum-cost maximum-cardinality envy-free matching\n    Parameters\n    ----------\n    G\n        NetworkX graph\n        Undirected bipartite graph\n    top_nodes:\n                list\n                if graph is not all connected top_nodes is the set of the top nodes in the bipartite graph G\n    Returns\n    -------\n    Matching: dictionary\n        The minimum cost maximum cardinallity matching is returned as a dictionary.\n    References\n    ----------\n    .. [1] \"Envy-free Matchings in Bipartite Graphs and their Applications to Fair Division\",\n    by Elad Aigner-Horev and Erel Segal-Halevi (2022), https://arxiv.org/abs/1901.09527\n    Algorithm 3: Finding a minimum-cost maximum-cardinality envy-free matching.\n    Programmers\n    -----------\n        Benjamin Saldman\n        Daniel Gilkarov\n    Examples\n    --------\n        Example 1: K 3,3 with weights\n        >>> G = nx.Graph()\n        >>> weights = [(0,3,250), (0,4,148), (0,5,122), (1,3,175), (1,4,135), (1,5,150), (2,3,150), (2,4,125)]\n        >>> G.add_weighted_edges_from(weights)\n        >>> minimum_weight_envy_free_matching(G)\n        {0: 5, 1: 4, 2: 3, 5: 0, 4: 1, 3: 2}\n\n        Where there exists a perfect matching the maximum envy free matching is the perfect matching this is the least cost perfect matching.\n        Example 2: Non-empty envy-free matching\n        >>> Graph=nx.Graph()\n        >>> Graph.add_weighted_edges_from([(0, 4, 5), (1, 4, 1), (2, 5, 3), (2, 7, 9), (3, 6, 3), (3, 7, 7)])\n        >>> minimum_weight_envy_free_matching(Graph,top_nodes=[0,1,2,3])\n        {2: 5, 3: 6, 5: 2, 6: 3}\n    ";
+static PyMethodDef __pyx_mdef_11cython_algo_5minimum_weight_envy_free_matching2 = {"minimum_weight_envy_free_matching2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11cython_algo_5minimum_weight_envy_free_matching2, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11cython_algo_4minimum_weight_envy_free_matching2};
+static PyObject *__pyx_pw_11cython_algo_5minimum_weight_envy_free_matching2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_G = 0;
   PyObject *__pyx_v_top_nodes = 0;
   int __pyx_lineno = 0;
@@ -3968,7 +3634,7 @@ static PyObject *__pyx_pw_11cython_algo_9minimum_weight_envy_free_matching(PyObj
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("minimum_weight_envy_free_matching (wrapper)", 0);
+  __Pyx_RefNannySetupContext("minimum_weight_envy_free_matching2 (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_G,&__pyx_n_s_top_nodes,0};
     PyObject* values[2] = {0,0};
@@ -3997,7 +3663,7 @@ static PyObject *__pyx_pw_11cython_algo_9minimum_weight_envy_free_matching(PyObj
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "minimum_weight_envy_free_matching") < 0)) __PYX_ERR(0, 305, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "minimum_weight_envy_free_matching2") < 0)) __PYX_ERR(0, 302, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4013,20 +3679,20 @@ static PyObject *__pyx_pw_11cython_algo_9minimum_weight_envy_free_matching(PyObj
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("minimum_weight_envy_free_matching", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 305, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("minimum_weight_envy_free_matching2", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 302, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cython_algo.minimum_weight_envy_free_matching", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_algo.minimum_weight_envy_free_matching2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(__pyx_self, __pyx_v_G, __pyx_v_top_nodes);
+  __pyx_r = __pyx_pf_11cython_algo_4minimum_weight_envy_free_matching2(__pyx_self, __pyx_v_G, __pyx_v_top_nodes);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_top_nodes) {
+static PyObject *__pyx_pf_11cython_algo_4minimum_weight_envy_free_matching2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_top_nodes) {
   PyObject *__pyx_v_M = NULL;
   PyObject *__pyx_v_EFM_PARTITION = NULL;
   PyObject *__pyx_v_Union = NULL;
@@ -4041,32 +3707,32 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("minimum_weight_envy_free_matching", 0);
+  __Pyx_RefNannySetupContext("minimum_weight_envy_free_matching2", 0);
 
-  /* "cython_algo.pyx":346
+  /* "cython_algo.pyx":343
  *     # logger.info(f"Finding the minimum cost maximum cardinality envy free matching of {G}")
  *     # logger.debug(f"Finding the maximum matching of {G}")
  *     M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)             # <<<<<<<<<<<<<<
  *     # logger.debug(f"Got matching: {M}")
  *     # logger.debug(f"Finding the EFM partition with maximum matching: {M}")
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 346, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_maximum_matching); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_maximum_matching); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 346, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_G);
   __Pyx_GIVEREF(__pyx_v_G);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_G);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 346, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 346, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_top_nodes, __pyx_v_top_nodes) < 0) __PYX_ERR(0, 343, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4074,14 +3740,14 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   __pyx_v_M = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":349
+  /* "cython_algo.pyx":346
  *     # logger.debug(f"Got matching: {M}")
  *     # logger.debug(f"Finding the EFM partition with maximum matching: {M}")
- *     EFM_PARTITION = _EFM_partition(G, M, top_nodes)             # <<<<<<<<<<<<<<
+ *     EFM_PARTITION = EFM_partition2(G, M, top_nodes)             # <<<<<<<<<<<<<<
  *     #logger.debug(f"The partition is: {EFM_PARTITION}")
  *     Union = EFM_PARTITION[0].union(EFM_PARTITION[2])
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_EFM_partition); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 349, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_EFM_partition2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   __pyx_t_5 = 0;
@@ -4098,7 +3764,7 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 346, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
@@ -4106,13 +3772,13 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_G, __pyx_v_M, __pyx_v_top_nodes};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 346, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
   #endif
   {
-    __pyx_t_1 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -4126,7 +3792,7 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
     __Pyx_INCREF(__pyx_v_top_nodes);
     __Pyx_GIVEREF(__pyx_v_top_nodes);
     PyTuple_SET_ITEM(__pyx_t_1, 2+__pyx_t_5, __pyx_v_top_nodes);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 346, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
@@ -4134,19 +3800,19 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   __pyx_v_EFM_PARTITION = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":351
- *     EFM_PARTITION = _EFM_partition(G, M, top_nodes)
+  /* "cython_algo.pyx":348
+ *     EFM_PARTITION = EFM_partition2(G, M, top_nodes)
  *     #logger.debug(f"The partition is: {EFM_PARTITION}")
  *     Union = EFM_PARTITION[0].union(EFM_PARTITION[2])             # <<<<<<<<<<<<<<
  *     M = nx.bipartite.minimum_weight_full_matching(G.subgraph(Union))
  *     #logger.debug(f"returning minimum cost maximum cardinality envy free matching in G[X_L,Y_L]: {M}")
  */
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_EFM_PARTITION, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 351, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_EFM_PARTITION, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_union); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_union); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_EFM_PARTITION, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 351, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_EFM_PARTITION, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -4161,28 +3827,28 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   __pyx_t_4 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 351, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Union = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":352
+  /* "cython_algo.pyx":349
  *     #logger.debug(f"The partition is: {EFM_PARTITION}")
  *     Union = EFM_PARTITION[0].union(EFM_PARTITION[2])
  *     M = nx.bipartite.minimum_weight_full_matching(G.subgraph(Union))             # <<<<<<<<<<<<<<
  *     #logger.debug(f"returning minimum cost maximum cardinality envy free matching in G[X_L,Y_L]: {M}")
  *     return M
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bipartite); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_minimum_weight_full_matching); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_minimum_weight_full_matching); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_subgraph); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_subgraph); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4196,7 +3862,7 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   }
   __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_6, __pyx_v_Union) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_Union);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -4212,16 +3878,17 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   __pyx_t_4 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 352, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":354
+  /* "cython_algo.pyx":351
  *     M = nx.bipartite.minimum_weight_full_matching(G.subgraph(Union))
  *     #logger.debug(f"returning minimum cost maximum cardinality envy free matching in G[X_L,Y_L]: {M}")
  *     return M             # <<<<<<<<<<<<<<
+ * 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
@@ -4229,10 +3896,10 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   __pyx_r = __pyx_v_M;
   goto __pyx_L0;
 
-  /* "cython_algo.pyx":305
+  /* "cython_algo.pyx":302
  * 
  * 
- * def minimum_weight_envy_free_matching(G, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def minimum_weight_envy_free_matching2(G, top_nodes=None):             # <<<<<<<<<<<<<<
  *     r"""Returns minimum-cost maximum-cardinality envy-free matching
  *     Parameters
  */
@@ -4244,7 +3911,7 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("cython_algo.minimum_weight_envy_free_matching", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_algo.minimum_weight_envy_free_matching2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_M);
@@ -4255,14 +3922,14 @@ static PyObject *__pyx_pf_11cython_algo_8minimum_weight_envy_free_matching(CYTHO
   return __pyx_r;
 }
 
-static struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *__pyx_freelist_11cython_algo___pyx_scope_struct____M_alternating_sequence__[8];
-static int __pyx_freecount_11cython_algo___pyx_scope_struct____M_alternating_sequence__ = 0;
+static struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *__pyx_freelist_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__[8];
+static int __pyx_freecount_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ = 0;
 
-static PyObject *__pyx_tp_new_11cython_algo___pyx_scope_struct____M_alternating_sequence__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_11cython_algo___pyx_scope_struct____M_alternating_sequence__ > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__)))) {
-    o = (PyObject*)__pyx_freelist_11cython_algo___pyx_scope_struct____M_alternating_sequence__[--__pyx_freecount_11cython_algo___pyx_scope_struct____M_alternating_sequence__];
-    memset(o, 0, sizeof(struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__)))) {
+    o = (PyObject*)__pyx_freelist_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__[--__pyx_freecount_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__];
+    memset(o, 0, sizeof(struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
@@ -4272,41 +3939,41 @@ static PyObject *__pyx_tp_new_11cython_algo___pyx_scope_struct____M_alternating_
   return o;
 }
 
-static void __pyx_tp_dealloc_11cython_algo___pyx_scope_struct____M_alternating_sequence__(PyObject *o) {
-  struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *p = (struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *)o;
+static void __pyx_tp_dealloc_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__(PyObject *o) {
+  struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *p = (struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *)o;
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_M);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_11cython_algo___pyx_scope_struct____M_alternating_sequence__ < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__)))) {
-    __pyx_freelist_11cython_algo___pyx_scope_struct____M_alternating_sequence__[__pyx_freecount_11cython_algo___pyx_scope_struct____M_alternating_sequence__++] = ((struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *)o);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__)))) {
+    __pyx_freelist_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__[__pyx_freecount_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__++] = ((struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_11cython_algo___pyx_scope_struct____M_alternating_sequence__(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *p = (struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *)o;
+  struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *p = (struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *)o;
   if (p->__pyx_v_M) {
     e = (*v)(p->__pyx_v_M, a); if (e) return e;
   }
   return 0;
 }
 
-static int __pyx_tp_clear_11cython_algo___pyx_scope_struct____M_alternating_sequence__(PyObject *o) {
+static int __pyx_tp_clear_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *p = (struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__ *)o;
+  struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *p = (struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ *)o;
   tmp = ((PyObject*)p->__pyx_v_M);
   p->__pyx_v_M = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 
-static PyTypeObject __pyx_type_11cython_algo___pyx_scope_struct____M_alternating_sequence__ = {
+static PyTypeObject __pyx_type_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ = {
   PyVarObject_HEAD_INIT(0, 0)
-  "cython_algo.__pyx_scope_struct____M_alternating_sequence__", /*tp_name*/
-  sizeof(struct __pyx_obj_11cython_algo___pyx_scope_struct____M_alternating_sequence__), /*tp_basicsize*/
+  "cython_algo.__pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__", /*tp_name*/
+  sizeof(struct __pyx_obj_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11cython_algo___pyx_scope_struct____M_alternating_sequence__, /*tp_dealloc*/
+  __pyx_tp_dealloc_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -4333,8 +4000,8 @@ static PyTypeObject __pyx_type_11cython_algo___pyx_scope_struct____M_alternating
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_11cython_algo___pyx_scope_struct____M_alternating_sequence__, /*tp_traverse*/
-  __pyx_tp_clear_11cython_algo___pyx_scope_struct____M_alternating_sequence__, /*tp_clear*/
+  __pyx_tp_traverse_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__, /*tp_traverse*/
+  __pyx_tp_clear_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
@@ -4349,7 +4016,7 @@ static PyTypeObject __pyx_type_11cython_algo___pyx_scope_struct____M_alternating
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11cython_algo___pyx_scope_struct____M_alternating_sequence__, /*tp_new*/
+  __pyx_tp_new_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -4423,19 +4090,14 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_DEBUG, __pyx_k_DEBUG, sizeof(__pyx_k_DEBUG), 0, 0, 1, 1},
   {&__pyx_n_s_EFM, __pyx_k_EFM, sizeof(__pyx_k_EFM), 0, 0, 1, 1},
   {&__pyx_n_s_EFM_PARTITION, __pyx_k_EFM_PARTITION, sizeof(__pyx_k_EFM_PARTITION), 0, 0, 1, 1},
-  {&__pyx_n_s_EFM_partition, __pyx_k_EFM_partition, sizeof(__pyx_k_EFM_partition), 0, 0, 1, 1},
-  {&__pyx_kp_u_EFM_partition_line_146, __pyx_k_EFM_partition_line_146, sizeof(__pyx_k_EFM_partition_line_146), 0, 1, 0, 0},
+  {&__pyx_n_s_EFM_partition2, __pyx_k_EFM_partition2, sizeof(__pyx_k_EFM_partition2), 0, 0, 1, 1},
+  {&__pyx_kp_u_EFM_partition2_line_143, __pyx_k_EFM_partition2_line_143, sizeof(__pyx_k_EFM_partition2_line_143), 0, 1, 0, 0},
   {&__pyx_kp_s_Envy_free_matching, __pyx_k_Envy_free_matching, sizeof(__pyx_k_Envy_free_matching), 0, 0, 1, 0},
   {&__pyx_n_s_Formatter, __pyx_k_Formatter, sizeof(__pyx_k_Formatter), 0, 0, 1, 1},
   {&__pyx_n_s_G, __pyx_k_G, sizeof(__pyx_k_G), 0, 0, 1, 1},
-  {&__pyx_n_s_GMinusM, __pyx_k_GMinusM, sizeof(__pyx_k_GMinusM), 0, 0, 1, 1},
-  {&__pyx_n_s_G_M, __pyx_k_G_M, sizeof(__pyx_k_G_M), 0, 0, 1, 1},
-  {&__pyx_kp_u_Generates_M_alternating_sequenc, __pyx_k_Generates_M_alternating_sequenc, sizeof(__pyx_k_Generates_M_alternating_sequenc), 0, 1, 0, 0},
   {&__pyx_n_s_INFINITY, __pyx_k_INFINITY, sizeof(__pyx_k_INFINITY), 0, 0, 1, 1},
   {&__pyx_kp_s_Input_matching_is_None_calculati, __pyx_k_Input_matching_is_None_calculati, sizeof(__pyx_k_Input_matching_is_None_calculati), 0, 0, 1, 0},
   {&__pyx_n_s_M, __pyx_k_M, sizeof(__pyx_k_M), 0, 0, 1, 1},
-  {&__pyx_n_s_M_alternating_sequence, __pyx_k_M_alternating_sequence, sizeof(__pyx_k_M_alternating_sequence), 0, 0, 1, 1},
-  {&__pyx_kp_u_M_alternating_sequence___line, __pyx_k_M_alternating_sequence___line, sizeof(__pyx_k_M_alternating_sequence___line), 0, 1, 0, 0},
   {&__pyx_n_s_M_alternating_sequence___local, __pyx_k_M_alternating_sequence___local, sizeof(__pyx_k_M_alternating_sequence___local), 0, 0, 1, 1},
   {&__pyx_kp_u_Return_an_envy_free_matching_of, __pyx_k_Return_an_envy_free_matching_of, sizeof(__pyx_k_Return_an_envy_free_matching_of), 0, 1, 0, 0},
   {&__pyx_kp_u_Returns_minimum_cost_maximum_car, __pyx_k_Returns_minimum_cost_maximum_car, sizeof(__pyx_k_Returns_minimum_cost_maximum_car), 0, 1, 0, 0},
@@ -4443,16 +4105,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_StreamHandler, __pyx_k_StreamHandler, sizeof(__pyx_k_StreamHandler), 0, 0, 1, 1},
   {&__pyx_n_s_Union, __pyx_k_Union, sizeof(__pyx_k_Union), 0, 0, 1, 1},
   {&__pyx_n_s_X, __pyx_k_X, sizeof(__pyx_k_X), 0, 0, 1, 1},
-  {&__pyx_n_s_X_0, __pyx_k_X_0, sizeof(__pyx_k_X_0), 0, 0, 1, 1},
   {&__pyx_n_s_X_S, __pyx_k_X_S, sizeof(__pyx_k_X_S), 0, 0, 1, 1},
-  {&__pyx_n_s_X_current, __pyx_k_X_current, sizeof(__pyx_k_X_current), 0, 0, 1, 1},
   {&__pyx_n_s_X_subsets, __pyx_k_X_subsets, sizeof(__pyx_k_X_subsets), 0, 0, 1, 1},
   {&__pyx_n_s_Y, __pyx_k_Y, sizeof(__pyx_k_Y), 0, 0, 1, 1},
   {&__pyx_n_s_Y_S, __pyx_k_Y_S, sizeof(__pyx_k_Y_S), 0, 0, 1, 1},
-  {&__pyx_n_s_Y_current, __pyx_k_Y_current, sizeof(__pyx_k_Y_current), 0, 0, 1, 1},
-  {&__pyx_n_s_Y_subgroups_accumulate, __pyx_k_Y_subgroups_accumulate, sizeof(__pyx_k_Y_subgroups_accumulate), 0, 0, 1, 1},
   {&__pyx_n_s_Y_subsets, __pyx_k_Y_subsets, sizeof(__pyx_k_Y_subsets), 0, 0, 1, 1},
-  {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
   {&__pyx_kp_s_asctime_s_levelname_s_name_s_Li, __pyx_k_asctime_s_levelname_s_name_s_Li, sizeof(__pyx_k_asctime_s_levelname_s_name_s_Li), 0, 0, 1, 0},
   {&__pyx_n_s_basicConfig, __pyx_k_basicConfig, sizeof(__pyx_k_basicConfig), 0, 0, 1, 1},
   {&__pyx_n_s_bipartite, __pyx_k_bipartite, sizeof(__pyx_k_bipartite), 0, 0, 1, 1},
@@ -4462,8 +4119,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_cython_algo_pyx, __pyx_k_cython_algo_pyx, sizeof(__pyx_k_cython_algo_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_doctest, __pyx_k_doctest, sizeof(__pyx_k_doctest), 0, 0, 1, 1},
   {&__pyx_n_s_efm_logger, __pyx_k_efm_logger, sizeof(__pyx_k_efm_logger), 0, 0, 1, 1},
-  {&__pyx_n_s_envy_free_matching, __pyx_k_envy_free_matching, sizeof(__pyx_k_envy_free_matching), 0, 0, 1, 1},
-  {&__pyx_kp_u_envy_free_matching_line_240, __pyx_k_envy_free_matching_line_240, sizeof(__pyx_k_envy_free_matching_line_240), 0, 1, 0, 0},
+  {&__pyx_n_s_envy_free_matching2, __pyx_k_envy_free_matching2, sizeof(__pyx_k_envy_free_matching2), 0, 0, 1, 1},
+  {&__pyx_kp_u_envy_free_matching2_line_237, __pyx_k_envy_free_matching2_line_237, sizeof(__pyx_k_envy_free_matching2_line_237), 0, 1, 0, 0},
   {&__pyx_kp_s_envy_free_matching_log, __pyx_k_envy_free_matching_log, sizeof(__pyx_k_envy_free_matching_log), 0, 0, 1, 0},
   {&__pyx_n_s_filename, __pyx_k_filename, sizeof(__pyx_k_filename), 0, 0, 1, 1},
   {&__pyx_n_s_filter_edge, __pyx_k_filter_edge, sizeof(__pyx_k_filter_edge), 0, 0, 1, 1},
@@ -4471,7 +4128,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_getLogger, __pyx_k_getLogger, sizeof(__pyx_k_getLogger), 0, 0, 1, 1},
   {&__pyx_n_s_handlers, __pyx_k_handlers, sizeof(__pyx_k_handlers), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
-  {&__pyx_n_s_index, __pyx_k_index, sizeof(__pyx_k_index), 0, 0, 1, 1},
   {&__pyx_n_s_inf, __pyx_k_inf, sizeof(__pyx_k_inf), 0, 0, 1, 1},
   {&__pyx_n_s_info, __pyx_k_info, sizeof(__pyx_k_info), 0, 0, 1, 1},
   {&__pyx_n_s_items, __pyx_k_items, sizeof(__pyx_k_items), 0, 0, 1, 1},
@@ -4485,14 +4141,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_minimum_weight_envy_free_matchin_2, __pyx_k_minimum_weight_envy_free_matchin_2, sizeof(__pyx_k_minimum_weight_envy_free_matchin_2), 0, 1, 0, 0},
   {&__pyx_n_s_minimum_weight_full_matching, __pyx_k_minimum_weight_full_matching, sizeof(__pyx_k_minimum_weight_full_matching), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
-  {&__pyx_n_s_neighbours_of_set, __pyx_k_neighbours_of_set, sizeof(__pyx_k_neighbours_of_set), 0, 0, 1, 1},
-  {&__pyx_kp_u_neighbours_of_set___line_24, __pyx_k_neighbours_of_set___line_24, sizeof(__pyx_k_neighbours_of_set___line_24), 0, 1, 0, 0},
   {&__pyx_n_s_networkx, __pyx_k_networkx, sizeof(__pyx_k_networkx), 0, 0, 1, 1},
   {&__pyx_n_s_node, __pyx_k_node, sizeof(__pyx_k_node), 0, 0, 1, 1},
-  {&__pyx_n_s_node_set, __pyx_k_node_set, sizeof(__pyx_k_node_set), 0, 0, 1, 1},
   {&__pyx_n_s_nx, __pyx_k_nx, sizeof(__pyx_k_nx), 0, 0, 1, 1},
-  {&__pyx_n_s_ret_set, __pyx_k_ret_set, sizeof(__pyx_k_ret_set), 0, 0, 1, 1},
-  {&__pyx_kp_u_returns_a_set_of_the_neighbours, __pyx_k_returns_a_set_of_the_neighbours, sizeof(__pyx_k_returns_a_set_of_the_neighbours), 0, 1, 0, 0},
   {&__pyx_n_s_setFormatter, __pyx_k_setFormatter, sizeof(__pyx_k_setFormatter), 0, 0, 1, 1},
   {&__pyx_n_s_sets, __pyx_k_sets, sizeof(__pyx_k_sets), 0, 0, 1, 1},
   {&__pyx_n_s_subgraph, __pyx_k_subgraph, sizeof(__pyx_k_subgraph), 0, 0, 1, 1},
@@ -4515,98 +4166,74 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "cython_algo.pyx":105
+  /* "cython_algo.pyx":102
  * 
  *     if X_0 == set():
  *         return (), ()             # <<<<<<<<<<<<<<
  * 
- *     X_subsets = [X_0]
+ *     cdef list X_subsets = [X_0]
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_empty_tuple, __pyx_empty_tuple); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_empty_tuple, __pyx_empty_tuple); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "cython_algo.pyx":17
+  /* "cython_algo.pyx":14
  * INFINITY = float("inf")
  * 
  * logger = logging.getLogger("Envy-free matching")             # <<<<<<<<<<<<<<
  * formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: Line %(lineno)d: %(message)s')
  * console = logging.StreamHandler()  # writes to stderr (= cerr)
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Envy_free_matching); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Envy_free_matching); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "cython_algo.pyx":18
+  /* "cython_algo.pyx":15
  * 
  * logger = logging.getLogger("Envy-free matching")
  * formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: Line %(lineno)d: %(message)s')             # <<<<<<<<<<<<<<
  * console = logging.StreamHandler()  # writes to stderr (= cerr)
  * logger.handlers = [console]
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_asctime_s_levelname_s_name_s_Li); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_asctime_s_levelname_s_name_s_Li); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "cython_algo.pyx":24
+  /* "cython_algo.pyx":143
  * 
  * 
- * def __neighbours_of_set__(G, node_set):             # <<<<<<<<<<<<<<
- *     """
- *     returns a set of the neighbours of a given set of nodes
- */
-  __pyx_tuple__4 = PyTuple_Pack(4, __pyx_n_s_G, __pyx_n_s_node_set, __pyx_n_s_ret_set, __pyx_n_s_node); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_algo_pyx, __pyx_n_s_neighbours_of_set, 24, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 24, __pyx_L1_error)
-
-  /* "cython_algo.pyx":51
- * 
- * 
- * def __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
- *     """
- *     Generates M-alternating-sequence for a graph G with regard to a matching M
- */
-  __pyx_tuple__6 = PyTuple_Pack(14, __pyx_n_s_G, __pyx_n_s_M, __pyx_n_s_top_nodes, __pyx_n_s_X, __pyx_n_s_Y, __pyx_n_s_X_0, __pyx_n_s_X_subsets, __pyx_n_s_Y_subsets, __pyx_n_s_Y_subgroups_accumulate, __pyx_n_s_index, __pyx_n_s_GMinusM, __pyx_n_s_Y_current, __pyx_n_s_G_M, __pyx_n_s_X_current); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__6);
-  __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(3, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_algo_pyx, __pyx_n_s_M_alternating_sequence, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 51, __pyx_L1_error)
-
-  /* "cython_algo.pyx":146
- * 
- * 
- * def _EFM_partition(G, M=None, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def EFM_partition2(G, M=None, top_nodes=None):             # <<<<<<<<<<<<<<
  *     """Returns the unique EFM partition of bipartite graph.
  * 
  */
-  __pyx_tuple__8 = PyTuple_Pack(11, __pyx_n_s_G, __pyx_n_s_M, __pyx_n_s_top_nodes, __pyx_n_s_efm_logger, __pyx_n_s_X, __pyx_n_s_Y, __pyx_n_s_X_subsets, __pyx_n_s_Y_subsets, __pyx_n_s_X_S, __pyx_n_s_subset, __pyx_n_s_Y_S); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 146, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(3, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_algo_pyx, __pyx_n_s_EFM_partition, 146, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(11, __pyx_n_s_G, __pyx_n_s_M, __pyx_n_s_top_nodes, __pyx_n_s_efm_logger, __pyx_n_s_X, __pyx_n_s_Y, __pyx_n_s_X_subsets, __pyx_n_s_Y_subsets, __pyx_n_s_X_S, __pyx_n_s_subset, __pyx_n_s_Y_S); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(3, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_algo_pyx, __pyx_n_s_EFM_partition2, 143, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 143, __pyx_L1_error)
 
-  /* "cython_algo.pyx":240
+  /* "cython_algo.pyx":237
  * 
  * 
- * def envy_free_matching(G, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def envy_free_matching2(G, top_nodes=None):             # <<<<<<<<<<<<<<
  *     r"""Return an envy-free matching of maximum cardinality
  *     Parameters
  */
-  __pyx_tuple__10 = PyTuple_Pack(6, __pyx_n_s_G, __pyx_n_s_top_nodes, __pyx_n_s_M, __pyx_n_s_EFM_PARTITION, __pyx_n_s_un, __pyx_n_s_node); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 240, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_algo_pyx, __pyx_n_s_envy_free_matching, 240, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(6, __pyx_n_s_G, __pyx_n_s_top_nodes, __pyx_n_s_M, __pyx_n_s_EFM_PARTITION, __pyx_n_s_un, __pyx_n_s_node); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_algo_pyx, __pyx_n_s_envy_free_matching2, 237, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 237, __pyx_L1_error)
 
-  /* "cython_algo.pyx":305
+  /* "cython_algo.pyx":302
  * 
  * 
- * def minimum_weight_envy_free_matching(G, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def minimum_weight_envy_free_matching2(G, top_nodes=None):             # <<<<<<<<<<<<<<
  *     r"""Returns minimum-cost maximum-cardinality envy-free matching
  *     Parameters
  */
-  __pyx_tuple__12 = PyTuple_Pack(5, __pyx_n_s_G, __pyx_n_s_top_nodes, __pyx_n_s_M, __pyx_n_s_EFM_PARTITION, __pyx_n_s_Union); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 305, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__12);
-  __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_algo_pyx, __pyx_n_s_minimum_weight_envy_free_matchin, 305, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(5, __pyx_n_s_G, __pyx_n_s_top_nodes, __pyx_n_s_M, __pyx_n_s_EFM_PARTITION, __pyx_n_s_Union); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_algo_pyx, __pyx_n_s_minimum_weight_envy_free_matchin, 302, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4618,7 +4245,6 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   __pyx_umethod_PyDict_Type_update.type = (PyObject*)&PyDict_Type;
   __pyx_umethod_PySet_Type_update.type = (PyObject*)&PySet_Type;
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4663,14 +4289,14 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_11cython_algo___pyx_scope_struct____M_alternating_sequence__) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_11cython_algo___pyx_scope_struct____M_alternating_sequence__.tp_print = 0;
+  __pyx_type_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_11cython_algo___pyx_scope_struct____M_alternating_sequence__.tp_dictoffset && __pyx_type_11cython_algo___pyx_scope_struct____M_alternating_sequence__.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_11cython_algo___pyx_scope_struct____M_alternating_sequence__.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__.tp_dictoffset && __pyx_type_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  __pyx_ptype_11cython_algo___pyx_scope_struct____M_alternating_sequence__ = &__pyx_type_11cython_algo___pyx_scope_struct____M_alternating_sequence__;
+  __pyx_ptype_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__ = &__pyx_type_11cython_algo___pyx_scope_struct____pyx_f_11cython_algo___M_alternating_sequence__;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4967,7 +4593,7 @@ if (!__Pyx_RefNanny) {
  * 
  * logging.basicConfig(filename="envy_free_matching.log", level=logging.DEBUG)             # <<<<<<<<<<<<<<
  * 
- * __all__ = [
+ * 
  */
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_logging); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4990,188 +4616,146 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":10
- * logging.basicConfig(filename="envy_free_matching.log", level=logging.DEBUG)
+  /* "cython_algo.pyx":12
  * 
- * __all__ = [             # <<<<<<<<<<<<<<
- *     "envy_free_matching",
- *     "minimum_weight_envy_free_matching",
- */
-  __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(__pyx_n_s_envy_free_matching);
-  __Pyx_GIVEREF(__pyx_n_s_envy_free_matching);
-  PyList_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_envy_free_matching);
-  __Pyx_INCREF(__pyx_n_s_minimum_weight_envy_free_matchin);
-  __Pyx_GIVEREF(__pyx_n_s_minimum_weight_envy_free_matchin);
-  PyList_SET_ITEM(__pyx_t_4, 1, __pyx_n_s_minimum_weight_envy_free_matchin);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_4) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "cython_algo.pyx":15
- * ]
  * 
  * INFINITY = float("inf")             # <<<<<<<<<<<<<<
  * 
  * logger = logging.getLogger("Envy-free matching")
  */
-  __pyx_t_4 = __Pyx_PyNumber_Float(__pyx_n_s_inf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Float(__pyx_n_s_inf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_INFINITY, __pyx_t_4) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_INFINITY, __pyx_t_4) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":17
+  /* "cython_algo.pyx":14
  * INFINITY = float("inf")
  * 
  * logger = logging.getLogger("Envy-free matching")             # <<<<<<<<<<<<<<
  * formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: Line %(lineno)d: %(message)s')
  * console = logging.StreamHandler()  # writes to stderr (= cerr)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logging); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logging); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_getLogger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_getLogger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_logger, __pyx_t_4) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_logger, __pyx_t_4) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":18
+  /* "cython_algo.pyx":15
  * 
  * logger = logging.getLogger("Envy-free matching")
  * formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: Line %(lineno)d: %(message)s')             # <<<<<<<<<<<<<<
  * console = logging.StreamHandler()  # writes to stderr (= cerr)
  * logger.handlers = [console]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logging); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logging); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_Formatter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_Formatter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formatter, __pyx_t_4) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formatter, __pyx_t_4) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":19
+  /* "cython_algo.pyx":16
  * logger = logging.getLogger("Envy-free matching")
  * formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: Line %(lineno)d: %(message)s')
  * console = logging.StreamHandler()  # writes to stderr (= cerr)             # <<<<<<<<<<<<<<
  * logger.handlers = [console]
  * console.setFormatter(formatter)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logging); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logging); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_StreamHandler); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_StreamHandler); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_console, __pyx_t_4) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_console, __pyx_t_4) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":20
+  /* "cython_algo.pyx":17
  * formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: Line %(lineno)d: %(message)s')
  * console = logging.StreamHandler()  # writes to stderr (= cerr)
  * logger.handlers = [console]             # <<<<<<<<<<<<<<
  * console.setFormatter(formatter)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_console); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_console); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_4);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logger); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logger); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_handlers, __pyx_t_1) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_handlers, __pyx_t_1) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "cython_algo.pyx":21
+  /* "cython_algo.pyx":18
  * console = logging.StreamHandler()  # writes to stderr (= cerr)
  * logger.handlers = [console]
  * console.setFormatter(formatter)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_console); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_console); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_setFormatter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_setFormatter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_formatter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_formatter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cython_algo.pyx":24
+  /* "cython_algo.pyx":143
  * 
  * 
- * def __neighbours_of_set__(G, node_set):             # <<<<<<<<<<<<<<
- *     """
- *     returns a set of the neighbours of a given set of nodes
- */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11cython_algo_1__neighbours_of_set__, NULL, __pyx_n_s_cython_algo); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_neighbours_of_set, __pyx_t_2) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "cython_algo.pyx":51
- * 
- * 
- * def __M_alternating_sequence__(G, M, top_nodes=None):             # <<<<<<<<<<<<<<
- *     """
- *     Generates M-alternating-sequence for a graph G with regard to a matching M
- */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11cython_algo_3__M_alternating_sequence__, NULL, __pyx_n_s_cython_algo); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_M_alternating_sequence, __pyx_t_2) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "cython_algo.pyx":146
- * 
- * 
- * def _EFM_partition(G, M=None, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def EFM_partition2(G, M=None, top_nodes=None):             # <<<<<<<<<<<<<<
  *     """Returns the unique EFM partition of bipartite graph.
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11cython_algo_5_EFM_partition, NULL, __pyx_n_s_cython_algo); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11cython_algo_1EFM_partition2, NULL, __pyx_n_s_cython_algo); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_EFM_partition, __pyx_t_2) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_EFM_partition2, __pyx_t_2) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cython_algo.pyx":240
+  /* "cython_algo.pyx":237
  * 
  * 
- * def envy_free_matching(G, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def envy_free_matching2(G, top_nodes=None):             # <<<<<<<<<<<<<<
  *     r"""Return an envy-free matching of maximum cardinality
  *     Parameters
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11cython_algo_7envy_free_matching, NULL, __pyx_n_s_cython_algo); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11cython_algo_3envy_free_matching2, NULL, __pyx_n_s_cython_algo); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_envy_free_matching, __pyx_t_2) < 0) __PYX_ERR(0, 240, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_envy_free_matching2, __pyx_t_2) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cython_algo.pyx":305
+  /* "cython_algo.pyx":302
  * 
  * 
- * def minimum_weight_envy_free_matching(G, top_nodes=None):             # <<<<<<<<<<<<<<
+ * def minimum_weight_envy_free_matching2(G, top_nodes=None):             # <<<<<<<<<<<<<<
  *     r"""Returns minimum-cost maximum-cardinality envy-free matching
  *     Parameters
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11cython_algo_9minimum_weight_envy_free_matching, NULL, __pyx_n_s_cython_algo); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11cython_algo_5minimum_weight_envy_free_matching2, NULL, __pyx_n_s_cython_algo); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_minimum_weight_envy_free_matchin, __pyx_t_2) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_minimum_weight_envy_free_matchin, __pyx_t_2) < 0) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "cython_algo.pyx":1
@@ -5179,12 +4763,10 @@ if (!__Pyx_RefNanny) {
  * import doctest
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_neighbours_of_set___line_24, __pyx_kp_u_returns_a_set_of_the_neighbours) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_M_alternating_sequence___line, __pyx_kp_u_Generates_M_alternating_sequenc) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_EFM_partition_line_146, __pyx_kp_u_Returns_the_unique_EFM_partition) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_envy_free_matching_line_240, __pyx_kp_u_Return_an_envy_free_matching_of) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_EFM_partition2_line_143, __pyx_kp_u_Returns_the_unique_EFM_partition) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_envy_free_matching2_line_237, __pyx_kp_u_Return_an_envy_free_matching_of) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_minimum_weight_envy_free_matchin_2, __pyx_kp_u_Returns_minimum_cost_maximum_car) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5233,148 +4815,6 @@ end:
     return (__Pyx_RefNannyAPIStruct *)r;
 }
 #endif
-
-/* RaiseArgTupleInvalid */
-static void __Pyx_RaiseArgtupleInvalid(
-    const char* func_name,
-    int exact,
-    Py_ssize_t num_min,
-    Py_ssize_t num_max,
-    Py_ssize_t num_found)
-{
-    Py_ssize_t num_expected;
-    const char *more_or_less;
-    if (num_found < num_min) {
-        num_expected = num_min;
-        more_or_less = "at least";
-    } else {
-        num_expected = num_max;
-        more_or_less = "at most";
-    }
-    if (exact) {
-        more_or_less = "exactly";
-    }
-    PyErr_Format(PyExc_TypeError,
-                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                 func_name, more_or_less, num_expected,
-                 (num_expected == 1) ? "" : "s", num_found);
-}
-
-/* RaiseDoubleKeywords */
-static void __Pyx_RaiseDoubleKeywordsError(
-    const char* func_name,
-    PyObject* kw_name)
-{
-    PyErr_Format(PyExc_TypeError,
-        #if PY_MAJOR_VERSION >= 3
-        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
-        #else
-        "%s() got multiple values for keyword argument '%s'", func_name,
-        PyString_AsString(kw_name));
-        #endif
-}
-
-/* ParseKeywords */
-static int __Pyx_ParseOptionalKeywords(
-    PyObject *kwds,
-    PyObject **argnames[],
-    PyObject *kwds2,
-    PyObject *values[],
-    Py_ssize_t num_pos_args,
-    const char* function_name)
-{
-    PyObject *key = 0, *value = 0;
-    Py_ssize_t pos = 0;
-    PyObject*** name;
-    PyObject*** first_kw_arg = argnames + num_pos_args;
-    while (PyDict_Next(kwds, &pos, &key, &value)) {
-        name = first_kw_arg;
-        while (*name && (**name != key)) name++;
-        if (*name) {
-            values[name-argnames] = value;
-            continue;
-        }
-        name = first_kw_arg;
-        #if PY_MAJOR_VERSION < 3
-        if (likely(PyString_Check(key))) {
-            while (*name) {
-                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
-                        && _PyString_Eq(**name, key)) {
-                    values[name-argnames] = value;
-                    break;
-                }
-                name++;
-            }
-            if (*name) continue;
-            else {
-                PyObject*** argname = argnames;
-                while (argname != first_kw_arg) {
-                    if ((**argname == key) || (
-                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
-                             && _PyString_Eq(**argname, key))) {
-                        goto arg_passed_twice;
-                    }
-                    argname++;
-                }
-            }
-        } else
-        #endif
-        if (likely(PyUnicode_Check(key))) {
-            while (*name) {
-                int cmp = (**name == key) ? 0 :
-                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
-                    (__Pyx_PyUnicode_GET_LENGTH(**name) != __Pyx_PyUnicode_GET_LENGTH(key)) ? 1 :
-                #endif
-                    PyUnicode_Compare(**name, key);
-                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
-                if (cmp == 0) {
-                    values[name-argnames] = value;
-                    break;
-                }
-                name++;
-            }
-            if (*name) continue;
-            else {
-                PyObject*** argname = argnames;
-                while (argname != first_kw_arg) {
-                    int cmp = (**argname == key) ? 0 :
-                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
-                        (__Pyx_PyUnicode_GET_LENGTH(**argname) != __Pyx_PyUnicode_GET_LENGTH(key)) ? 1 :
-                    #endif
-                        PyUnicode_Compare(**argname, key);
-                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
-                    if (cmp == 0) goto arg_passed_twice;
-                    argname++;
-                }
-            }
-        } else
-            goto invalid_keyword_type;
-        if (kwds2) {
-            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
-        } else {
-            goto invalid_keyword;
-        }
-    }
-    return 0;
-arg_passed_twice:
-    __Pyx_RaiseDoubleKeywordsError(function_name, key);
-    goto bad;
-invalid_keyword_type:
-    PyErr_Format(PyExc_TypeError,
-        "%.200s() keywords must be strings", function_name);
-    goto bad;
-invalid_keyword:
-    PyErr_Format(PyExc_TypeError,
-    #if PY_MAJOR_VERSION < 3
-        "%.200s() got an unexpected keyword argument '%.200s'",
-        function_name, PyString_AsString(key));
-    #else
-        "%s() got an unexpected keyword argument '%U'",
-        function_name, key);
-    #endif
-bad:
-    return -1;
-}
 
 /* GetItemInt */
 static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
@@ -5596,6 +5036,148 @@ static PyObject* __Pyx__CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObje
 bad:
     Py_XDECREF(args);
     return result;
+}
+
+/* RaiseArgTupleInvalid */
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* RaiseDoubleKeywords */
+static void __Pyx_RaiseDoubleKeywordsError(
+    const char* func_name,
+    PyObject* kw_name)
+{
+    PyErr_Format(PyExc_TypeError,
+        #if PY_MAJOR_VERSION >= 3
+        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
+        #else
+        "%s() got multiple values for keyword argument '%s'", func_name,
+        PyString_AsString(kw_name));
+        #endif
+}
+
+/* ParseKeywords */
+static int __Pyx_ParseOptionalKeywords(
+    PyObject *kwds,
+    PyObject **argnames[],
+    PyObject *kwds2,
+    PyObject *values[],
+    Py_ssize_t num_pos_args,
+    const char* function_name)
+{
+    PyObject *key = 0, *value = 0;
+    Py_ssize_t pos = 0;
+    PyObject*** name;
+    PyObject*** first_kw_arg = argnames + num_pos_args;
+    while (PyDict_Next(kwds, &pos, &key, &value)) {
+        name = first_kw_arg;
+        while (*name && (**name != key)) name++;
+        if (*name) {
+            values[name-argnames] = value;
+            continue;
+        }
+        name = first_kw_arg;
+        #if PY_MAJOR_VERSION < 3
+        if (likely(PyString_Check(key))) {
+            while (*name) {
+                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
+                        && _PyString_Eq(**name, key)) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    if ((**argname == key) || (
+                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
+                             && _PyString_Eq(**argname, key))) {
+                        goto arg_passed_twice;
+                    }
+                    argname++;
+                }
+            }
+        } else
+        #endif
+        if (likely(PyUnicode_Check(key))) {
+            while (*name) {
+                int cmp = (**name == key) ? 0 :
+                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                    (__Pyx_PyUnicode_GET_LENGTH(**name) != __Pyx_PyUnicode_GET_LENGTH(key)) ? 1 :
+                #endif
+                    PyUnicode_Compare(**name, key);
+                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                if (cmp == 0) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    int cmp = (**argname == key) ? 0 :
+                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                        (__Pyx_PyUnicode_GET_LENGTH(**argname) != __Pyx_PyUnicode_GET_LENGTH(key)) ? 1 :
+                    #endif
+                        PyUnicode_Compare(**argname, key);
+                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                    if (cmp == 0) goto arg_passed_twice;
+                    argname++;
+                }
+            }
+        } else
+            goto invalid_keyword_type;
+        if (kwds2) {
+            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
+        } else {
+            goto invalid_keyword;
+        }
+    }
+    return 0;
+arg_passed_twice:
+    __Pyx_RaiseDoubleKeywordsError(function_name, key);
+    goto bad;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    goto bad;
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+bad:
+    return -1;
 }
 
 /* None */
@@ -6624,130 +6206,6 @@ static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml, int flags, PyObject* qual
     }
     return op;
 }
-
-/* PyIntBinop */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
-    (void)inplace;
-    (void)zerodivision_check;
-    #if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_CheckExact(op1))) {
-        const long b = intval;
-        long x;
-        long a = PyInt_AS_LONG(op1);
-            x = (long)((unsigned long)a + b);
-            if (likely((x^a) >= 0 || (x^b) >= 0))
-                return PyInt_FromLong(x);
-            return PyLong_Type.tp_as_number->nb_add(op1, op2);
-    }
-    #endif
-    #if CYTHON_USE_PYLONG_INTERNALS
-    if (likely(PyLong_CheckExact(op1))) {
-        const long b = intval;
-        long a, x;
-#ifdef HAVE_LONG_LONG
-        const PY_LONG_LONG llb = intval;
-        PY_LONG_LONG lla, llx;
-#endif
-        const digit* digits = ((PyLongObject*)op1)->ob_digit;
-        const Py_ssize_t size = Py_SIZE(op1);
-        if (likely(__Pyx_sst_abs(size) <= 1)) {
-            a = likely(size) ? digits[0] : 0;
-            if (size == -1) a = -a;
-        } else {
-            switch (size) {
-                case -2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                default: return PyLong_Type.tp_as_number->nb_add(op1, op2);
-            }
-        }
-                x = a + b;
-            return PyLong_FromLong(x);
-#ifdef HAVE_LONG_LONG
-        long_long:
-                llx = lla + llb;
-            return PyLong_FromLongLong(llx);
-#endif
-        
-        
-    }
-    #endif
-    if (PyFloat_CheckExact(op1)) {
-        const long b = intval;
-        double a = PyFloat_AS_DOUBLE(op1);
-            double result;
-            PyFPE_START_PROTECT("add", return NULL)
-            result = ((double)a) + (double)b;
-            PyFPE_END_PROTECT(result)
-            return PyFloat_FromDouble(result);
-    }
-    return (inplace ? PyNumber_InPlaceAdd : PyNumber_Add)(op1, op2);
-}
-#endif
 
 /* PyObjectCall2Args */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
