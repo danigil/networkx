@@ -3,6 +3,40 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script type="text/javascript">// <![CDATA[
+        function loading(){
+            $(".loader").show();
+            $("#submit").hide();
+        }
+// ]]></script>
+
+<style>
+    div#loading {
+        width: 35px;
+        height: 35px;
+        display: none;
+        background: url(/static/loading.png) no-repeat;
+        cursor: wait;
+    }
+
+    .loader {
+      border: 4px solid #f3f3f3; /* Light grey */
+      border-top: 4px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 2s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+</style>
+
 <form method="POST" action="" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <legend class="border-bottom mb-4">Enter your data!</legend>
@@ -37,7 +71,8 @@
     </div>
 
     <div class="form-group">
-        {{ form.submit(class="btn btn-outline-info") }}
+        {{ form.submit(class="btn btn-outline-info", onclick="loading();", id="submit") }}
+        <div class="loader"></div>
     </div>
 </form>
 

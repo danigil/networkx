@@ -3,7 +3,7 @@ import pandas
 import networkx as nx
 from . import app
 from .forms import EnvyFreeMatchingForm, Button, EdgeItem, EnvyFreeMatchingCSVForm, EnvyFreeMatchingCSVAndTextForm
-from .algorithms import envy_free_matching
+from .algorithms.envy_free_matching import envy_free_matching, minimum_weight_envy_free_matching
 from flask import render_template, redirect, url_for, request, flash, json
 from pandas import read_csv
 import json
@@ -44,9 +44,11 @@ def algo1_page():
             #     flash(f'ERROR edge csv file is malformed', category="error")
             #     return render_template('algo1.html', title='Algo1', form=form)
             # else:
-            flash(f'Calculating, top_nodes: {top_nodes}!', 'success')
+            # flash(f'Calculating, top_nodes: {top_nodes}!', 'success')
+
+            calc_response("non_weighted", edges, top_nodes)
             # print("input: \n", edges)
-            return redirect(url_for(".calc1_page", edges=json.dumps(edges), top_nodes=json.dumps(top_nodes)))
+            return redirect(url_for(".calc1_page"))
                 # return redirect("/calculate1")
         else:
             flash(f'ERROR missing input',category="error")
@@ -70,12 +72,13 @@ def algo1_page():
 
 @app.route("/calculate1")
 def calc1_page():
-    edges = json.loads(request.args['edges'])
-    top_nodes = json.loads(request.args['top_nodes'])
+    # edges = json.loads(request.args['edges'])
+    # top_nodes = json.loads(request.args['top_nodes'])
+    # type = request.args['type']
+    #
+    # print("edges: ",edges)
+    # print("top_nodes: ", top_nodes)
 
-    print("edges: ",edges)
-    print("top_nodes: ", top_nodes)
-    calc_response(edges, top_nodes)
 
     return render_template('article.html', title='Envy Free Bipartite Matching Article')
 
@@ -89,9 +92,15 @@ valid_input_csv_functions = {
 def is_valid_input_csv(type, df):
     return valid_input_csv_functions[type](df)
 
-def calc_response(edges, top_nodes):
+algorithms = {
+    "non_weighted": envy_free_matching,
+    "weighted": minimum_weight_envy_free_matching
+}
+def calc_response(type, edges, top_nodes):
     G = nx.Graph(edges)
 
-    matching_ret = envy_free_matching.envy_free_matching(G, top_nodes=top_nodes)
+    current_algo = algorithms[type]
+
+    matching_ret = current_algo(G, top_nodes=top_nodes)
     matching_edges = list(filter(lambda tup: matching_ret[tup[0]] == tup[1], edges))
     print("ret: ", matching_edges)
