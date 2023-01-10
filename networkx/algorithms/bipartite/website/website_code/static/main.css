@@ -78,3 +78,23 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+
+  .add-edge{
+    border-color: green;
+    color: green;
+  }
+
+  .add-edge:hover{
+    background-color: green;
+    color: white;
+  }
+
+  .remove-edge{
+    border-color: red;
+    color: red;
+  }
+
+  .remove-edge:hover{
+    background-color: red;
+    color: white;
+  }
