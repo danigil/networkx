@@ -29,7 +29,16 @@ class EdgeItem(FlaskForm):
     from_node = IntegerField(validators=validators)
     to_node = IntegerField(validators=validators)
 
-
+class EnvyFreeMatchingCSVAndTextForm(FlaskForm):
+    file = FileField(validators=[
+        FileRequired(),
+        FileAllowed(['csv'], 'CSVs only!')]
+    )
+    top_nodes = TextAreaField(validators=[
+        DataRequired(),
+        Regexp("([0-9],)*[0-9]",message="Invalid Top Nodes input")
+    ],label="Top Nodes")
+    submit = SubmitField(label='submit')
 class EnvyFreeMatchingCSVForm(FlaskForm):
     file = FileField(validators=[
         FileRequired(),
