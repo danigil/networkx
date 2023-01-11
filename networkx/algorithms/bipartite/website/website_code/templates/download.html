@@ -1,0 +1,12 @@
+<!-- First step: define <div class="form-group"> for each field, with two lines: .label and the field itself. -->
+<!-- Second step: add error-check to each field. -->
+{% extends "layout.html" %}
+{% block content %}
+    {% if name %}
+        <legend class="border-bottom mb-4">Click Below To Download Your Output!</legend>
+        <a href="static/outputs/{{ name }}" download="output.csv">DOWNLOAD</a>
+    {% else %}
+        <legend class="border-bottom mb-4">MISTAKE!</legend>
+    {% endif %}
+
+{% endblock content %}
