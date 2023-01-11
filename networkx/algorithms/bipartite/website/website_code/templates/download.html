@@ -2,9 +2,14 @@
 <!-- Second step: add error-check to each field. -->
 {% extends "layout.html" %}
 {% block content %}
+
     {% if name %}
         <legend class="border-bottom mb-4">Click Below To Download Your Output!</legend>
-        <a href="static/outputs/{{ name }}" download="output.csv">DOWNLOAD</a>
+        <h3>
+            After downloading you will be redirected to the Home Page
+        </h3>
+<!--        <a href="static/outputs/{{ name }}" download="output.csv" onclick="location.href = '/?name={{ name }}';">DOWNLOAD</a>-->
+        <button type="submit" onclick="window.open('static/outputs/{{ name }}'); location.href = '/?name={{ name }}';">Download!</button>
     {% else %}
         <legend class="border-bottom mb-4">MISTAKE!</legend>
     {% endif %}

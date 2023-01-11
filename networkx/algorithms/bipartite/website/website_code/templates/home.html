@@ -1,13 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
-<div id="github_embed">
-
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://raw.githubusercontent.com/darcyclarke/Repo.js/master/repo.min.js"></script>
-<script>
-  $(document).getElementById("github_embed").repo({ user: 'darcyclarke', name: 'Repo.js' })
-</script>
-
+<legend class="border-bottom mb-4">Networkx Open Source Contribution</legend>
+<h3>Programmers:</h3>
+<ul>
+    <li>
+        Daniel Gilkarov
+    </li>
+    <li>
+        Benjamin Saldman
+    </li>
+</ul>
+<p>
+    For our undergraduate project and as part of the Research Algorithms course
+    we implemented algorithms for finding envy free matchings in graphs in the networkx open source project.
+</p>
+<h4>
+    Two versions of the algorithm were implemented:
+</h4>
+<ul>
+    <li>
+        <a style="color: blue" href="/algo?type=non_weighted">Non Weighted</a>
+    </li>
+    <li>
+        <a style="color: blue" href="/algo?type=weighted">Weighted</a>
+    </li>
+</ul>
+<h4>You can also read the article that contains the algorithms we implemented <a style="color: blue" href="/article">here</a></h4>
+<img src="static/bipartite1.png" width="500">
 {% endblock content %}

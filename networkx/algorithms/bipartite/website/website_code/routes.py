@@ -1,4 +1,6 @@
 import csv
+import logging
+import os
 
 import networkx as nx
 from . import app
@@ -11,6 +13,9 @@ from datetime import datetime
 
 @app.route('/')
 def home_page():
+    if "name" in request.args:
+        os.remove(f'website_code/static/outputs/{request.args["name"]}')
+
     return render_template('home.html', title='Envy Free Bipartite Matching')
 
 
@@ -24,7 +29,7 @@ def algo_page():
     type = request.args["type"]
     if not type:
         type = "non_weighted"
-    print("type: ", type)
+    logging.log(level=logging.DEBUG,msg=f"type: {type}")
     form = EnvyFreeMatchingCSVAndTextForm()
 
     if not form.validate_on_submit():
