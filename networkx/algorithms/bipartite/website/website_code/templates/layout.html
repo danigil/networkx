@@ -29,9 +29,15 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="/">Home</a>
-              <a class="nav-item nav-link" href="/Algorithms">Algorithms</a>
+              <div class="dropdown">
+                <button class="nav-item nav-link">Algorithms</button>
+                <div class="dropdown-content">
+                  <a href="/algo?type=non_weighted">Non Weighted Envy Free Matching</a>
+                  <a href="/algo?type=weighted">Weighted Envy Free Matching</a>
+                </div>
+              </div>
               <a class="nav-item nav-link" href="/article">Article</a>
-              <a class="nav-item nav-link" href="/algo1">Algo1</a>
+              <a class="nav-item nav-link" href="/algo">Algo1</a>
             </div>
           </div>
         </div>
@@ -107,3 +113,6 @@
 
   </body>
 </html>
+
+
+<!--              <a class="nav-item nav-link" href="/Algorithms">Algorithms</a>-->

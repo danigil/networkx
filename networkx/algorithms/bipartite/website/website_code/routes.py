@@ -22,11 +22,15 @@ def article_page():
 # top_nodes = []
 
 
-@app.route("/algo1", methods=['GET', 'POST'])
-def algo1_page():
+@app.route("/algo", methods=['GET', 'POST'])
+def algo_page():
     form = EnvyFreeMatchingCSVAndTextForm()
     if not form.validate_on_submit():
-        return render_template('algo1.html', title='Algo1', form=form)
+        type = request.args["type"]
+        if not type:
+            type = "non_weighted"
+        return render_template('algo.html', title='Algo1', form=form, type=type)
+
     else:
         input_file = form.file.data
         input_text = form.top_nodes.data
@@ -42,7 +46,7 @@ def algo1_page():
             edges = [tup for tup in edges.itertuples(index=False, name=None)]
             # if not is_valid_input_csv("non_weighted", edges):
             #     flash(f'ERROR edge csv file is malformed', category="error")
-            #     return render_template('algo1.html', title='Algo1', form=form)
+            #     return render_template('algo.html', title='Algo1', form=form)
             # else:
             # flash(f'Calculating, top_nodes: {top_nodes}!', 'success')
 
@@ -67,7 +71,7 @@ def algo1_page():
     #     form.edges.pop_entry()
     #
     # if not form.validate_on_submit():
-    #     return render_template('algo1.html', title='Algo1', form=form,addButton=add_button,removeButton=remove_button)
+    #     return render_template('algo.html', title='Algo1', form=form,addButton=add_button,removeButton=remove_button)
 
 
 @app.route("/calculate1")

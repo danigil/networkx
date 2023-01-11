@@ -2,9 +2,6 @@
 <!-- Second step: add error-check to each field. -->
 {% extends "layout.html" %}
 {% block content %}
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
 <script type="text/javascript">// <![CDATA[
         function loading(){
             $(".loader").show();
@@ -13,14 +10,6 @@
 // ]]></script>
 
 <style>
-    div#loading {
-        width: 35px;
-        height: 35px;
-        display: none;
-        background: url(/static/loading.png) no-repeat;
-        cursor: wait;
-    }
-
     .loader {
       border: 4px solid #f3f3f3; /* Light grey */
       border-top: 4px solid #3498db; /* Blue */
@@ -39,7 +28,27 @@
 
 <form method="POST" action="" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
-    <legend class="border-bottom mb-4">Enter your data!</legend>
+    <legend class="border-bottom mb-4">Enter your Graph! (edge representation)</legend>
+    <p>
+        {% if type == "non_weighted" %}
+        Example Input:<br>
+            &emsp;Edges: (from_node, to_node)<br>
+                &emsp;&emsp;0,3<br>
+                &emsp;&emsp;1,4<br>
+                &emsp;&emsp;2,5<br>
+        {% else %}
+        Example Input:<br>
+            &emsp;Edges: (from_node, to_node, weight)<br>
+                &emsp;&emsp;0,3,1.3<br>
+                &emsp;&emsp;1,4,2.1<br>
+                &emsp;&emsp;2,5,9.22<br>
+        {% endif %}
+        <br>
+            &emsp;Top Nodes: (comma separated positive integers)<br>
+                &emsp;&emsp;0,1,2<br>
+
+    </p>
+
     <p>* required field</p>
 
     <div class="form-group">
