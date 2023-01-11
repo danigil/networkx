@@ -33,30 +33,43 @@ def algo_page():
     form = EnvyFreeMatchingCSVAndTextForm()
 
     if not form.validate_on_submit():
-
+        logging.log(level=logging.DEBUG, msg=f"rendering algo page")
         return render_template('algo.html', title=f'{type}_algo', form=form, type=type)
     else:
         input_file = form.file.data
         input_text = form.top_nodes.data
+        logging.log(level=logging.DEBUG, msg=f"got form:\n\tinput_file: {input_file}\n\tinput_text: {input_text}")
 
         if input_file and input_text:
             top_nodes = [int(num) for num in input_text.split(',')]
 
             edges = read_csv(input_file, header=None)
             edges = [tup for tup in edges.itertuples(index=False, name=None)]
+
+            logging.log(level=logging.DEBUG, msg=f"edges: {edges}")
+            logging.log(level=logging.DEBUG, msg=f"top_nodes: {top_nodes}")
+
+
             if not is_valid_input_csv(type, edges):
+                logging.log(level=logging.DEBUG, msg=f"edge csv file is malformed, EXITING")
+
                 flash(f'ERROR edge csv file is malformed', category="error")
                 return render_template('algo.html', title='Algo', form=form)
 
             flash(f'Calculated, top_nodes: {top_nodes}!', 'success')
+            logging.log(level=logging.DEBUG, msg=f"calculating matching")
+
             ret_edges = calc_response(type, edges, top_nodes)
             now = datetime.now()
             file_name = f'{now.strftime("%d-%m-%Y-%H-%M-%S")}.csv'
-            with open(f'website_code/static/outputs/{file_name}', 'w', newline='') as f:
 
+            logging.log(level=logging.DEBUG, msg=f"writing to file_name: {file_name}")
+
+            with open(f'website_code/static/outputs/{file_name}', 'w', newline='') as f:
                 writer = csv.writer(f)
                 writer.writerows(ret_edges)
 
+            logging.log(level=logging.DEBUG, msg=f"redirecting to download page")
             return redirect(url_for(".download_output_page", name=file_name))
         else:
             flash(f'ERROR missing input', category="error")
@@ -86,8 +99,12 @@ algorithms = {
 
 def calc_response(type, edges, top_nodes):
     if type =='non_weighted':
+        logging.log(level=logging.DEBUG, msg=f"calc_response: non_weighted")
+
         G = nx.Graph(edges)
     else:
+        logging.log(level=logging.DEBUG, msg=f"calc_response: weighted")
+
         G = nx.Graph()
         G.add_weighted_edges_from(edges)
 
@@ -95,6 +112,8 @@ def calc_response(type, edges, top_nodes):
     current_algo = algorithms[type]
 
     matching_ret = current_algo(G, top_nodes=top_nodes)
+    logging.log(level=logging.DEBUG, msg=f"calc_response: return: {matching_ret}")
+
     matching_edges = list(
         map(lambda tup: (str(tup[0]), str(tup[1])), filter(lambda tup: matching_ret[tup[0]] == tup[1], edges)))
     print("ret: ", matching_edges)
