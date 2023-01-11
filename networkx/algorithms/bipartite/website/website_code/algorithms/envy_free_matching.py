@@ -348,7 +348,7 @@ def minimum_weight_envy_free_matching(G, top_nodes=None):
     EFM_PARTITION = _EFM_partition(G, M, top_nodes)
     logger.debug(f"The partition is: {EFM_PARTITION}")
     Union = EFM_PARTITION[0].union(EFM_PARTITION[2])
-    M = nx.bipartite.minimum_weight_full_matching(G.subgraph(Union))
+    M = nx.bipartite.minimum_weight_full_matching(G.subgraph(Union), top_nodes)
     logger.debug(f"returning minimum cost maximum cardinality envy free matching in G[X_L,Y_L]: {M}")
     return M
 

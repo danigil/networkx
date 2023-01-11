@@ -21,13 +21,15 @@ def article_page():
 
 @app.route("/algo", methods=['GET', 'POST'])
 def algo_page():
+    type = request.args["type"]
+    if not type:
+        type = "non_weighted"
+    print("type: ", type)
     form = EnvyFreeMatchingCSVAndTextForm()
-    if not form.validate_on_submit():
-        type = request.args["type"]
-        if not type:
-            type = "non_weighted"
-        return render_template('algo.html', title=f'{type}_algo', form=form, type=type)
 
+    if not form.validate_on_submit():
+
+        return render_template('algo.html', title=f'{type}_algo', form=form, type=type)
     else:
         input_file = form.file.data
         input_text = form.top_nodes.data
@@ -37,13 +39,12 @@ def algo_page():
 
             edges = read_csv(input_file, header=None)
             edges = [tup for tup in edges.itertuples(index=False, name=None)]
-            # if not is_valid_input_csv("non_weighted", edges):
-            #     flash(f'ERROR edge csv file is malformed', category="error")
-            #     return render_template('algo.html', title='Algo1', form=form)
-            # else:
-            # flash(f'Calculating, top_nodes: {top_nodes}!', 'success')
+            if not is_valid_input_csv(type, edges):
+                flash(f'ERROR edge csv file is malformed', category="error")
+                return render_template('algo.html', title='Algo', form=form)
 
-            ret_edges = calc_response("non_weighted", edges, top_nodes)
+            flash(f'Calculated, top_nodes: {top_nodes}!', 'success')
+            ret_edges = calc_response(type, edges, top_nodes)
             now = datetime.now()
             file_name = f'{now.strftime("%d-%m-%Y-%H-%M-%S")}.csv'
             with open(f'website_code/static/outputs/{file_name}', 'w', newline='') as f:
@@ -63,12 +64,13 @@ def download_output_page():
 
 
 valid_input_csv_functions = {
-    "non_weighted": lambda df: df.applymap(lambda x: type(x) == int and x > 0).all().all()
+    "non_weighted": lambda list_of_tup:all(len(tup) == 2 and type(tup[0])==int and type(tup[1])==int for tup in list_of_tup),
+    "weighted": lambda list_of_tup:all(len(tup) == 3 and type(tup[0])==int and type(tup[1])==int and type(tup[2])==float for tup in list_of_tup),
 }
 
 
-def is_valid_input_csv(type, df):
-    return valid_input_csv_functions[type](df)
+def is_valid_input_csv(type, edges):
+    return valid_input_csv_functions[type](edges)
 
 
 algorithms = {
@@ -78,7 +80,12 @@ algorithms = {
 
 
 def calc_response(type, edges, top_nodes):
-    G = nx.Graph(edges)
+    if type =='non_weighted':
+        G = nx.Graph(edges)
+    else:
+        G = nx.Graph()
+        G.add_weighted_edges_from(edges)
+
 
     current_algo = algorithms[type]
 
