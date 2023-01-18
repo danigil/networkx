@@ -94,7 +94,7 @@ Development Workflow
      branch name will appear in the merge message, use a sensible name
      such as 'bugfix-for-issue-1480'::
 
-      git checkout -b bugfix-for-issue-1480
+      git checkout -b bugfix-for-issue-1480 main
 
    * Commit locally as you progress (``git add`` and ``git commit``)
 
@@ -464,4 +464,4 @@ All interactions with the project are subject to the
 We also follow these policies:
 
 * :doc:`NetworkX deprecation policy <deprecations>`
-* :doc:`Python version support <nep-0029-deprecation_policy>`
+* :external+neps:doc:`Python version support <nep-0029-deprecation_policy>`
