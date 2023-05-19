@@ -1,8 +1,11 @@
 import csv
+import io
 import logging
 import os
+from base64 import b64encode
 
 import networkx as nx
+import networkx.algorithms.bipartite
 from . import app
 from .forms import EnvyFreeMatchingCSVAndTextForm
 from .algorithms.envy_free_matching import envy_free_matching, minimum_weight_envy_free_matching
@@ -56,21 +59,19 @@ def algo_page():
                 flash(f'ERROR edge csv file is malformed', category="error")
                 return render_template('algo.html', title='Algo', form=form)
 
-            flash(f'Calculated, top_nodes: {top_nodes}!', 'success')
             logging.log(level=logging.DEBUG, msg=f"calculating matching")
 
-            ret_edges = calc_response(type, edges, top_nodes)
-            now = datetime.now()
-            file_name = f'{now.strftime("%d-%m-%Y-%H-%M-%S")}.csv'
+            matching_edges, originalimg = calc_response(type, edges, top_nodes)
 
-            logging.log(level=logging.DEBUG, msg=f"writing to file_name: {file_name}")
+            from PIL import Image
 
-            with open(f'website_code/static/outputs/{file_name}', 'w', newline='') as f:
-                writer = csv.writer(f)
-                writer.writerows(ret_edges)
+            file_object = io.BytesIO()
+            img = Image.fromarray(originalimg.astype('uint8'))
+            img.save(file_object, 'PNG')
+            base64img = "data:image/png;base64," + b64encode(file_object.getvalue()).decode('ascii')
 
-            logging.log(level=logging.DEBUG, msg=f"redirecting to download page")
-            return redirect(url_for(".download_output_page", name=file_name))
+            logging.log(level=logging.DEBUG, msg=f"redirecting to result page")
+            return render_template('result.html', result=base64img, matching_size=int(len(matching_edges)/2))
         else:
             flash(f'ERROR missing input', category="error")
 
@@ -114,8 +115,40 @@ def calc_response(type, edges, top_nodes):
     matching_ret = current_algo(G, top_nodes=top_nodes)
     logging.log(level=logging.DEBUG, msg=f"calc_response: return: {matching_ret}")
 
-    matching_edges = list(
-        map(lambda tup: (str(tup[0]), str(tup[1])), filter(lambda tup: matching_ret[tup[0]] == tup[1], edges)))
-    print("ret: ", matching_edges)
+    import matplotlib
+    matplotlib.use('agg')
+    import matplotlib.pyplot as plt
 
-    return matching_edges
+    fig = plt.figure()
+    fig.add_subplot(111)
+
+    X, Y = networkx.algorithms.bipartite.sets(G, top_nodes)
+    pos = nx.drawing.layout.bipartite_layout(G, X)
+    nx.draw_networkx(
+        G,
+        pos=pos,
+    )
+
+    if type == 'non_weighted':
+        G_matching = nx.Graph(matching_ret.items())
+    else:
+        G_matching = nx.Graph()
+        for key in matching_ret:
+            for tup in edges:
+                if key in tup:
+                    G_matching.add_edge(key, matching_ret[key], weight=tup[2])
+
+    nx.draw_networkx_edges(
+        G_matching,
+        pos=pos,
+        edge_color='red'
+    )
+
+    fig.canvas.draw()
+
+    import numpy as np
+
+    data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+    data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+
+    return matching_ret, data

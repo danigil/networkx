@@ -140,6 +140,8 @@ needs_numpy = [
     "linalg/bethehessianmatrix.py",
     "linalg/laplacianmatrix.py",
     "utils/misc.py",
+    "algorithms/centrality/laplacian.py",
+    "algorithms/bipartite/matching.py",
 ]
 needs_scipy = [
     "algorithms/approximation/traveling_salesman.py",
@@ -169,6 +171,8 @@ needs_scipy = [
     "linalg/modularitymatrix.py",
     "linalg/spectrum.py",
     "utils/rcm.py",
+    "algorithms/centrality/laplacian.py",
+    "algorithms/bipartite/matching.py",
 ]
 needs_matplotlib = ["drawing/nx_pylab.py"]
 needs_pandas = ["convert_matrix.py"]

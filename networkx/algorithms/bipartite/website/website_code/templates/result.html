@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<legend class="border-bottom mb-4">Algorithm Output</legend>
+<img src="{{ result }}">
+<br>
+<p>
+    Here you see the graph, with the matching that was calculated drawn in <span style="color: red">red</span>.<br>
+    In this case we got a matching of size <b>{{ matching_size }}</b>
+</p>
+<br>
+<h3>
+    General explanation:
+</h3>
+<h4>
+    Envy free bipartite matchings are matchings
+    where no unmatched vertices of one of the sets have a common neighbour with a matched vertex.<br><br>
+
+    Intuitively, think of one set as buyers looking to buy a house and the other set representing houses for sale.<br>
+    Edges in this graph represent a buyer interested in a house.<br>
+    If one buyer got a house but another buyer was also interested
+    in this house and didn't buy a house himself he becomes jealous of the other buyer.<br><br>
+
+    These kinds of matching help us find matchings in these scenarios and the example above is one real-life application for the algorithm.
+</h4>
+{% endblock content %}
