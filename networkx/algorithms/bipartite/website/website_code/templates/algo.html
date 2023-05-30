@@ -8,6 +8,10 @@
             $("#submit").hide();
         }
 
+        function onsubmit(){
+            loading();
+        }
+
         function undo_loading(){
             $(".loader").hide();
             $("#submit").show();
@@ -56,22 +60,44 @@
 
     <p>* required field</p>
 
+    <script>
+      function add_field()
+      {
+        var total_text=document.getElementsByClassName("input_text");
+        total_text=total_text.length+1;
+        field_div = document.getElementById("field_div");
+        new_input = "<li id='input_text"+total_text+
+        "_wrapper'><input type='text' class='input_text' name='input_text[]' id='input_text"+
+        total_text+"' placeholder='Enter Edge'></li>";
+        field_div.insertAdjacentHTML('beforeend',new_input);
+      }
+      function remove_field()
+      {
+        var total_text=document.getElementsByClassName("input_text");
+        document.getElementById("input_text"+total_text.length+"_wrapper").remove();
+      }
+    </script>
+
     <div class="form-group">
-        {{ form.file.label(class="form-control-label") }}
-        {% if form.file.errors %}
-            <script>
-                undo_loading()
-            </script>
-            {{ form.file(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.file.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-        {% else %}
-            {{ form.file(class="form-control form-control-lg") }}
-        {% endif %}
+        <label><b>*Edges</b></label>
+        <p>
+            {% if type == "non_weighted" %}
+            Edge input should look like: from_node,to_node - for example 0,1 creates an edge between node 0 and node 1.<br>
+            Nodes are referenced by integers.
+            {% else %}
+            Edge input should look like: from_node,to_node,weight - for example 0,1,1.5 creates an edge between node 0 and node 1 with weight 1.5.<br>
+            Nodes are referenced by integers.
+            {% endif %}
+        </p>
+        <input type="button" value="Add Edge" onclick="add_field();">
+        <input type="button" value="Remove Edge" onclick="remove_field();">
+        <br>
+        <br>
+        <ol id="field_div">
+
+        </ol>
     </div>
+
 
     <div class="form-group">
         {{ form.top_nodes.label(class="form-control-label") }}
@@ -94,7 +120,7 @@
 
     </script>
     <div class="form-group">
-        {{ form.submit(class="btn btn-outline-info", onclick="loading();", id="submit") }}
+        {{ form.submit(class="btn btn-outline-info", onclick="onsubmit();", id="submit") }}
         <div class="loader"></div>
     </div>
 
