@@ -47,7 +47,7 @@ def algo_page():
                 m = re.findall('(\\d+,\\d+)', input_list)
             else:
                 m = re.findall('(\\d+,\\d+,\\d+.\\d+)', input_list)
-
+            print(m)
             if len(m) == 0:
                 logging.log(level=logging.DEBUG, msg=f'ERROR edges input is malformed')
 
@@ -58,7 +58,7 @@ def algo_page():
                 edges = [(int(from_node), int(to_node)) for from_node, to_node in map(lambda s: s.split(','), m)]
             else:
                 edges = [(int(from_node), int(to_node), float(weight)) for from_node, to_node, weight in
-                         map(lambda s: s.split(','), input_list)]
+                         map(lambda s: s.split(','), m)]
 
             if input_text == '':
                 top_nodes = [tup[0] for tup in edges]
