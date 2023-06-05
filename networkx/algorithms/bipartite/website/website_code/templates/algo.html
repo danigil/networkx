@@ -79,23 +79,20 @@
     </script>
 
     <div class="form-group">
-        <label><b>*Edges</b></label>
-        <p>
-            {% if type == "non_weighted" %}
-            Edge input should look like: from_node,to_node - for example 0,1 creates an edge between node 0 and node 1.<br>
-            Nodes are referenced by integers.
-            {% else %}
-            Edge input should look like: from_node,to_node,weight - for example 0,1,1.5 creates an edge between node 0 and node 1 with weight 1.5.<br>
-            Nodes are referenced by integers.
-            {% endif %}
-        </p>
-        <input type="button" value="Add Edge" onclick="add_field();">
-        <input type="button" value="Remove Edge" onclick="remove_field();">
-        <br>
-        <br>
-        <ol id="field_div">
-
-        </ol>
+        {{ form.edges.label(class="form-control-label") }}
+        {% if form.edges.errors %}
+            <script>
+                undo_loading()
+            </script>
+            {{ form.edges(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.edges.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.edges(class="form-control form-control-lg") }}
+        {% endif %}
     </div>
 
 

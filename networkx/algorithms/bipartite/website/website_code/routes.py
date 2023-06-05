@@ -41,16 +41,21 @@ def algo_page():
         return render_template('algo.html', title=f'{type}_algo', form=form, type=type)
     else:
         input_text = form.top_nodes.data
-        input_list = request.form.getlist('input_text[]')
-        if input_list and len(input_list) > 0:
+        input_list = form.edges.data
+        if input_list:
+            if type == "non_weighted":
+                m = re.findall('(\\d+,\\d+)', input_list)
+            else:
+                m = re.findall('(\\d+,\\d+,\\d+.\\d+)', input_list)
 
-            if not is_valid_input_list(input_list, type=type):
+            if len(m) == 0:
                 logging.log(level=logging.DEBUG, msg=f'ERROR edges input is malformed')
 
                 flash(f'ERROR edges input is malformed', category="error")
                 return render_template('algo.html', title='Algo', form=form)
-            if type == "non_weighted":
-                edges = [(int(from_node), int(to_node)) for from_node, to_node in map(lambda s: s.split(','), input_list)]
+
+            if type == 'non_weighted':
+                edges = [(int(from_node), int(to_node)) for from_node, to_node in map(lambda s: s.split(','), m)]
             else:
                 edges = [(int(from_node), int(to_node), float(weight)) for from_node, to_node, weight in
                          map(lambda s: s.split(','), input_list)]
@@ -105,14 +110,10 @@ def is_valid_input_csv(type, edges):
     return valid_input_csv_functions[type](edges)
 
 def is_valid_input_list(list, type = "non_weighted"):
-    for edge_string in list:
-        if type == "non_weighted":
-            if not re.fullmatch('\\d+,\\d+', edge_string):
-                return False
-        else:
-            if not re.fullmatch('\\d+,\\d+,\\d+.\\d+', edge_string) and not re.fullmatch('\\d+,\\d+,\\d+', edge_string):
-                return False
-    return True
+    if type == "non_weighted":
+        return re.fullmatch('(\\d+,\\d+)+', list)
+    else:
+        return re.fullmatch('(\\d+,\\d+,\\d+.\\d+)+', list)
 
 
 algorithms = {

@@ -15,5 +15,6 @@ class EnvyFreeMatchingCSVAndTextForm(FlaskForm):
 
 
 class EnvyFreeMatchingListAndTextForm(FlaskForm):
+    edges = TextAreaField(label='Edges')
     top_nodes = TextAreaField(label='Top Nodes (Inferred automatically if input is empty)')
     submit = SubmitField(label='submit')
