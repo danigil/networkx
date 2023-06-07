@@ -3,35 +3,40 @@
 {% extends "layout.html" %}
 {% block content %}
 <script type="text/javascript">// <![CDATA[
-        function loading(){
-            $(".loader").show();
-            $("#submit").hide();
-        }
+function loading() {
+    $(".loader").show();
+    $("#submit").hide();
+}
 
-        function onsubmit(){
-            loading();
-        }
+function onsubmit() {
+    loading();
+}
 
-        function undo_loading(){
-            $(".loader").hide();
-            $("#submit").show();
-        }
+function undo_loading() {
+    $(".loader").hide();
+    $("#submit").show();
+}
+
 // ]]></script>
 
 <style>
     .loader {
-      border: 4px solid #f3f3f3; /* Light grey */
-      border-top: 4px solid #3498db; /* Blue */
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 2s linear infinite;
-      display: none;
+        border: 4px solid #f3f3f3; /* Light grey */
+        border-top: 4px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 2s linear infinite;
+        display: none;
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 </style>
 
@@ -41,57 +46,65 @@
     <p>
         {% if type == "non_weighted" %}
         Example Input:<br>
-            &emsp;Edges: (from_node, to_node)<br>
-                &emsp;&emsp;0,3<br>
-                &emsp;&emsp;1,4<br>
-                &emsp;&emsp;2,5<br>
+        &emsp;Edges: (from_node, to_node)<br>
+        &emsp;&emsp;5,4<br>
+        &emsp;&emsp;7,4<br>
+        &emsp;&emsp;5,3<br>
+        &emsp;&emsp;7,2<br>
+        &emsp;&emsp;8,2<br>
+        &emsp;&emsp;6,1<br>
+        &emsp;&emsp;5,1<br>
         {% else %}
         Example Input:<br>
-            &emsp;Edges: (from_node, to_node, weight)<br>
-                &emsp;&emsp;0,3,1.3<br>
-                &emsp;&emsp;1,4,2.1<br>
-                &emsp;&emsp;2,5,9.22<br>
+        &emsp;Edges: (from_node, to_node, weight)<br>
+        &emsp;&emsp;5,4,1.0<br>
+        &emsp;&emsp;7,4,111.0<br>
+        &emsp;&emsp;5,3,1.0<br>
+        &emsp;&emsp;7,2,1.0<br>
+        &emsp;&emsp;8,2,1.0<br>
+        &emsp;&emsp;6,1,1.0<br>
+        &emsp;&emsp;5,1,1.0<br>
+        &emsp;&emsp;7,3,1.0<br>
         {% endif %}
         <br>
-            &emsp;Top Nodes: (comma separated positive integers)<br>
-                &emsp;&emsp;0,1,2<br>
+        &emsp;Top Nodes: (comma separated positive integers)<br>
+        &emsp;&emsp;0,1,2<br>
 
     </p>
 
     <p>* required field</p>
 
     <script>
-      function add_field()
-      {
-        var total_text=document.getElementsByClassName("input_text");
-        total_text=total_text.length+1;
-        field_div = document.getElementById("field_div");
-        new_input = "<li id='input_text"+total_text+
-        "_wrapper'><input type='text' class='input_text' name='input_text[]' id='input_text"+
-        total_text+"' placeholder='Enter Edge'></li>";
-        field_div.insertAdjacentHTML('beforeend',new_input);
-      }
-      function remove_field()
-      {
-        var total_text=document.getElementsByClassName("input_text");
-        document.getElementById("input_text"+total_text.length+"_wrapper").remove();
-      }
+        function add_field() {
+            var total_text = document.getElementsByClassName("input_text");
+            total_text = total_text.length + 1;
+            field_div = document.getElementById("field_div");
+            new_input = "<li id='input_text" + total_text +
+                "_wrapper'><input type='text' class='input_text' name='input_text[]' id='input_text" +
+                total_text + "' placeholder='Enter Edge'></li>";
+            field_div.insertAdjacentHTML('beforeend', new_input);
+        }
+
+        function remove_field() {
+            var total_text = document.getElementsByClassName("input_text");
+            document.getElementById("input_text" + total_text.length + "_wrapper").remove();
+        }
     </script>
 
     <div class="form-group">
         {{ form.edges.label(class="form-control-label") }}
         {% if form.edges.errors %}
-            <script>
-                undo_loading()
-            </script>
-            {{ form.edges(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.edges.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
+        <script>
+            undo_loading()
+        </script>
+        {{ form.edges(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form.edges.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
         {% else %}
-            {{ form.edges(class="form-control form-control-lg") }}
+        {{ form.edges(class="form-control form-control-lg") }}
         {% endif %}
     </div>
 
@@ -99,17 +112,17 @@
     <div class="form-group">
         {{ form.top_nodes.label(class="form-control-label") }}
         {% if form.top_nodes.errors %}
-            <script>
-                undo_loading()
-            </script>
-            {{ form.top_nodes(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.top_nodes.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
+        <script>
+            undo_loading()
+        </script>
+        {{ form.top_nodes(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form.top_nodes.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
         {% else %}
-            {{ form.top_nodes(class="form-control form-control-lg") }}
+        {{ form.top_nodes(class="form-control form-control-lg") }}
         {% endif %}
     </div>
     <script>
@@ -122,15 +135,15 @@
     </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          {% if category == "undo_loading" %}
-            <script>
-                undo_loading();
-            </script>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
+    {% if messages %}
+    {% for category, message in messages %}
+    {% if category == "undo_loading" %}
+    <script>
+        undo_loading();
+    </script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     {% endwith %}
 </form>
 
