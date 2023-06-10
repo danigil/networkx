@@ -52,7 +52,7 @@ def algo_page():
                 logging.log(level=logging.DEBUG, msg=f'ERROR edges input is malformed')
 
                 flash(f'ERROR edges input is malformed', category="error")
-                return render_template('algo.html', title='Algo', form=form)
+                return render_template('algo.html', title='Algo', form=form, type=type)
 
             if type == 'non_weighted':
                 edges = [(int(from_node), int(to_node)) for from_node, to_node in map(lambda s: s.split(','), m)]
@@ -72,7 +72,7 @@ def algo_page():
                 logging.log(level=logging.DEBUG, msg=f'ERROR edges input is malformed')
 
                 flash(f'ERROR edges input is malformed', category="error")
-                return render_template('algo.html', title='Algo', form=form)
+                return render_template('algo.html', title='Algo', form=form, type=type)
 
             logging.log(level=logging.DEBUG, msg=f"calculating matching")
 
@@ -89,7 +89,7 @@ def algo_page():
             return render_template('result.html', result=base64img, matching_size=int(len(matching_edges) / 2))
         else:
             flash(f'ERROR missing input', category="error")
-            return render_template('algo.html', title='Algo', form=form)
+            return render_template('algo.html', title='Algo', form=form, type=type)
 
 
 @app.route("/download")
