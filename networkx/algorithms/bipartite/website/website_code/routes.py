@@ -9,11 +9,17 @@ import networkx as nx
 import networkx.algorithms.bipartite
 from . import app
 from .forms import EnvyFreeMatchingCSVAndTextForm, EnvyFreeMatchingListAndTextForm
-from .algorithms.envy_free_matching import envy_free_matching, minimum_weight_envy_free_matching
-from flask import render_template, redirect, url_for, request, flash, json
+from .algorithms.envy_free_matching import envy_free_matching, minimum_weight_envy_free_matching, _EFM_partition
+from flask import render_template, session, redirect, url_for, request, flash, json
 from pandas import read_csv
 from datetime import datetime
-
+import json
+import matplotlib
+matplotlib.use('agg')
+import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image
+from networkx.readwrite import json_graph
 
 @app.route('/')
 def home_page():
@@ -47,7 +53,7 @@ def algo_page():
                 m = re.findall('(\\d+,\\d+)', input_list)
             else:
                 m = re.findall('(\\d+,\\d+,\\d+.\\d+)', input_list)
-            print(m)
+            #print(m)
             if len(m) == 0:
                 logging.log(level=logging.DEBUG, msg=f'ERROR edges input is malformed')
 
@@ -75,22 +81,68 @@ def algo_page():
                 return render_template('algo.html', title='Algo', form=form, type=type)
 
             logging.log(level=logging.DEBUG, msg=f"calculating matching")
-
-            matching_edges, originalimg = calc_response(type, edges, top_nodes)
-
-            from PIL import Image
-
-            file_object = io.BytesIO()
-            img = Image.fromarray(originalimg.astype('uint8'))
-            img.save(file_object, 'PNG')
-            base64img = "data:image/png;base64," + b64encode(file_object.getvalue()).decode('ascii')
+            # payload, img = calc_max_matching(type, edges, top_nodes)
 
             logging.log(level=logging.DEBUG, msg=f"redirecting to result page")
-            return render_template('result.html', result=base64img, matching_size=int(len(matching_edges) / 2))
+            session["type"]= type
+            session["edges"]=edges
+            session["top_nodes"]=top_nodes
+            # session["img"] = img
+            # session["payload"] = payload
+            session.modified = True
+            #print(session)
+            #return render_template('result.html', result=img, payload=payload, stage=stage_dict["1"])
+            return redirect(url_for('result_page'))
+            #return render_template('result.html', result=img, payload=payload, stage="")
         else:
             flash(f'ERROR missing input', category="error")
             return render_template('algo.html', title='Algo', form=form, type=type)
 
+@app.post("/calc")
+def calc():
+    data = json.loads(request.data)
+    stage = data.get("stage", "1")
+
+    if stage == "1":
+        pass
+    elif stage == "2":
+        #print(data)
+        payload = data["payload"]
+        G = nx.node_link_graph(payload["G"])
+        M = payload["M"]
+        top_nodes = payload["top_nodes"]
+
+
+
+    return stage
+
+@app.route("/result", methods=['GET', 'POST'])
+def result_page():
+    if request.method == 'POST':
+        data = json.loads(request.data)
+        print(data)
+        stage = data.get("stage", "1")
+        print(stage)
+        #return render_template('result.html', stage="bingus")
+        return redirect(url_for("home_page"))
+    else:
+        stage="1"
+    #print(request.get_json())
+    #print(request.form)
+    # if stage == "1":
+    type=session["type"]
+    edges=session["edges"]
+    top_nodes=session["top_nodes"]
+    #print(session)
+    payload, img = calc_max_matching(type, edges, top_nodes)
+
+    return render_template('result.html', result=img, payload=json.dumps(payload), stage=stage_dict[stage])
+
+stage_dict = {
+    "1": "Stage 1/3: Maximum Matching",
+    "2": "Stage 2/3: EFM Partition",
+    "3": "Stage 3/3: X_L, Y_L"
+}
 
 @app.route("/download")
 def download_output_page():
@@ -104,7 +156,6 @@ valid_input_csv_functions = {
     "weighted": lambda list_of_tup: all(
         len(tup) == 3 and type(tup[0]) == int and type(tup[1]) == int and type(tup[2]) == float for tup in list_of_tup),
 }
-
 
 def is_valid_input_csv(type, edges):
     return valid_input_csv_functions[type](edges)
@@ -121,6 +172,121 @@ algorithms = {
     "weighted": minimum_weight_envy_free_matching
 }
 
+"""
+Stage 1
+{
+    G: babaG,
+    M: max_matching,
+    top_nodes
+}
+
+Stage 2
+{
+    G: babaG,
+    M: max_matching,
+    top_nodes,
+    un
+}
+"""
+
+def ret_graph_fig(G, top_nodes):
+    fig, ax = plt.subplots()
+    # fig = plt.figure()
+    # fig.add_subplot(111)
+
+    X, Y = networkx.algorithms.bipartite.sets(G, top_nodes)
+    pos = nx.drawing.layout.bipartite_layout(G, X)
+    nx.draw_networkx(
+        G,
+        pos=pos,
+        ax=ax
+    )
+
+    return fig, ax, pos
+
+def ret_img(fig):
+    data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+    data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+
+    file_object = io.BytesIO()
+    img = Image.fromarray(data.astype('uint8'))
+    img.save(file_object, 'PNG')
+    base64img = "data:image/png;base64," + b64encode(file_object.getvalue()).decode('ascii')
+
+    return base64img
+def calc_max_matching(type, edges, top_nodes):
+    if type == 'non_weighted':
+        logging.log(level=logging.DEBUG, msg=f"calc_response: non_weighted")
+
+        G = nx.Graph(edges)
+    else:
+        logging.log(level=logging.DEBUG, msg=f"calc_response: weighted")
+
+        G = nx.Graph()
+        G.add_weighted_edges_from(edges)
+
+    M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)
+    fig, ax, pos = ret_graph_fig(G, top_nodes)
+
+    if type == 'non_weighted':
+        G_matching = nx.Graph(M.items())
+    else:
+        G_matching = nx.Graph()
+        for key in M:
+            for tup in edges:
+                if key in tup:
+                    G_matching.add_edge(key, M[key], weight=tup[2])
+
+    nx.draw_networkx_edges(
+        G_matching,
+        pos=pos,
+        edge_color='red'
+    )
+
+    fig.canvas.draw()
+    img = ret_img(fig)
+    payload = {
+        "G": nx.node_link_data(G),
+        "M": M,
+        "top_nodes": top_nodes,
+    }
+
+    return payload, img
+
+def calc_efm_partition(G, M, top_nodes):
+    X_L, X_S, Y_L, Y_S = _EFM_partition(G, M, top_nodes)
+    fig, ax, pos = ret_graph_fig(G, top_nodes)
+
+    color_map = []
+    for node in G:
+        if node in X_L or Y_L:
+            color_map.append('green')
+        else:
+            color_map.append('black')
+
+    nx.draw_networkx(
+        G,
+        pos=pos,
+        ax=ax,
+        color_map=color_map
+    )
+
+    nx.draw_networkx_edges(
+        M,
+        pos=pos,
+        edge_color='red'
+    )
+    img = ret_img(fig)
+    payload = {
+        "G": nx.node_link_data(G),
+        "M": M,
+        "top_nodes": top_nodes,
+        "X_L": X_L,
+        "X_S": X_S,
+        "Y_L": Y_L,
+        "Y_S": Y_S
+    }
+    return payload, img
 
 def calc_response(type, edges, top_nodes):
     if type == 'non_weighted':
@@ -138,19 +304,7 @@ def calc_response(type, edges, top_nodes):
     matching_ret = current_algo(G, top_nodes=top_nodes)
     logging.log(level=logging.DEBUG, msg=f"calc_response: return: {matching_ret}")
 
-    import matplotlib
-    matplotlib.use('agg')
-    import matplotlib.pyplot as plt
-
-    fig = plt.figure()
-    fig.add_subplot(111)
-
-    X, Y = networkx.algorithms.bipartite.sets(G, top_nodes)
-    pos = nx.drawing.layout.bipartite_layout(G, X)
-    nx.draw_networkx(
-        G,
-        pos=pos,
-    )
+    fig, ax, pos = ret_graph_fig(G, top_nodes)
 
     if type == 'non_weighted':
         G_matching = nx.Graph(matching_ret.items())
@@ -168,10 +322,9 @@ def calc_response(type, edges, top_nodes):
     )
 
     fig.canvas.draw()
+    img = ret_img(fig)
 
-    import numpy as np
 
-    data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
-    data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
 
-    return matching_ret, data
+
+    return matching_ret, img

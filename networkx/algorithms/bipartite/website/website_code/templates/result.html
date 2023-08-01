@@ -1,6 +1,60 @@
 {% extends "layout.html" %}
 {% block content %}
-<legend class="border-bottom mb-4">Algorithm Output</legend>
+
+
+
+<legend class="border-bottom mb-4">Algorithm Output {{stage}}</legend>
+<button class="send__data__btn">Send Data</button>
+<script>
+    var payload = JSON.parse({{ payload | tojson | safe}});
+    const btn = document.querySelector('.send__data__btn');
+    btn.addEventListener('click', function () {
+    /*
+    console.log(JSON.stringify( {
+                'payload' : payload,
+                'stage': '2'
+            }));
+    */
+    /*
+        fetch('/result', {
+            headers : {
+                'Content-Type' : 'text/plain'
+            },
+            method : 'POST',
+            body : JSON.stringify( {
+                'payload' : payload,
+                'stage': '2'
+            })
+        })
+    */
+        fetch('/calc', {
+            headers : {
+                'Content-Type' : 'text/plain'
+            },
+            method : 'POST',
+            body : JSON.stringify( {
+                'payload' : payload,
+                'stage': '2'
+            })
+        })
+        .then(function (response){
+
+            if(response.ok) {
+                response.json()
+                .then(function(response) {
+                    console.log(response);
+                });
+            }
+            else {
+                throw Error('Something went wrong');
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    });
+
+</script>
 <img src="{{ result }}">
 <br>
 <p>
