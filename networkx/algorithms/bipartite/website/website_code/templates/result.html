@@ -4,11 +4,15 @@
 
 
 <legend class="border-bottom mb-4">Algorithm Output {{stage}}</legend>
-<button class="send__data__btn">Send Data</button>
+<!--<button class="send__data__btn">Send Data</button>-->
+<form id="myForm" action="/result" method="POST">
+    <input type="hidden" id="payload" name="payload">
+    <button type="submit">Next Step</button>
+</form>
 <script>
-    var payload = JSON.parse({{ payload | tojson | safe}});
-    const btn = document.querySelector('.send__data__btn');
-    btn.addEventListener('click', function () {
+    document.getElementById("payload").value = {{ payload | tojson | safe}};
+    //const btn = document.querySelector('.send__data__btn');
+    //btn.addEventListener('click', function () {
     /*
     console.log(JSON.stringify( {
                 'payload' : payload,
@@ -26,7 +30,6 @@
                 'stage': '2'
             })
         })
-    */
         fetch('/calc', {
             headers : {
                 'Content-Type' : 'text/plain'
@@ -53,8 +56,10 @@
             console.log(error);
         });
     });
+    */
 
 </script>
+
 <img src="{{ result }}">
 <br>
 <p>

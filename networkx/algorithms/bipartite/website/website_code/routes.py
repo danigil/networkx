@@ -71,6 +71,8 @@ def algo_page():
             else:
                 top_nodes = [int(num) for num in input_text.split(',')]
 
+            top_nodes = list(set(top_nodes))
+
             logging.log(level=logging.DEBUG, msg=f"edges: {edges}")
             logging.log(level=logging.DEBUG, msg=f"top_nodes: {top_nodes}")
 
@@ -119,24 +121,54 @@ def calc():
 @app.route("/result", methods=['GET', 'POST'])
 def result_page():
     if request.method == 'POST':
-        data = json.loads(request.data)
-        print(data)
+        #print(request.form)
+        data = json.loads(request.form["payload"])
+        # stage="3"
+        # data = json.loads(request.data)
+        # print(data)
         stage = data.get("stage", "1")
-        print(stage)
+        #print(stage)
         #return render_template('result.html', stage="bingus")
-        return redirect(url_for("home_page"))
+        #return redirect(url_for("home_page"))
     else:
         stage="1"
-    #print(request.get_json())
-    #print(request.form)
-    # if stage == "1":
-    type=session["type"]
-    edges=session["edges"]
-    top_nodes=session["top_nodes"]
-    #print(session)
-    payload, img = calc_max_matching(type, edges, top_nodes)
+
+    if stage=="1":
+        type=session["type"]
+        edges=session["edges"]
+        top_nodes=session["top_nodes"]
+        #print(session)
+        payload, img = calc_max_matching(type, edges, top_nodes)
+        payload['stage']="2"
+        #print("M: ", payload["M"], "top_nodes: ", payload["top_nodes"])
+
+    elif stage=="2":
+        G = nx.node_link_graph(data["G"])
+        M_str_keys = data["M"]
+        M = {int(k): v for k,v in M_str_keys.items()}
+        top_nodes = data["top_nodes"]
+        type = data["type"]
+
+        #print("M: ", M, "top_nodes: ", top_nodes)
+
+        payload, img = calc_efm_partition(G, M, top_nodes, type=type)
+        payload['stage'] = "3"
+    else:
+        G = nx.node_link_graph(data["G"])
+        M_str_keys = data["M"]
+        M = {int(k): v for k, v in M_str_keys.items()}
+        top_nodes = data["top_nodes"]
+        type = data["type"]
+        EFM = data["X_L"], data["X_S"], data["Y_L"], data["Y_S"]
+
+        payload, img = calc_envy_free_matching(G, M, top_nodes, EFM, type=type)
+        # print(data)
+
+        #return redirect(url_for("home_page"))
 
     return render_template('result.html', result=img, payload=json.dumps(payload), stage=stage_dict[stage])
+
+
 
 stage_dict = {
     "1": "Stage 1/3: Maximum Matching",
@@ -189,7 +221,28 @@ Stage 2
 }
 """
 
-def ret_graph_fig(G, top_nodes):
+def ret_graph_fig(G, M, top_nodes, type="non_weighted", stage=1, EFM=None, M_envy_free=None, good_color='blue'):
+    def draw_matching(M, color='red'):
+        # if type == 'non_weighted':
+        #     G_matching = nx.Graph(M.items())
+        # else:
+        G_matching = nx.Graph()
+        for key in M:
+            for tup in G.edges:
+                if key in tup:
+                    # print(tup)
+                    if type=="non_weighted":
+                        G_matching.add_edge(key, M[key])
+                    else:
+                        G_matching.add_edge(key, M[key], weight=G[key][M[key]]["weight"])
+
+        nx.draw_networkx_edges(
+            G_matching,
+            pos=pos,
+            edge_color=color,
+            ax=ax
+        )
+
     fig, ax = plt.subplots()
     # fig = plt.figure()
     # fig.add_subplot(111)
@@ -202,9 +255,36 @@ def ret_graph_fig(G, top_nodes):
         ax=ax
     )
 
+    draw_matching(M, color='red')
+
+    if stage>=2:
+        color_map = []
+        for node in G:
+            # print(node)
+            if node in EFM[0] or node in EFM[2]:
+                color_map.append(good_color)
+            else:
+                color_map.append('red')
+
+        nx.draw_networkx_nodes(
+            G,
+            pos=pos,
+            ax=ax,
+            node_color=color_map
+        )
+
+    if stage>=3:
+        draw_matching(M_envy_free, good_color)
+
+
+    #print(G_matching)
+
+
+
     return fig, ax, pos
 
 def ret_img(fig):
+    fig.canvas.draw()
     data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
     data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
 
@@ -226,68 +306,56 @@ def calc_max_matching(type, edges, top_nodes):
         G.add_weighted_edges_from(edges)
 
     M = nx.bipartite.maximum_matching(G, top_nodes=top_nodes)
-    fig, ax, pos = ret_graph_fig(G, top_nodes)
-
-    if type == 'non_weighted':
-        G_matching = nx.Graph(M.items())
-    else:
-        G_matching = nx.Graph()
-        for key in M:
-            for tup in edges:
-                if key in tup:
-                    G_matching.add_edge(key, M[key], weight=tup[2])
-
-    nx.draw_networkx_edges(
-        G_matching,
-        pos=pos,
-        edge_color='red'
-    )
-
-    fig.canvas.draw()
+    fig, ax, pos = ret_graph_fig(G, M, top_nodes, type=type, stage=1)
     img = ret_img(fig)
     payload = {
         "G": nx.node_link_data(G),
         "M": M,
         "top_nodes": top_nodes,
+        "type": type
     }
+
+    #print(_EFM_partition(G, M, top_nodes))
 
     return payload, img
 
-def calc_efm_partition(G, M, top_nodes):
+def calc_efm_partition(G, M, top_nodes, type="non_weighted"):
     X_L, X_S, Y_L, Y_S = _EFM_partition(G, M, top_nodes)
-    fig, ax, pos = ret_graph_fig(G, top_nodes)
+    fig, ax, pos = ret_graph_fig(G, M, top_nodes, type=type, stage=2, EFM=(X_L, X_S, Y_L, Y_S))
 
-    color_map = []
-    for node in G:
-        if node in X_L or Y_L:
-            color_map.append('green')
-        else:
-            color_map.append('black')
+    #print("X_L: ", X_L)
+    #print("Y_L: ", Y_L)
 
-    nx.draw_networkx(
-        G,
-        pos=pos,
-        ax=ax,
-        color_map=color_map
-    )
 
-    nx.draw_networkx_edges(
-        M,
-        pos=pos,
-        edge_color='red'
-    )
+    # nx.draw_networkx_edges(
+    #     M,
+    #     pos=pos,
+    #     edge_color='red'
+    # )
     img = ret_img(fig)
     payload = {
         "G": nx.node_link_data(G),
         "M": M,
         "top_nodes": top_nodes,
-        "X_L": X_L,
-        "X_S": X_S,
-        "Y_L": Y_L,
-        "Y_S": Y_S
+        "type": type,
+        "X_L": list(X_L),
+        "X_S": list(X_S),
+        "Y_L": list(Y_L),
+        "Y_S": list(Y_S)
     }
     return payload, img
 
+def calc_envy_free_matching(G, M, top_nodes, EFM, type="non_weighted"):
+    if type=="non_weighted":
+        xs_ys = EFM[1] + EFM[3]
+        M_envy_free = {node: M[node] for node in M if node not in xs_ys and M[node] not in xs_ys}
+    else:
+        xl_yl = set(EFM[0] + EFM[2])
+        M_envy_free = nx.bipartite.minimum_weight_full_matching(G.subgraph(xl_yl), top_nodes)
+    fig, ax, pos = ret_graph_fig(G, M, top_nodes, type=type, stage=3, EFM=EFM, M_envy_free=M_envy_free)
+
+    img = ret_img(fig)
+    return "", img
 def calc_response(type, edges, top_nodes):
     if type == 'non_weighted':
         logging.log(level=logging.DEBUG, msg=f"calc_response: non_weighted")
