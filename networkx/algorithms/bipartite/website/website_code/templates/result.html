@@ -1,71 +1,52 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<legend class="border-bottom mb-4">Algorithm Output
+{% if stage == "1" %}
+    Stage 1/3: Find Maximum Matching
+{% elif stage == "2" %}
+    Stage 2/3: Calculate EFM Partition
+{% else %}
+    Stage 3/3: Find envy-free matching
+{% endif %}
+</legend>
 
-
-<legend class="border-bottom mb-4">Algorithm Output {{stage}}</legend>
-<!--<button class="send__data__btn">Send Data</button>-->
+{% if stage in ("1", "2") %}
 <form id="myForm" action="/result" method="POST">
     <input type="hidden" id="payload" name="payload">
     <button type="submit">Next Step</button>
 </form>
 <script>
     document.getElementById("payload").value = {{ payload | tojson | safe}};
-    //const btn = document.querySelector('.send__data__btn');
-    //btn.addEventListener('click', function () {
-    /*
-    console.log(JSON.stringify( {
-                'payload' : payload,
-                'stage': '2'
-            }));
-    */
-    /*
-        fetch('/result', {
-            headers : {
-                'Content-Type' : 'text/plain'
-            },
-            method : 'POST',
-            body : JSON.stringify( {
-                'payload' : payload,
-                'stage': '2'
-            })
-        })
-        fetch('/calc', {
-            headers : {
-                'Content-Type' : 'text/plain'
-            },
-            method : 'POST',
-            body : JSON.stringify( {
-                'payload' : payload,
-                'stage': '2'
-            })
-        })
-        .then(function (response){
-
-            if(response.ok) {
-                response.json()
-                .then(function(response) {
-                    console.log(response);
-                });
-            }
-            else {
-                throw Error('Something went wrong');
-            }
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
-    });
-    */
-
 </script>
+{% endif %}
 
-<img src="{{ result }}">
+<img src="{{ result_img }}">
 <br>
-<p>
-    Here you see the graph, with the matching that was calculated drawn in <span style="color: red">red</span>.<br>
-    In this case we got a matching of size <b>{{ matching_size }}</b>
-</p>
+{% if stage == "1" %}
+    <p>
+        In stage 1 of the algorithm, we find a maximum matching.<br>
+        The maximum matching is drawn in <span style="color: {{matching_color}}">{{matching_color}}</span>.
+    </p>
+{% elif stage == "2" %}
+    <p>
+        In stage 2 of the algorithm we find a partition of the nodes into "good" and "bad" nodes.<br><br>
+        The article asserts that an envy-free matching can only be found in the "good" nodes.<br><br>
+        The maximum matching from stage 1 is drawn in <span style="color: {{matching_color}}">{{matching_color}}</span>.<br>
+        "Good" nodes are drawn in <span style="color: {{good_color}}">{{good_color}}</span>.<br>
+        "Bad" nodes are drawn in <span style="color: {{bad_color}}">{{bad_color}}</span>.
+    </p>
+{% else %}
+    <p>
+        In stage 3 (the final stage) of the algorithm
+        we find the sub-matching of the maximum matching we found in stage 1 that is composed only of "good" nodes.<br>
+        The maximum matching from stage 1 is drawn in <span style="color: {{matching_color}}">{{matching_color}}</span>.<br>
+        The "Good" nodes from stage 2 are drawn in <span style="color: {{good_color}}">{{good_color}}</span>.<br>
+        The "Bad" nodes from stage 2 are drawn in <span style="color: {{bad_color}}">{{bad_color}}</span>.<br><br>
+        The sub-matching returned from the algorithm is drawn in <span style="color: {{good_color}}">{{good_color}}</span>.<br>
+        The article asserts this sub-matching is envy-free.
+    </p>
+{% endif %}
 <br>
 <h3>
     General explanation:

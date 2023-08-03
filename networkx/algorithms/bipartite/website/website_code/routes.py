@@ -97,6 +97,11 @@ def algo_page():
             return render_template('algo.html', title='Algo', form=form, type=type)
 
 
+matching_color = 'limegreen'
+good_color = 'blue'
+bad_color = 'red'
+
+
 @app.route("/result", methods=['GET', 'POST'])
 def result_page():
     if request.method == 'POST':
@@ -114,7 +119,7 @@ def result_page():
         top_nodes = session["top_nodes"]
         args = [type, edges, top_nodes]
 
-    elif stage in ("2","3"):
+    elif stage in ("2", "3"):
         G = nx.node_link_graph(data["G"])
         M_str_keys = data["M"]
         M = {int(k): v for k, v in M_str_keys.items()}
@@ -128,14 +133,22 @@ def result_page():
         args.append(EFM)
 
     payload, img = calc(stage, *args, **kwargs)
-    return render_template('result.html', result=img, payload=json.dumps(payload), stage=stage_dict[stage])
+    return render_template(
+        'result.html',
+        result_img=img,
+        payload=json.dumps(payload),
+        stage=stage,
+        good_color=good_color,
+        bad_color=bad_color,
+        matching_color=matching_color,
+    )
 
 
-stage_dict = {
-    "1": "Stage 1/3: Maximum Matching",
-    "2": "Stage 2/3: EFM Partition",
-    "3": "Stage 3/3: X_L, Y_L"
-}
+# stage_dict = {
+#     "1": "Stage 1/3: Maximum Matching",
+#     "2": "Stage 2/3: EFM Partition",
+#     "3": "Stage 3/3: X_L, Y_L"
+# }
 
 valid_input_csv_functions = {
     "non_weighted": lambda list_of_tup: all(
@@ -162,7 +175,7 @@ algorithms = {
 }
 
 
-def ret_graph_fig(G, M, top_nodes, type="non_weighted", stage=1, EFM=None, M_envy_free=None, good_color='blue'):
+def ret_graph_fig(G, M, top_nodes, type="non_weighted", stage=1, EFM=None, M_envy_free=None):
     def draw_matching(M, color='red'):
         G_matching = nx.Graph()
         for key in M:
@@ -190,7 +203,7 @@ def ret_graph_fig(G, M, top_nodes, type="non_weighted", stage=1, EFM=None, M_env
         ax=ax
     )
 
-    draw_matching(M, color='red')
+    draw_matching(M, color=matching_color)
 
     if stage >= 2:
         color_map = []
@@ -198,7 +211,7 @@ def ret_graph_fig(G, M, top_nodes, type="non_weighted", stage=1, EFM=None, M_env
             if node in EFM[0] or node in EFM[2]:
                 color_map.append(good_color)
             else:
-                color_map.append('red')
+                color_map.append(bad_color)
 
         nx.draw_networkx_nodes(
             G,
@@ -288,6 +301,6 @@ def calc(stage: str, *args, **kwargs):
     }
 
     payload, img = action[stage](*args, **kwargs)
-    payload["stage"] = str(int(stage)+1)
+    payload["stage"] = str(int(stage) + 1)
 
     return payload, img
