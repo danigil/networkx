@@ -14,10 +14,12 @@
 {% if stage in ("1", "2") %}
 <form id="myForm" action="/result" method="POST">
     <input type="hidden" id="payload" name="payload">
-    <button type="submit">Next Step</button>
+    <button id="submit" type="submit" onclick="loading();" class="btn btn-outline-info">Next Step</button>
 </form>
+<div class="loader"></div>
 <script>
     document.getElementById("payload").value = {{ payload | tojson | safe}};
+    //undo_loading();
 </script>
 {% endif %}
 

@@ -67,6 +67,15 @@ def algo_page():
                 edges = [(int(from_node), int(to_node), float(weight)) for from_node, to_node, weight in
                          map(lambda s: s.split(','), m)]
 
+            X = set([tup[0] for tup in edges])
+            Y = set([tup[1] for tup in edges])
+
+            inter = X.intersection(Y)
+            if len(inter) != 0:
+                logging.log(level=logging.DEBUG, msg=f'ERROR bipartite sets intersect')
+                flash(f'ERROR bipartite sets intersect', category="error")
+                return render_template('algo.html', title='Algo', form=form, type=type)
+
             if input_text == '':
                 top_nodes = [tup[0] for tup in edges]
             else:
@@ -79,7 +88,6 @@ def algo_page():
 
             if not is_valid_input_csv(type, edges):
                 logging.log(level=logging.DEBUG, msg=f'ERROR edges input is malformed')
-
                 flash(f'ERROR edges input is malformed', category="error")
                 return render_template('algo.html', title='Algo', form=form, type=type)
 
@@ -97,7 +105,7 @@ def algo_page():
             return render_template('algo.html', title='Algo', form=form, type=type)
 
 
-matching_color = 'limegreen'
+matching_color = 'fuchsia'
 good_color = 'blue'
 bad_color = 'red'
 

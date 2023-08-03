@@ -2,43 +2,6 @@
 <!-- Second step: add error-check to each field. -->
 {% extends "layout.html" %}
 {% block content %}
-<script type="text/javascript">// <![CDATA[
-function loading() {
-    $(".loader").show();
-    $("#submit").hide();
-}
-
-function onsubmit() {
-    loading();
-}
-
-function undo_loading() {
-    $(".loader").hide();
-    $("#submit").show();
-}
-
-// ]]></script>
-
-<style>
-    .loader {
-        border: 4px solid #f3f3f3; /* Light grey */
-        border-top: 4px solid #3498db; /* Blue */
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 2s linear infinite;
-        display: none;
-    }
-
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-</style>
 
 <form method="POST" action="" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
@@ -67,8 +30,8 @@ function undo_loading() {
         &emsp;&emsp;7,3,1.0<br>
         {% endif %}
         <br>
-        &emsp;Top Nodes: (comma separated positive integers)<br>
-        &emsp;&emsp;0,1,2<br>
+<!--        &emsp;Top Nodes: (comma separated positive integers)<br>-->
+<!--        &emsp;&emsp;0,1,2<br>-->
 
     </p>
 
@@ -109,7 +72,7 @@ function undo_loading() {
     </div>
 
 
-    <div class="form-group">
+    <div class="form-group" hidden>
         {{ form.top_nodes.label(class="form-control-label") }}
         {% if form.top_nodes.errors %}
         <script>
