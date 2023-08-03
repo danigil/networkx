@@ -105,7 +105,7 @@ def algo_page():
             return render_template('algo.html', title='Algo', form=form, type=type)
 
 
-matching_color = 'fuchsia'
+matching_color = 'limegreen'
 good_color = 'blue'
 bad_color = 'red'
 
