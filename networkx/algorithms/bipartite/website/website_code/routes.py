@@ -91,12 +91,16 @@ def algo_page():
                 flash(f'ERROR edges input is malformed', category="error")
                 return render_template('algo.html', title='Algo', form=form, type=type)
 
-            logging.log(level=logging.DEBUG, msg=f"calculating matching")
+            input_checkbox = form.checkbox.data
 
             logging.log(level=logging.DEBUG, msg=f"redirecting to result page")
             session["type"] = type
             session["edges"] = edges
             session["top_nodes"] = top_nodes
+            if input_checkbox:
+                session["stage"] = "1"
+            else:
+                session["stage"] = "-1"
             session.modified = True
 
             return redirect(url_for('result_page'))
@@ -116,12 +120,12 @@ def result_page():
         data = json.loads(request.form["payload"])
         stage = data.get("stage", "1")
     else:
-        stage = "1"
+        stage = session.get("stage", "-1")
 
     args = []
     kwargs = {}
 
-    if stage == "1":
+    if stage in ("-1", "1"):
         type = session["type"]
         edges = session["edges"]
         top_nodes = session["top_nodes"]
@@ -210,8 +214,10 @@ def ret_graph_fig(G, M, top_nodes, type="non_weighted", stage=1, EFM=None, M_env
         pos=pos,
         ax=ax
     )
-
-    draw_matching(M, color=matching_color)
+    if stage==-1:
+        draw_matching(M, color=good_color)
+    else:
+        draw_matching(M, color=matching_color)
 
     if stage >= 2:
         color_map = []
@@ -248,7 +254,7 @@ def ret_img(fig):
 
 
 def calc(stage: str, *args, **kwargs):
-    assert stage in ("1", "2", "3")
+    assert stage in ("-1", "1", "2", "3")
 
     def calc_max_matching(type, edges, top_nodes):
         if type == 'non_weighted':
@@ -303,6 +309,7 @@ def calc(stage: str, *args, **kwargs):
         return {}, img
 
     action = {
+        "-1": calc_response,
         "1": calc_max_matching,
         "2": calc_efm_partition,
         "3": calc_envy_free_matching
@@ -312,3 +319,52 @@ def calc(stage: str, *args, **kwargs):
     payload["stage"] = str(int(stage) + 1)
 
     return payload, img
+
+def calc_response(type, edges, top_nodes):
+    if type == 'non_weighted':
+        logging.log(level=logging.DEBUG, msg=f"calc_response: non_weighted")
+
+        G = nx.Graph(edges)
+    else:
+        logging.log(level=logging.DEBUG, msg=f"calc_response: weighted")
+
+        G = nx.Graph()
+        G.add_weighted_edges_from(edges)
+
+    current_algo = algorithms[type]
+
+    M = current_algo(G, top_nodes=top_nodes)
+    #logging.log(level=logging.DEBUG, msg=f"calc_response: return: {matching_ret}")
+    fig, ax, pos = ret_graph_fig(G, M, top_nodes, type=type, stage=-1)
+    img = ret_img(fig)
+    # fig = plt.figure()
+    # fig.add_subplot(111)
+    #
+    # X, Y = networkx.algorithms.bipartite.sets(G, top_nodes)
+    # pos = nx.drawing.layout.bipartite_layout(G, X)
+    # nx.draw_networkx(
+    #     G,
+    #     pos=pos,
+    # )
+    #
+    # if type == 'non_weighted':
+    #     G_matching = nx.Graph(matching_ret.items())
+    # else:
+    #     G_matching = nx.Graph()
+    #     for key in matching_ret:
+    #         for tup in edges:
+    #             if key in tup:
+    #                 G_matching.add_edge(key, matching_ret[key], weight=tup[2])
+    #
+    # nx.draw_networkx_edges(
+    #     G_matching,
+    #     pos=pos,
+    #     edge_color='red'
+    # )
+    #
+    # fig.canvas.draw()
+    #
+    # img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+    # img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+
+    return {}, img

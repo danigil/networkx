@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired, FileAllowed
-from wtforms import SubmitField, TextAreaField, FileField
+from wtforms import SubmitField, TextAreaField, FileField, BooleanField
 from wtforms.validators import DataRequired, Regexp
 
 
@@ -17,4 +17,5 @@ class EnvyFreeMatchingCSVAndTextForm(FlaskForm):
 class EnvyFreeMatchingListAndTextForm(FlaskForm):
     edges = TextAreaField(label='Edges')
     top_nodes = TextAreaField(label='Top Nodes (Inferred automatically if input is empty)')
+    checkbox = BooleanField(label='Show Steps?', default="checked")
     submit = SubmitField(label='submit')
