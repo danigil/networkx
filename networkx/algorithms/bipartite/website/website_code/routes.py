@@ -334,37 +334,7 @@ def calc_response(type, edges, top_nodes):
     current_algo = algorithms[type]
 
     M = current_algo(G, top_nodes=top_nodes)
-    #logging.log(level=logging.DEBUG, msg=f"calc_response: return: {matching_ret}")
     fig, ax, pos = ret_graph_fig(G, M, top_nodes, type=type, stage=-1)
     img = ret_img(fig)
-    # fig = plt.figure()
-    # fig.add_subplot(111)
-    #
-    # X, Y = networkx.algorithms.bipartite.sets(G, top_nodes)
-    # pos = nx.drawing.layout.bipartite_layout(G, X)
-    # nx.draw_networkx(
-    #     G,
-    #     pos=pos,
-    # )
-    #
-    # if type == 'non_weighted':
-    #     G_matching = nx.Graph(matching_ret.items())
-    # else:
-    #     G_matching = nx.Graph()
-    #     for key in matching_ret:
-    #         for tup in edges:
-    #             if key in tup:
-    #                 G_matching.add_edge(key, matching_ret[key], weight=tup[2])
-    #
-    # nx.draw_networkx_edges(
-    #     G_matching,
-    #     pos=pos,
-    #     edge_color='red'
-    # )
-    #
-    # fig.canvas.draw()
-    #
-    # img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
-    # img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
 
     return {}, img
